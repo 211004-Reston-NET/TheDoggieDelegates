@@ -23,14 +23,14 @@ General forum for registered adopters to share pet and shelter information and r
 - One click email button that sends pre-screen profile to the selected shelter with the adopters preferred animal(s)
 
 ## Tech Stack
-⦁	C#/Entity Framwork
-⦁	Asp.net WebAPI
-⦁	SQL
-⦁	Javascript/Typescript/Angular
-⦁	Azure Cloud Services
-⦁	Github VC/CI/CD
-⦁	Xunit/Moq
-⦁	Serilog
-⦁	Petfinder API
-⦁	RescureGroups API
-⦁	The Dog API
+- C#/Entity Framwork
+- Asp.net WebAPI
+- SQL
+- Javascript/Typescript/Angular
+- Azure Cloud Services
+- Github VC/CI/CD
+- Xunit/Moq
+- Serilog
+- Petfinder API
+- RescureGroups API
+- The Dog API
