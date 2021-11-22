@@ -49,7 +49,6 @@ jobs:
         New-Item -Path .\.sonar\scanner -ItemType Directory
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
         
-        
     - name: Restore dependencies
       run: dotnet restore
       
