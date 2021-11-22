@@ -1,8 +1,9 @@
 Create table Favorite (fav_id int identity (1,1) primary key not null,
 						dog_id int,
-						is_available BIT)
+						is_available BIT,
+						profile_id int)
 						
-Alter Table Favorite Add profile_id int
+
 
 
 Create table Category (category_id int identity (1,1) primary key not null,
@@ -14,3 +15,8 @@ Create table Topics (topic_id int identity (1,1) primary key not null,
 					topic_body varchar(250),
 					profile_id int,
 					post_date DateTime)
+					
+					
+Alter table Favorite Add Foreign Key (profile_id) References Profile(profile_id)
+
+Alter table Topic Add Foreign key (profile_id) References Profile(profile_id)
