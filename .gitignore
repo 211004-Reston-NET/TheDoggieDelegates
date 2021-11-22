@@ -3,3 +3,4 @@ obj
 .vscode
 .vs
 appsettings.json
+WebApi/appsettings.json
