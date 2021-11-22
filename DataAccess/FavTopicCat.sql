@@ -13,4 +13,5 @@ Create table Topics (topic_id int identity (1,1) primary key not null,
 					topic_name varchar(50), 
 					topic_body varchar(250),
 					profile_id int,
-					post_date DateTime)
+					post_date DateTime,
+					category_id int FOREIGN KEY REFERENCES Category (category_id) on delete cascade )
