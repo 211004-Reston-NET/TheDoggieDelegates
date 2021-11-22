@@ -9,7 +9,7 @@ CREATE table Reply (
 
 
 --Replies Table--
-CREATE table Reply (
+--CREATE table Reply (
 	reply_id int identity (1,1) primary key,
 	reply_message varchar (250) not null,
 	reply_timestamp DATETIME,
@@ -17,5 +17,5 @@ CREATE table Reply (
 	topic_id int
 );
 
-Drop table Reply;
-DELETE FROM Reply;
+--Drop table Reply;
+--DELETE FROM Reply;
