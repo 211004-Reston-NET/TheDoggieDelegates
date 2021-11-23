@@ -7,8 +7,8 @@ namespace DataAccess
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        readonly pawpersdbContext _context;
-        public Repository(pawpersdbContext context)
+        readonly PawpersDbContext _context;
+        public Repository(PawpersDbContext context)
         {
             _context = context;
         }
