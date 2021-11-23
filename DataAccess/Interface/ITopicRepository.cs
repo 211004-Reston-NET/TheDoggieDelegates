@@ -9,6 +9,6 @@ namespace DataAccess
         IEnumerable<Topic> SearchByName(string query);
         IEnumerable<Topic> SearchByBody(string query);
         IEnumerable<Topic> SearchByProfileId(int query);
-        IEnumerable<Topic> SearchByCategoryId(int query);
+        IEnumerable<Topic> ListByCategoryId(int query);
     }
 }
