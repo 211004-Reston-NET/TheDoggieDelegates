@@ -98,6 +98,29 @@ namespace UnitTest
             }
         }
 
+        [Fact]
+        public void SearchByNameShouldReturnResults()
+        {
+            using (var context = new PawpersDbContext(_options))
+            {
+                ITopicRepository repository = new TopicRepository(context);
+                var topic = repository.SearchByName("test");
+
+                Assert.NotEmpty(topic);
+            }
+        }
+
+        [Fact]
+        public void SearchByNameShouldThrowNullExceptionOnNoResults()
+        {
+            using (var context = new PawpersDbContext(_options))
+            {
+                ITopicRepository repository = new TopicRepository(context);
+
+                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByName("lakjhsdfljkahdsfljkh"));
+            }
+        }
+
         void Seed()
         {
             using (var context = new PawpersDbContext(_options))
