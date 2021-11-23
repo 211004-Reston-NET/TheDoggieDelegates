@@ -23,7 +23,7 @@ namespace UnitTest
             using (var context = new PawpersDbContext(_options))
             {
                 IFavoriteRepository repository = new FavoriteRepository(context);
-                var favorite = repository.GetByPrimaryKey(1);
+                var favorite = repository.GetByIdWithNav(1);
 
                 Assert.NotNull(favorite.Profile);
             }

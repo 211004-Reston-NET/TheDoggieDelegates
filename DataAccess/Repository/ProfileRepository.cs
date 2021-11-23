@@ -14,12 +14,12 @@ namespace DataAccess
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Profile> SearchByEmail(string query)
+        public Profile SearchByEmail(string query)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Profile> SearchByPhoneNumber(string query)
+        public Profile SearchByPhoneNumber(string query)
         {
             throw new System.NotImplementedException();
         }
