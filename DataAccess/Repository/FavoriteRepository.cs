@@ -14,12 +14,12 @@ namespace DataAccess
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Profile> SearchByDogId(int query)
+        public IEnumerable<Favorite> SearchByDogId(int query)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Profile> SearchByProfileId(int query)
+        public IEnumerable<Favorite> SearchByProfileId(int query)
         {
             throw new System.NotImplementedException();
         }
