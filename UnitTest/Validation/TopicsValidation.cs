@@ -1,6 +1,6 @@
-/*
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Models;
 using Xunit;
 
 namespace UnitTest
@@ -36,4 +36,3 @@ namespace UnitTest
         }
     }
 }
-*/
