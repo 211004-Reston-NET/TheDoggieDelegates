@@ -12,7 +12,7 @@ namespace UnitTest
         {
             var favorite = new Favorite
             {
-                DogId = null,
+                DogId = 0,
                 IsAvailable = 1,
                 ProfileId = 1
             };
@@ -28,7 +28,7 @@ namespace UnitTest
             var favorite = new Favorite
             {
                 DogId = 1,
-                IsAvailable = null,
+                IsAvailable = 0,
                 ProfileId = 1
             };
 
@@ -44,7 +44,7 @@ namespace UnitTest
             {
                 DogId = 1,
                 IsAvailable = 1,
-                ProfileId = null
+                ProfileId = 0
             };
 
             var validationResults = new List<ValidationResult>();
