@@ -16,15 +16,17 @@ namespace Models
         }
 
         public int TopicId { get; set; }
+
         [Required]
         [Display(Name = "Topic Name")]
-        
         public string TopicName { get; set; }
+
         [Required]
         [Display(Name = "Topic Body")]
-        
         public string TopicBody { get; set; }
+
         public int? ProfileId { get; set; }
+        
         [Column(TypeName = "date")]
         [DataType(DataType.DateTime)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
