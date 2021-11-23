@@ -7,13 +7,13 @@ using Models;
 
 namespace DataAccess
 {
-    public partial class pawpersdbContext : DbContext
+    public partial class PawpersDbContext : DbContext
     {
-        public pawpersdbContext()
+        public PawpersDbContext()
         {
         }
 
-        public pawpersdbContext(DbContextOptions<pawpersdbContext> options)
+        public PawpersDbContext(DbContextOptions<PawpersDbContext> options)
             : base(options)
         {
         }

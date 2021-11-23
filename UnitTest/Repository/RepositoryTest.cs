@@ -9,10 +9,10 @@ namespace UnitTest
 {
     public class RepositoryTest
     {
-        readonly DbContextOptions<pawpersdbContext> _options;
+        readonly DbContextOptions<PawpersDbContext> _options;
         public RepositoryTest()
         {
-            _options = new DbContextOptionsBuilder<pawpersdbContext>()
+            _options = new DbContextOptionsBuilder<PawpersDbContext>()
                 .UseSqlite("Filename = Repository.db").Options;
             Seed();
         }
@@ -20,7 +20,7 @@ namespace UnitTest
         [Fact]
         public void CreateTopicShouldCreateTopic()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 IRepository<Topic> repository = new Repository<Topic>(context);
                 Topic newTopic = new ()
@@ -39,7 +39,7 @@ namespace UnitTest
         [Fact]
         public void GetAllTopicsShouldReturnAllTopics()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 IRepository<Topic> repository = new Repository<Topic>(context);
 
@@ -52,7 +52,7 @@ namespace UnitTest
         [Fact]
         public void GetTopicByPrimaryKeyShouldReturnTopic()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 IRepository<Topic> repository = new Repository<Topic>(context);
 
@@ -63,7 +63,7 @@ namespace UnitTest
         [Fact]
         public void UpdateTopicshouldUpdateTopic()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 IRepository<Topic> repository = new Repository<Topic>(context);
                 var testTopic = repository.GetByPrimaryKey(1);
@@ -78,7 +78,7 @@ namespace UnitTest
         [Fact]
         public void DeleteTopicshouldDeleteTopic()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 IRepository<Topic> repository = new Repository<Topic>(context);
                 var testTopic = repository.GetByPrimaryKey(2);
@@ -91,7 +91,7 @@ namespace UnitTest
 
         void Seed()
         {
-            using (var context = new pawpersdbContext(_options))
+            using (var context = new PawpersDbContext(_options))
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
