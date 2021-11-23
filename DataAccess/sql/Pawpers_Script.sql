@@ -8,7 +8,7 @@ Create Table Profile
 	profile_zipcode		      VARCHAR(9) NOT NULL,
 	profile_age               INT NOT NULL,
 	profile_homephone         VARCHAR(9) NOT NULL,
-	profile_personalphone     VARCHAR(9) NOT NULL,
+	profile_personalphone     VARCHAR(9),
 	profile_email             VARCHAR(32) NOT NULL,
 	profile_occupation        VARCHAR(32),
 	profile_spousename        VARCHAR(32),

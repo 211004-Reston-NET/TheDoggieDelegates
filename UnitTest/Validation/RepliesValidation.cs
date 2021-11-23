@@ -1,11 +1,11 @@
-/*
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Models;
 using Xunit;
 
 namespace UnitTest
 {
-    public class TopicsValidation
+    public class RepliesValidation
     {
         [Fact]
         public void ReplyMessageRequired()
@@ -21,4 +21,3 @@ namespace UnitTest
         }
     }
 }
-*/
