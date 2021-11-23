@@ -28,18 +28,7 @@ namespace DataAccess
         /// <returns>IEnumerable<TEntity></returns>
         public IEnumerable<TEntity> GetAll()
         {
-            var query = _context.Set<TEntity>().AsQueryable();
-            var navigations = _context.Model.FindEntityType(typeof(TEntity))
-                .GetDerivedTypesInclusive()
-                .SelectMany(type => type.GetNavigations())
-                .Distinct();
-
-            foreach (var item in navigations)
-            {
-                query = query.Include(item.Name);
-            }
-
-            return query.ToList();
+            return _context.Set<TEntity>();
         }
 
         /// <summary>

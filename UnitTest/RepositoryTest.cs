@@ -46,7 +46,6 @@ namespace UnitTest
                 var testList = repository.GetAll();
 
                 Assert.Equal(2, testList.Count());
-                Assert.NotNull(testList.First().Category);
             }
         }
 
@@ -58,7 +57,6 @@ namespace UnitTest
                 IRepository<Topic> repository = new Repository<Topic>(context);
 
                 Assert.Equal("test topic 1", repository.GetByPrimaryKey(1).TopicName);
-                //Assert.NotNull(repository.GetByPrimaryKey(1).Category);
             }
         }
 
@@ -111,14 +109,12 @@ namespace UnitTest
                         TopicName = "test topic 1",
                         TopicBody = "Testing",
                         PostTimestamp = DateTime.Now,
-                        CategoryId = 1
                     },
                     new Topic
                     {
                         TopicName = "test topic 2",
                         TopicBody = "Testing",
                         PostTimestamp = DateTime.Now,
-                        CategoryId = 1
                     }
                 );
 
