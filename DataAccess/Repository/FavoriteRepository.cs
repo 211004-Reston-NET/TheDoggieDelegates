@@ -1,27 +1,59 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace DataAccess
 {
     public class FavoriteRepository : Repository<Favorite>, IFavoriteRepository
     {
+         readonly PawpersDbContext repository;
         public FavoriteRepository(PawpersDbContext context) : base(context)
         {
+            repository = context;
         }
 
+        /// <summary>
+        /// Queries DB to find single item based on the primary key 
+        /// loads nav properties of the entity
+        /// </summary>
+        /// <param name="query">int </param>
+        /// <returns>query which will be favorite ID</returns>
         public Favorite GetByIdWithNav(int query)
         {
-            throw new System.NotImplementedException();
+            var Fav = repository.Favorites
+                        .Include(f => f.Profile)
+                        .Single(f => f.FavId.Equals(query));
+                        return Fav;
         }
 
-        public IEnumerable<Profile> SearchByDogId(int query)
+        public IEnumerable<Favorite> SearchByDogId(int query)
         {
-            throw new System.NotImplementedException();
+            
+                 var result =  base.GetAll()
+                             .Where(i => i.DogId.Equals(query));
+
+                if (result.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("Value cannot be empty");
+            }
+                 return result; 
+                     
         }
 
-        public IEnumerable<Profile> SearchByProfileId(int query)
+        public IEnumerable<Favorite> SearchByProfileId(int query)
         {
-            throw new System.NotImplementedException();
+                var result = base.GetAll()
+                            .Where(i => i.ProfileId.Equals(query));
+            if (result.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("No result found");
+            }
+                 
+                        return result;
+            
+           
         }
     }
 }
