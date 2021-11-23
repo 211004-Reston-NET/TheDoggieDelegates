@@ -23,9 +23,9 @@ namespace UnitTest
             using (var context = new PawpersDbContext(_options))
             {
                 ITopicRepository repository = new TopicRepository(context);
-                var Topic = repository.GetByPrimaryKey(1);
+                var topic = repository.GetByIdWithNav(1);
 
-                Assert.NotNull(Topic.Profile);
+                Assert.NotNull(topic.Profile);
             }
         }
 
