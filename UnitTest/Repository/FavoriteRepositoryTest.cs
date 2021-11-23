@@ -95,6 +95,7 @@ namespace UnitTest
                         ProfileHomephone = "111-456-7890",
                         ProfilePersonalphone = "111-234-1234",
                         ProfileEmail = "aaa@aaa.com",
+                        ProfileOccupation = "jhlkjhf",
                         ProfileChildren = 3,
                         ProfileHasyard = 0,
                         ProfileFamilyallergies = 0,
