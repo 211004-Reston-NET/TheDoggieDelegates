@@ -4,6 +4,7 @@ using Xunit;
 using Models;
 using DataAccess;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace UnitTest
 {
@@ -48,7 +49,7 @@ namespace UnitTest
             {
                 IProfileRepository repository = new ProfileRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
             }
         }
 
@@ -71,7 +72,7 @@ namespace UnitTest
             {
                 IProfileRepository repository = new ProfileRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
             }
         }
 
@@ -94,7 +95,7 @@ namespace UnitTest
             {
                 IProfileRepository repository = new ProfileRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByProfileName("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByProfileName("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
             }
         }
 

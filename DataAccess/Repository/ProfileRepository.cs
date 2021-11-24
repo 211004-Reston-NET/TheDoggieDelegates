@@ -29,29 +29,29 @@ namespace DataAccess
         public IEnumerable<Profile> SearchByEmail(string query)
         {
             var profiles = base.GetAll().Where(p => p.ProfileEmail.ToLower().Contains(query.ToLower()));
-            if (profiles.Count() == 0)
+            if (!profiles.Any())
             {
-                throw new IndexOutOfRangeException("None found");
+                throw new KeyNotFoundException("None found");
             }
             return profiles;
         }
 
         public IEnumerable<Profile> SearchByPhoneNumber(string query)
         {
-            var profile = base.GetAll().Where(p => p.ProfileHomephone.Contains(query));
-            if (profile.Count() == 0)
+            var profiles = base.GetAll().Where(p => p.ProfileHomephone.Contains(query));
+            if (!profiles.Any())
             {
-                throw new IndexOutOfRangeException("not found");
+                throw new KeyNotFoundException("not found");
             }
-            return profile;
+            return profiles;
         }
 
         public IEnumerable<Profile> SearchByProfileName(string query)
         {
             var profiles = base.GetAll().Where(p => p.ProfileName.Contains(query));
-            if (profiles.Count() == 0)
+            if (!profiles.Any())
             {
-                throw new IndexOutOfRangeException("not found");
+                throw new KeyNotFoundException("not found");
             }
             return profiles;
         }

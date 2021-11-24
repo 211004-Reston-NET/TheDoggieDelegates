@@ -4,6 +4,7 @@ using Xunit;
 using Models;
 using DataAccess;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace UnitTest
 {
@@ -48,7 +49,7 @@ namespace UnitTest
             {
                 IFavoriteRepository repository = new FavoriteRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByDogId(3));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByDogId(3));
             }
         }
 
@@ -71,7 +72,7 @@ namespace UnitTest
             {
                 IFavoriteRepository repository = new FavoriteRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByProfileId(3));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByProfileId(3));
             }
         }
 

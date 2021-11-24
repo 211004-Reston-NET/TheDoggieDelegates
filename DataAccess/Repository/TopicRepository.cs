@@ -27,14 +27,14 @@ namespace DataAccess
 
         public IEnumerable<Topic> SearchByBody(string query)
         {
-            var listoftopics = GetAll().Where(b => b.TopicBody.Contains(query));
-            if(listoftopics.Count() == 0)
+            var topics = GetAll().Where(b => b.TopicBody.Contains(query));
+            if(!topics.Any())
             {
-                throw new IndexOutOfRangeException("Topic not found.");
+                throw new KeyNotFoundException("Topic not found.");
             }
             else
             {
-                return listoftopics;
+                return topics;
             }
 
             
@@ -43,40 +43,40 @@ namespace DataAccess
 
         public IEnumerable<Topic> ListByCategoryId(int query)
         {
-            var listoftopics = GetAll().Where(b => b.CategoryId.Equals(query));
-            if(listoftopics.Count() == 0)
+            var topics = GetAll().Where(b => b.CategoryId.Equals(query));
+            if(!topics.Any())
             {
-                throw new IndexOutOfRangeException("Topic not found.");
+                throw new KeyNotFoundException("Topic not found.");
             }
             else
             {
-                return listoftopics;
+                return topics;
             }
         }
 
         public IEnumerable<Topic> SearchByName(string query)
         {
-            var listoftopics = GetAll().Where(b => b.TopicName.Equals(query));
-            if(listoftopics.Count() == 0)
+            var topics = GetAll().Where(b => b.TopicName.Equals(query));
+            if(!topics.Any())
             {
-                throw new IndexOutOfRangeException("Topic not found.");
+                throw new KeyNotFoundException("Topic not found.");
             }
             else
             {
-                return listoftopics;
+                return topics;
             }
         }
 
         public IEnumerable<Topic> SearchByProfileId(int query)
         {
-            var listoftopics = GetAll().Where(b => b.ProfileId.Equals(query));
-            if(listoftopics.Count() == 0)
+            var topics = GetAll().Where(b => b.ProfileId.Equals(query));
+            if(!topics.Any())
             {
-                throw new IndexOutOfRangeException("Topic not found.");
+                throw new KeyNotFoundException("Topic not found.");
             }
             else
             {
-                return listoftopics;
+                return topics;
             }
         }
     }

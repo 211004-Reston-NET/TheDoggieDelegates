@@ -8,7 +8,7 @@ namespace DataAccess
 {
     public class FavoriteRepository : Repository<Favorite>, IFavoriteRepository
     {
-         readonly PawpersDbContext repository;
+        readonly PawpersDbContext repository;
         public FavoriteRepository(PawpersDbContext context) : base(context)
         {
             repository = context;
@@ -25,35 +25,35 @@ namespace DataAccess
             var Fav = repository.Favorites
                         .Include(f => f.Profile)
                         .Single(f => f.FavId.Equals(query));
-                        return Fav;
+            return Fav;
         }
 
         public IEnumerable<Favorite> SearchByDogId(int query)
         {
-            
-                 var result =  base.GetAll()
-                             .Where(i => i.DogId.Equals(query));
 
-                if (result.Count() == 0)
+            var result = base.GetAll()
+                        .Where(i => i.DogId.Equals(query));
+
+            if (!result.Any())
             {
-                throw new IndexOutOfRangeException("Value cannot be empty");
+                throw new KeyNotFoundException("Value cannot be empty");
             }
-                 return result; 
-                     
+            return result;
+
         }
 
         public IEnumerable<Favorite> SearchByProfileId(int query)
         {
-                var result = base.GetAll()
-                            .Where(i => i.ProfileId.Equals(query));
-            if (result.Count() == 0)
+            var result = base.GetAll()
+                        .Where(i => i.ProfileId.Equals(query));
+            if (!result.Any())
             {
-                throw new IndexOutOfRangeException("No result found");
+                throw new KeyNotFoundException("No result found");
             }
-                 
-                        return result;
-            
-           
+
+            return result;
+
+
         }
     }
 }
