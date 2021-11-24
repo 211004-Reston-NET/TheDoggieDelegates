@@ -6,7 +6,7 @@ namespace DataAccess
     public interface IFavoriteRepository : IRepository<Favorite>
     {
         Favorite GetByIdWithNav(int query);
-        IEnumerable<Profile> SearchByProfileId(int query);
-        IEnumerable<Profile> SearchByDogId(int query);
+        IEnumerable<Favorite> SearchByProfileId(int query);
+        IEnumerable<Favorite> SearchByDogId(int query);
     }
 }

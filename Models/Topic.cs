@@ -29,7 +29,7 @@ namespace Models
         
         [Column(TypeName = "date")]
         [DataType(DataType.DateTime)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? PostTimestamp { get; set; }
         public int? CategoryId { get; set; }
 

@@ -36,6 +36,17 @@ namespace WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
+
+            
+            services.AddCors(
+                (builder) => {
+                    builder.AddDefaultPolicy((policy) => {
+                        policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+                }
+            );   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -23,9 +23,9 @@ namespace UnitTest
             using (var context = new PawpersDbContext(_options))
             {
                 ITopicRepository repository = new TopicRepository(context);
-                var Topic = repository.GetByIdWithNav(1);
+                var topic = repository.GetByIdWithNav(1);
 
-                Assert.NotNull(Topic.Profile);
+                Assert.NotNull(topic.Profile);
             }
         }
 
@@ -141,6 +141,7 @@ namespace UnitTest
                         ProfileHomephone = "111-456-7890",
                         ProfilePersonalphone = "111-234-1234",
                         ProfileEmail = "aaa@aaa.com",
+                        ProfileOccupation = "jhlkjhf",
                         ProfileChildren = 3,
                         ProfileHasyard = 0,
                         ProfileFamilyallergies = 0,

@@ -64,7 +64,7 @@ namespace Models
         [Display(Name = "Occupation")]
         public string ProfileOccupation { get; set; }
 
-        [Required]
+        
         [Display(Name = "Spouse Name")]
         [RegularExpression(@"^[a-zA-Z -]+$", ErrorMessage = "Invalid name")]
         public string ProfileSpousename { get; set; }
