@@ -7,7 +7,7 @@ namespace DataAccess
     {
         Profile GetByIdWithNav(int query);
         IEnumerable<Profile> SearchByProfileName(string query);
-        Profile SearchByPhoneNumber(string query);
-        Profile SearchByEmail(string query);
+        IEnumerable<Profile> SearchByPhoneNumber(string query);
+        IEnumerable<Profile> SearchByEmail(string query);
     }
 }

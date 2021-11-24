@@ -60,7 +60,7 @@ namespace UnitTest
                 IProfileRepository repository = new ProfileRepository(context);
                 var profile = repository.SearchByPhoneNumber("123-456-7890");
 
-                Assert.NotNull(profile);
+                Assert.NotEmpty(profile);
             }
         }
 
@@ -135,7 +135,8 @@ namespace UnitTest
                         ProfileDogsleepat = "lakjhf",
                         ProfileDogaggresive = "kjahf",
                         ProfileMedfordog = "lkjahlfjh",
-                        ProfileNocaredog = "kljahfkj"
+                        ProfileNocaredog = "kljahfkj",
+                        ProfileDwellingid = 1
                     },
                     new Profile
                     {
