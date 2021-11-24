@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using System;
 
 namespace DataAccess
 {
@@ -26,22 +27,57 @@ namespace DataAccess
 
         public IEnumerable<Topic> SearchByBody(string query)
         {
-            throw new System.NotImplementedException();
+            var listoftopics = GetAll().Where(b => b.TopicBody.Contains(query));
+            if(listoftopics.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("Topic not found.");
+            }
+            else
+            {
+                return listoftopics;
+            }
+
+            
+                
         }
 
         public IEnumerable<Topic> ListByCategoryId(int query)
         {
-            throw new System.NotImplementedException();
+            var listoftopics = GetAll().Where(b => b.CategoryId.Equals(query));
+            if(listoftopics.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("Topic not found.");
+            }
+            else
+            {
+                return listoftopics;
+            }
         }
 
         public IEnumerable<Topic> SearchByName(string query)
         {
-            throw new System.NotImplementedException();
+            var listoftopics = GetAll().Where(b => b.TopicName.Equals(query));
+            if(listoftopics.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("Topic not found.");
+            }
+            else
+            {
+                return listoftopics;
+            }
         }
 
         public IEnumerable<Topic> SearchByProfileId(int query)
         {
-            throw new System.NotImplementedException();
+            var listoftopics = GetAll().Where(b => b.ProfileId.Equals(query));
+            if(listoftopics.Count() == 0)
+            {
+                throw new IndexOutOfRangeException("Topic not found.");
+            }
+            else
+            {
+                return listoftopics;
+            }
         }
     }
 }
