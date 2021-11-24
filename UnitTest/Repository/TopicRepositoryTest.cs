@@ -71,7 +71,7 @@ namespace UnitTest
             {
                 ITopicRepository repository = new TopicRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.ListByCategoryId(1));
+                Assert.Throws<IndexOutOfRangeException>(() => repository.ListByCategoryId(100));
             }
         }
 
@@ -94,7 +94,7 @@ namespace UnitTest
             {
                 ITopicRepository repository = new TopicRepository(context);
 
-                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByProfileId(1));
+                Assert.Throws<IndexOutOfRangeException>(() => repository.SearchByProfileId(100));
             }
         }
 
