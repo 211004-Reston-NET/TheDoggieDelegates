@@ -7,12 +7,12 @@ on:
 env:
   AZURE_WEBAPP_NAME: pawpers-angular    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './angular-pawpers'
-  NODE_VERSION: '14.x'                # set this to the node version to use
+  NODE_VERSION: '12.x'                # set this to the node version to use
 
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: Angular
     
     steps:
