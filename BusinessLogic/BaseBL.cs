@@ -12,9 +12,9 @@ namespace BusinessLogic
             repository = context;
         }
 
-        public TEntity Create(TEntity entity)
+        public void Create(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Create(entity);
         }
 
         public void Delete(TEntity entity)
@@ -24,7 +24,7 @@ namespace BusinessLogic
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return repository.GetAll();
         }
 
         public TEntity GetByPrimaryKey(int id)
@@ -34,10 +34,10 @@ namespace BusinessLogic
 
         public void Save()
         {
-            throw new NotImplementedException();
+            repository.Save();
         }
 
-        public TEntity Update(TEntity entity)
+        public void Update(TEntity entity)
         {
             throw new NotImplementedException();
         }
