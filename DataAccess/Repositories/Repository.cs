@@ -17,10 +17,9 @@ namespace DataAccess
         /// Sets model TEntity, creates new entity in memory
         /// </summary>
         /// <param name="entity">Model entity</param>
-        public TEntity Create(TEntity entity)
+        public void Create(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
-            return entity;
         }
 
         /// <summary>
@@ -46,10 +45,9 @@ namespace DataAccess
         /// Sets model TEntity, updates entity in memory
         /// </summary>
         /// <param name="entity">Model</param>
-        public TEntity Update(TEntity entity)
+        public void Update(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
-            return entity;
         }
 
         /// <summary>

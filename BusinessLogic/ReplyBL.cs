@@ -17,20 +17,5 @@ namespace BusinessLogic
         {
             this.replyRepository = replyRepository;
         }
-
-        public Reply Create()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reply Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reply Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
