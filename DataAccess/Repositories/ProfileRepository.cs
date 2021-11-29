@@ -19,7 +19,7 @@ namespace DataAccess
         /// loads nav properties of the entity
         /// </summary>
         /// <param name="query">int </param>
-        /// <returns>query which will be favorite ID</returns>
+        /// <returns>query which will be profile ID</returns>
 
         public Profile GetByIdWithNav(int query)
         {
@@ -33,6 +33,12 @@ namespace DataAccess
             return profile;
         }
 
+        /// <summary>
+        /// Queries DB to find list of emails based on profile model's ProfileEmail field 
+        /// retrieves search results of profiles with matching ProfileEmail
+        /// </summary>
+        /// <param name="query">string </param>
+        /// <returns>query which will be ProfileEmail</returns>
         public IEnumerable<Profile> SearchByEmail(string query)
         {
             var profiles = base.GetAll().Where(p => p.ProfileEmail.ToLower().Contains(query.ToLower()));
@@ -43,6 +49,12 @@ namespace DataAccess
             return profiles;
         }
 
+        /// <summary>
+        /// Queries DB to find list of phone numbers based on profile model's ProfileHonephone field 
+        /// retrieves search results of profiles with matching ProfileHomephone
+        /// </summary>
+        /// <param name="query">string </param>
+        /// <returns>query which will be ProfileHomephone</returns>
         public IEnumerable<Profile> SearchByPhoneNumber(string query)
         {
             var profiles = base.GetAll().Where(p => p.ProfileHomephone.Contains(query));
@@ -53,6 +65,12 @@ namespace DataAccess
             return profiles;
         }
 
+        /// <summary>
+        /// Queries DB to find list of names based on profile model's ProfileName field 
+        /// retrieves search results of profiles with matching ProfileName
+        /// </summary>
+        /// <param name="query">string </param>
+        /// <returns>query which will be ProfileName</returns>
         public IEnumerable<Profile> SearchByProfileName(string query)
         {
             var profiles = base.GetAll().Where(p => p.ProfileName.Contains(query));
