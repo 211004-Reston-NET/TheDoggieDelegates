@@ -20,17 +20,17 @@ namespace BusinessLogic
 
         public Favorite GetByIdWithNav(int query)
         {
-            throw new NotImplementedException();
+            return favoriteRepository.GetByIdWithNav(query);
         }
 
         public IEnumerable<Favorite> SearchByDogId(int query)
         {
-            throw new NotImplementedException();
+            return favoriteRepository.SearchByDogId(query);
         }
 
         public IEnumerable<Favorite> SearchByProfileId(int query)
         {
-            throw new NotImplementedException();
+            return favoriteRepository.SearchByProfileId(query);
         }
     }
 }

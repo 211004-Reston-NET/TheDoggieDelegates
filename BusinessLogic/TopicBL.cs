@@ -20,27 +20,27 @@ namespace BusinessLogic
 
         public Topic GetByIdWithNav(int query)
         {
-            throw new NotImplementedException();
+            return topicRepository.GetByIdWithNav(query);
         }
 
         public IEnumerable<Topic> ListByCategoryId(int query)
         {
-            throw new NotImplementedException();
+            return topicRepository.ListByCategoryId(query);
         }
 
         public IEnumerable<Topic> SearchByBody(string query)
         {
-            throw new NotImplementedException();
+            return topicRepository.SearchByBody(query);
         }
 
         public IEnumerable<Topic> SearchByName(string query)
         {
-            throw new NotImplementedException();
+            return topicRepository.SearchByName(query);
         }
 
         public IEnumerable<Topic> SearchByProfileId(int query)
         {
-            throw new NotImplementedException();
+            return topicRepository.SearchByProfileId(query);
         }
     }
 }

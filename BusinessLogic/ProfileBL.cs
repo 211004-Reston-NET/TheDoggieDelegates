@@ -20,22 +20,22 @@ namespace BusinessLogic
 
         public Profile GetByIdWithNav(int query)
         {
-            throw new NotImplementedException();
+            return profileRepository.GetByIdWithNav(query);
         }
 
         public IEnumerable<Profile> SearchByEmail(string query)
         {
-            throw new NotImplementedException();
+            return profileRepository.SearchByEmail(query);
         }
 
         public IEnumerable<Profile> SearchByPhoneNumber(string query)
         {
-            throw new NotImplementedException();
+            return profileRepository.SearchByPhoneNumber(query);
         }
 
         public IEnumerable<Profile> SearchByProfileName(string query)
         {
-            throw new NotImplementedException();
+            return profileRepository.SearchByProfileName(query);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace BusinessLogic
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Delete(entity);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -29,7 +29,7 @@ namespace BusinessLogic
 
         public TEntity GetByPrimaryKey(int id)
         {
-            throw new NotImplementedException();
+            return repository.GetByPrimaryKey(id);
         }
 
         public void Save()
@@ -39,7 +39,7 @@ namespace BusinessLogic
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            repository.Update(entity);
         }
     }
 }
