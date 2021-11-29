@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
-import { Auth0LoginComponent } from './auth0-login/auth0-login.component';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
-  declarations: [AppComponent, Auth0LoginComponent],
+  declarations: [AppComponent, AuthButtonComponent, UserProfileComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{path: '', component:FrontPageComponent}]),
+    RouterModule.forRoot([{path: '**', component:AppComponent}]),
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-tc6s9x9t.us.auth0.com',
