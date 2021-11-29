@@ -5,6 +5,6 @@ namespace DataAccess
 {
     public interface IReplyRepository : IRepository<Reply>
     {
-        IEnumerable<Reply> GetAllByProfileId(int query);
+        IEnumerable<Reply> SearchByProfileId(int query);
     }
 }

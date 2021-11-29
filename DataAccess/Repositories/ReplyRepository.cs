@@ -14,7 +14,7 @@ namespace DataAccess
             repository = context;
         }
 
-        public IEnumerable<Reply> GetAllByProfileId(int query)
+        public IEnumerable<Reply> SearchByProfileId(int query)
         {
             throw new NotImplementedException();
         }
