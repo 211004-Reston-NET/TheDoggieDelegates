@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogic;
+using Microsoft.AspNetCore.Mvc;
+using Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +15,129 @@ namespace WebApi.Controllers
     [ApiController]
     public class TopicController : ControllerBase
     {
-        // GET: <TopicController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ITopicBL TopicRepository;
+
+        public TopicController(ITopicBL context)
         {
-            return new string[] { "value1", "value2" };
+            TopicRepository = context;
+        }
+        // GET: <TopicController>
+      
+
+        [HttpGet("SearchByBody/{query}")]
+        public IActionResult SearchByBody(string query)
+        {
+            try
+            {
+                return Ok(TopicRepository.SearchByBody(query));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid search field");
+            }
+         }
+
+        [HttpGet("ListByCategory/{id}")]
+        public IActionResult ListByCategoryId(int id)
+        {
+            try
+            {
+                return Ok(TopicRepository.ListByCategoryId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+
+         }
+
+        [HttpGet("SearchByName/{query}")]
+        public IActionResult SearchByName(string query)
+        {
+            try
+            {
+                return Ok(TopicRepository.SearchByName(query));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid search field");
+            }
+        }
+        [HttpGet("SearchByProfileId/{id}")]
+        public IActionResult SearchByBody(int id)
+        {
+            try
+            {
+                return Ok(TopicRepository.SearchByProfileId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid search id");
+            }
         }
 
-        // GET <TopicController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+
+        
 
         // POST <TopicController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult AddTopic([FromBody] Topic p_topic)
         {
+            TopicRepository.Create(p_topic);
+            TopicRepository.Save();
+            return Created("Topic/Add", p_topic);
         }
 
         // PUT <TopicController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Topic p_topic)
         {
+
+            var topic = TopicRepository.GetByPrimaryKey(id);
+            try
+            {
+                topic.TopicBody = p_topic.TopicBody;
+                topic.TopicId = p_topic.TopicId;
+                topic.PostTimestamp = p_topic.PostTimestamp;
+                topic.TopicName = p_topic.TopicName;
+                topic.ProfileId = p_topic.ProfileId;
+                topic.CategoryId = p_topic.CategoryId;
+
+                TopicRepository.Update(topic);
+                TopicRepository.Save();
+
+                return Ok();
+
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+
+            }
         }
 
         // DELETE <TopicController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                var topic = TopicRepository.GetByPrimaryKey(id);
+                TopicRepository.Delete(topic);
+                TopicRepository.Save();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
         }
     }
 }
