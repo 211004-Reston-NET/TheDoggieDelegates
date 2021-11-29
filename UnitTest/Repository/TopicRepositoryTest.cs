@@ -136,7 +136,7 @@ namespace UnitTest
                         ProfileName = "lkjh",
                         ProfileStreetaddress = "123",
                         ProfileCity = "jkahfjh",
-                        ProfileState = "kj",
+                        ProfileStateid = 1,
                         ProfileZipcode = "00000",
                         ProfileAge = 11,
                         ProfileHomephone = "111-456-7890",

@@ -23,8 +23,8 @@ namespace DataAccess
         public Favorite GetByIdWithNav(int query)
         {
             var Fav = repository.Favorites
-                        .Include(f => f.Profile)
-                        .Single(f => f.FavId.Equals(query));
+                .Include(f => f.Profile)
+                .FirstOrDefault(f => f.FavId.Equals(query));
             return Fav;
         }
         

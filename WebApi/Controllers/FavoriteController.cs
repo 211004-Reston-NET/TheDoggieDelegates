@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                    return Ok(FavoriteRepository.SearchByDogId(id));
+                return Ok(FavoriteRepository.SearchByDogId(id));
             }
             catch(Exception e)
             {
@@ -61,18 +61,18 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("SearchByIdWithNav/{id}")]
-        public IActionResult SearchByIDwithNav(int id)
+        public IActionResult SearchByIdWithNav(int id)
         {
 
-            try
-            {
+           // try
+           // {
                 return Ok(FavoriteRepository.GetByIdWithNav(id));
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return BadRequest("Not a valid Id");
-            }
+           // }
+           // catch (Exception e)
+           // {
+           //     Log.Error(e.Message);
+           //     return BadRequest("Not a valid Id");
+           // }
             
         }
 

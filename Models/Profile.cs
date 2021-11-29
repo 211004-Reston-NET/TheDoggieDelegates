@@ -32,10 +32,7 @@ namespace Models
         [RegularExpression(@"^[a-zA-Z -]+$", ErrorMessage = "Invalid City")]
         public string ProfileCity { get; set; }
 
-        [Required]
-        [Display(Name = "State")]
-        [RegularExpression(@"^[a-zA-Z -]+$", ErrorMessage = "Invalid State")]
-        public string ProfileState { get; set; }
+        public int ProfileStateid { get; set; }
 
         [Required]
         [Display(Name = "Zip Code")]
@@ -144,6 +141,7 @@ namespace Models
         public string ProfileNocaredog { get; set; }
 
         public virtual Dwelling ProfileDwelling { get; set; }
+        public virtual State ProfileState { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual ICollection<Reply> Replies { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }

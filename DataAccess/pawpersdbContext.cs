@@ -23,8 +23,8 @@ namespace DataAccess
         public virtual DbSet<Favorite> Favorites { get; set; }
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Reply> Replies { get; set; }
+        public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -80,6 +80,9 @@ namespace DataAccess
             {
                 entity.ToTable("Profile");
 
+                entity.HasIndex(e => e.ProfileEmail, "UQ__Profile__B7578BECA5F10BA7")
+                    .IsUnique();
+
                 entity.Property(e => e.ProfileId).HasColumnName("profile_id");
 
                 entity.Property(e => e.ProfileAdoptionreason)
@@ -123,7 +126,6 @@ namespace DataAccess
                 entity.Property(e => e.ProfileHasyard).HasColumnName("profile_hasyard");
 
                 entity.Property(e => e.ProfileHomephone)
-                    .IsRequired()
                     .HasMaxLength(9)
                     .IsUnicode(false)
                     .HasColumnName("profile_homephone");
@@ -195,11 +197,7 @@ namespace DataAccess
                     .IsUnicode(false)
                     .HasColumnName("profile_spousename");
 
-                entity.Property(e => e.ProfileState)
-                    .IsRequired()
-                    .HasMaxLength(32)
-                    .IsUnicode(false)
-                    .HasColumnName("profile_state");
+                entity.Property(e => e.ProfileStateid).HasColumnName("profile_stateid");
 
                 entity.Property(e => e.ProfileStreetaddress)
                     .IsRequired()
@@ -218,6 +216,12 @@ namespace DataAccess
                     .HasForeignKey(d => d.ProfileDwellingid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("pro_dwe_FK");
+
+                entity.HasOne(d => d.ProfileState)
+                    .WithMany(p => p.Profiles)
+                    .HasForeignKey(d => d.ProfileStateid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("pro_sta_FK");
             });
 
             modelBuilder.Entity<Reply>(entity =>
@@ -251,6 +255,24 @@ namespace DataAccess
                     .HasForeignKey(d => d.TopicId)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Reply__topic_id__72C60C4A");
+            });
+
+            modelBuilder.Entity<State>(entity =>
+            {
+                entity.ToTable("state");
+
+                entity.Property(e => e.StateId).HasColumnName("state_id");
+
+                entity.Property(e => e.StateCode)
+                    .IsRequired()
+                    .HasMaxLength(2)
+                    .HasColumnName("state_code")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.StateName)
+                    .IsRequired()
+                    .HasMaxLength(128)
+                    .HasColumnName("state_name");
             });
 
             modelBuilder.Entity<Topic>(entity =>
