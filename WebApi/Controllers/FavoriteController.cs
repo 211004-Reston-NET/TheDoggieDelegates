@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,10 +15,10 @@ namespace WebApi.Controllers
     [ApiController]
     public class FavoriteController : ControllerBase
     {
-            private readonly IFavoriteBL Favoriterepository;
+            private readonly IFavoriteBL FavoriteRepository;
         public FavoriteController(IFavoriteBL context)
         {
-            Favoriterepository = context;
+            FavoriteRepository = context;
             
         }
        
@@ -25,43 +26,106 @@ namespace WebApi.Controllers
         [HttpGet("SearchByDog/{id}")]
         public IActionResult SearchByDogId(int id)
         {
-           
-                 return Ok(Favoriterepository.SearchByDogId(id));
+            try
+            {
+                    return Ok(FavoriteRepository.SearchByDogId(id));
+            }
+            catch(Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+                 
+
+            
             
          
             
         }
 
         [HttpGet("SearchByProfileId/{id}")]
-        public IActionResult SearchByProfileId(int p_id)
+        public IActionResult SearchByProfileId(int id)
         {
-            return Ok(Favoriterepository.SearchByProfileId(p_id));
+
+            try
+            {
+                return Ok(FavoriteRepository.SearchByProfileId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+                
+            }
+            
         }
 
         [HttpGet("SearchByIdWithNav/{id}")]
-        public IActionResult SearchByIDwithNav(int nav_id)
+        public IActionResult SearchByIDwithNav(int id)
         {
-            return Ok(Favoriterepository.GetByIdWithNav(nav_id));
+
+            try
+            {
+                return Ok(FavoriteRepository.GetByIdWithNav(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
+            
         }
 
       
 
         // POST <FavoriteController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Add")]
+        public IActionResult AddFavorite([FromBody] Favorite p_favorite)
         {
+            FavoriteRepository.Create(p_favorite);
+            FavoriteRepository.Save();
+            return Created("Favorite/Add", p_favorite);
         }
 
         // PUT <FavoriteController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("EditFavorite/{id}")]
+        public IActionResult Put(int id, [FromBody] Favorite p_favorite)
         {
+            var fav = FavoriteRepository.GetByPrimaryKey(id);
+            if (fav != null)
+
+            {
+                fav.DogId = p_favorite.DogId;
+                fav.ProfileId = p_favorite.ProfileId;
+                fav.IsAvailable = p_favorite.IsAvailable;
+
+                FavoriteRepository.Update(fav);
+                FavoriteRepository.Save();
+            }
+            else
+            {
+                return NotFound();
+            }
+            return Ok();
         }
 
         // DELETE <FavoriteController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+               var favorite = FavoriteRepository.GetByPrimaryKey(id);
+                FavoriteRepository.Delete(favorite);
+                FavoriteRepository.Save();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
         }
     }
 }
