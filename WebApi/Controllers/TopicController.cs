@@ -53,6 +53,23 @@ namespace WebApi.Controllers
 
          }
 
+
+         [HttpGet("SearchByIdWithNav/{id}")]
+        public IActionResult SearchByIdWithNav(int id)
+        {
+
+            try
+           {
+                return Ok(TopicRepository.GetByIdWithNav(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
+            
+        }
+
         [HttpGet("SearchByName/{query}")]
         public IActionResult SearchByName(string query)
         {
