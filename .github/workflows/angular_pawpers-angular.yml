@@ -30,8 +30,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: node-app
-          path: .
+          name: pawpers-angular
+          path: ./pawpers-angular
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: node-app
+          name: pawpers-angular
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -53,4 +53,4 @@ jobs:
           app-name: 'pawpers-angular'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B01AD188DBA2478DBFCDFEB186E9E603 }}
-          package: .
+          package: ./pawpers-angular/dist/pawpers-angular
