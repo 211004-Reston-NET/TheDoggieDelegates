@@ -29,11 +29,11 @@ namespace DataAccess
         }
         
         /// <summary>
-        /// Queries DB to find list of favorite dogs based on favorite model's dogid field 
-        /// retrieves search results of dogs with matching dogid
+        /// Queries DB to find list of favorite dogs based on favorite model's DogId field 
+        /// retrieves search results of dogs with matching DogId
         /// </summary>
         /// <param name="query">int </param>
-        /// <returns>query which will be favorite ID</returns>
+        /// <returns>query which will be DogId</returns>
         public IEnumerable<Favorite> SearchByDogId(int query)
         {
 
@@ -48,6 +48,12 @@ namespace DataAccess
 
         }
 
+        /// <summary>
+        /// Queries DB to find list of profiles based on favorite model's ProfileId field 
+        /// retrieves search results of profiles with matching ProfileId
+        /// </summary>
+        /// <param name="query">int </param>
+        /// <returns>query which will be ProfileId</returns>
         public IEnumerable<Favorite> SearchByProfileId(int query)
         {
             var result = base.GetAll()

@@ -14,6 +14,12 @@ namespace DataAccess
             repository = context;
         }
 
+        /// <summary>
+        /// Queries DB to find list of replies based on reply model's ProfileId field 
+        /// retrieves search results of replies with matching ProfileId
+        /// </summary>
+        /// <param name="query">int </param>
+        /// <returns>query which will be ProfileId</returns>
         public IEnumerable<Reply> SearchByProfileId(int query)
         {
             var result = base.GetAll()
