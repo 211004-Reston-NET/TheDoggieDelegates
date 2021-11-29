@@ -14,6 +14,13 @@ namespace DataAccess
             repository = context;
         }
 
+        /// <summary>
+        /// Queries DB to find single item based on the primary key 
+        /// loads nav properties of the entity
+        /// </summary>
+        /// <param name="query">int </param>
+        /// <returns>query which will be favorite ID</returns>
+
         public Profile GetByIdWithNav(int query)
         {
             var profile = repository.Profiles

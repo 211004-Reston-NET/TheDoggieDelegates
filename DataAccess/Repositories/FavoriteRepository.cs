@@ -27,7 +27,13 @@ namespace DataAccess
                         .Single(f => f.FavId.Equals(query));
             return Fav;
         }
-
+        
+        /// <summary>
+        /// Queries DB to find list of favorite dogs based on favorite model's dogid field 
+        /// retrieves search results of dogs with matching dogid
+        /// </summary>
+        /// <param name="query">int </param>
+        /// <returns>query which will be favorite ID</returns>
         public IEnumerable<Favorite> SearchByDogId(int query)
         {
 
