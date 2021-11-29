@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogic;
+using Serilog;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +14,37 @@ namespace WebApi.Controllers
     [ApiController]
     public class FavoriteController : ControllerBase
     {
-        // GET: <FavoriteController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+            private readonly IFavoriteBL Favoriterepository;
+        public FavoriteController(IFavoriteBL context)
         {
-            return new string[] { "value1", "value2" };
+            Favoriterepository = context;
+            
+        }
+       
+
+        [HttpGet("SearchByDog/{id}")]
+        public IActionResult SearchByDogId(int id)
+        {
+           
+                 return Ok(Favoriterepository.SearchByDogId(id));
+            
+         
+            
         }
 
-        // GET <FavoriteController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("SearchByProfileId/{id}")]
+        public IActionResult SearchByProfileId(int p_id)
         {
-            return "value";
+            return Ok(Favoriterepository.SearchByProfileId(p_id));
         }
+
+        [HttpGet("SearchByIdWithNav/{id}")]
+        public IActionResult SearchByIDwithNav(int nav_id)
+        {
+            return Ok(Favoriterepository.GetByIdWithNav(nav_id));
+        }
+
+      
 
         // POST <FavoriteController>
         [HttpPost]
