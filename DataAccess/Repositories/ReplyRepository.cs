@@ -16,7 +16,14 @@ namespace DataAccess
 
         public IEnumerable<Reply> SearchByProfileId(int query)
         {
-            throw new NotImplementedException();
+            var result = base.GetAll()
+                        .Where(i => i.ProfileId.Equals(query));
+            if (!result.Any())
+            {
+                throw new KeyNotFoundException("No result found");
+            }
+
+            return result;
         }
     }
 }
