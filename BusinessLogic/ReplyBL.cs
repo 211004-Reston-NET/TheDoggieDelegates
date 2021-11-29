@@ -20,7 +20,7 @@ namespace BusinessLogic
 
         public IEnumerable<Reply> SearchByProfileId(int query)
         {
-            throw new NotImplementedException();
+            return replyRepository.SearchByProfileId(query);
         }
     }
 }
