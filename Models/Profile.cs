@@ -98,7 +98,7 @@ namespace Models
 
         [Display(Name = "Age of Pet")]
         //1 for male 2 for female when asked on the form for the sex of the pet
-        [Range(1, 2, ErrorMessage = "Number must be 1 or 2")]
+        [RegularExpression(@"^[mf]+$", ErrorMessage = "m or f")]
         public string ProfileOtherpetsex { get; set; }
 
         [Display(Name = "Other Pet Age")]
