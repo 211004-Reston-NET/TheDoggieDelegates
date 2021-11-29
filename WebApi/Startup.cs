@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using BusinessLogic;
 
 namespace WebApi
 {
@@ -29,7 +30,14 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PawpersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("pawpers")));
-
+            services.AddScoped<IFavoriteBL, FavoriteBL>();
+            services.AddScoped<IProfileBL, ProfileBL>();
+            services.AddScoped<IReplyBL, ReplyBL>();
+            services.AddScoped<ITopicBL, TopicBL>();
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<IReplyRepository, ReplyRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

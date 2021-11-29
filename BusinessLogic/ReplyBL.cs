@@ -17,5 +17,10 @@ namespace BusinessLogic
         {
             this.replyRepository = replyRepository;
         }
+
+        public IEnumerable<Reply> SearchByProfileId(int query)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
