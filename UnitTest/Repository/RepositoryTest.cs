@@ -84,8 +84,10 @@ namespace UnitTest
                 var testTopic = repository.GetByPrimaryKey(2);
                 repository.Delete(testTopic);
                 repository.Save();
+
+                var result = repository.GetAll();
                 
-                Assert.Equal(1, repository.GetAll().Count());
+                Assert.Single(result);
             }
         }
 
