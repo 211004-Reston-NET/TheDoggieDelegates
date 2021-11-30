@@ -37,6 +37,26 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet("GetAllFavorite")]
+        public IActionResult GetAllFavorites()
+        {
+            return Ok(favoriteRepository.GetAll());
+        }
+
+        [HttpGet("GetPrimaryKey/Id")]
+        public IActionResult GetPrimaryKey(int id)
+        {
+            try
+            {
+                return Ok(favoriteRepository.GetByPrimaryKey(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
         [HttpGet("SearchByProfileId/{id}")]
         public IActionResult SearchByProfileId(int id)
         {
