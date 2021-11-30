@@ -8,10 +8,8 @@ namespace DataAccess
 {
     public class ReplyRepository : Repository<Reply>, IReplyRepository
     {
-        readonly PawpersDbContext repository;
         public ReplyRepository(PawpersDbContext context) : base(context)
         {
-            repository = context;
         }
 
         /// <summary>

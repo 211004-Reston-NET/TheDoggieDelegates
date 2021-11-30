@@ -8,10 +8,8 @@ namespace DataAccess
 {
     public class FavoriteRepository : Repository<Favorite>, IFavoriteRepository
     {
-        readonly PawpersDbContext repository;
         public FavoriteRepository(PawpersDbContext context) : base(context)
         {
-            repository = context;
         }
         
         /// <summary>

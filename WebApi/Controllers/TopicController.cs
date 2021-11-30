@@ -84,7 +84,7 @@ namespace WebApi.Controllers
             }
         }
         [HttpGet("SearchByProfileId/{id}")]
-        public IActionResult SearchByBody(int id)
+        public IActionResult SearchByProfileId(int id)
         {
             try
             {

@@ -20,9 +20,9 @@ namespace WebApi.Controllers
         public ProfileController(IProfileBL context)
         {
             ProfileRepository = context;
-            
+
         }
-        
+
         [HttpGet("SearchByEmail/{query}")]
         public IActionResult SearchByEmail(string query)
         {
@@ -30,7 +30,7 @@ namespace WebApi.Controllers
             {
                 return Ok(ProfileRepository.SearchByEmail(query));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
@@ -44,7 +44,7 @@ namespace WebApi.Controllers
             {
                 return Ok(ProfileRepository.SearchByPhoneNumber(query));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
@@ -58,7 +58,7 @@ namespace WebApi.Controllers
             {
                 return Ok(ProfileRepository.SearchByProfileName(query));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
@@ -69,16 +69,16 @@ namespace WebApi.Controllers
         public IActionResult SearchByIdWithNav(int id)
         {
 
-           // try
-           // {
+            try
+            {
                 return Ok(ProfileRepository.GetByIdWithNav(id));
-           // }
-           // catch (Exception e)
-           // {
-           //     Log.Error(e.Message);
-           //     return BadRequest("Not a valid Id");
-           // }
-            
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
+
         }
 
         // POST <ProfileController>
@@ -89,7 +89,7 @@ namespace WebApi.Controllers
             ProfileRepository.Save();
             return Created("Profile/Add", p_profile);
         }
-        
+
         // PUT <ProfileController>/5
         [HttpPut("EditProfile/{id}")]
         public IActionResult Put(int id, [FromBody] Profile p_profile)
@@ -144,7 +144,7 @@ namespace WebApi.Controllers
         {
             try
             {
-               var profile = ProfileRepository.GetByPrimaryKey(id);
+                var profile = ProfileRepository.GetByPrimaryKey(id);
                 ProfileRepository.Delete(profile);
                 ProfileRepository.Save();
                 return Ok();
