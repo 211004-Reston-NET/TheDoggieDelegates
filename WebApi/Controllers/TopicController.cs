@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class TopicController : ControllerBase
     {
