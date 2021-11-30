@@ -15,22 +15,22 @@ namespace WebApi.Controllers
     [ApiController]
     public class FavoriteController : ControllerBase
     {
-            private readonly IFavoriteBL FavoriteRepository;
+        private readonly IFavoriteBL favoriteRepository;
         public FavoriteController(IFavoriteBL context)
         {
-            FavoriteRepository = context;
-            
+            favoriteRepository = context;
+
         }
-       
+
 
         [HttpGet("SearchByDog/{id}")]
         public IActionResult SearchByDogId(int id)
         {
             try
             {
-                return Ok(FavoriteRepository.SearchByDogId(id));
+                return Ok(favoriteRepository.SearchByDogId(id));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
@@ -43,13 +43,13 @@ namespace WebApi.Controllers
 
             try
             {
-                return Ok(FavoriteRepository.SearchByProfileId(id));
+                return Ok(favoriteRepository.SearchByProfileId(id));
             }
             catch (Exception e)
             {
                 Log.Error(e.Message);
                 return BadRequest("Not a valid Id");
-                
+
             }
         }
 
@@ -57,8 +57,8 @@ namespace WebApi.Controllers
         [HttpPost("Add")]
         public IActionResult AddFavorite([FromBody] Favorite p_favorite)
         {
-            FavoriteRepository.Create(p_favorite);
-            FavoriteRepository.Save();
+            favoriteRepository.Create(p_favorite);
+            favoriteRepository.Save();
             return Created("Favorite/Add", p_favorite);
         }
 
@@ -66,7 +66,7 @@ namespace WebApi.Controllers
         [HttpPut("EditFavorite/{id}")]
         public IActionResult Put(int id, [FromBody] Favorite p_favorite)
         {
-            var fav = FavoriteRepository.GetByPrimaryKey(id);
+            var fav = favoriteRepository.GetByPrimaryKey(id);
             if (fav != null)
 
             {
@@ -74,8 +74,8 @@ namespace WebApi.Controllers
                 fav.ProfileId = p_favorite.ProfileId;
                 fav.IsAvailable = p_favorite.IsAvailable;
 
-                FavoriteRepository.Update(fav);
-                FavoriteRepository.Save();
+                favoriteRepository.Update(fav);
+                favoriteRepository.Save();
             }
             else
             {
@@ -90,9 +90,9 @@ namespace WebApi.Controllers
         {
             try
             {
-               var favorite = FavoriteRepository.GetByPrimaryKey(id);
-                FavoriteRepository.Delete(favorite);
-                FavoriteRepository.Save();
+                var favorite = favoriteRepository.GetByPrimaryKey(id);
+                favoriteRepository.Delete(favorite);
+                favoriteRepository.Save();
                 return Ok();
             }
             catch (Exception e)

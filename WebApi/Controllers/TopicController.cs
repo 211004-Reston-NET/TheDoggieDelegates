@@ -15,11 +15,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class TopicController : ControllerBase
     {
-        private readonly ITopicBL TopicRepository;
+        private readonly ITopicBL topicRepository;
 
         public TopicController(ITopicBL context)
         {
-            TopicRepository = context;
+            topicRepository = context;
         }
         // GET: <TopicController>
       
@@ -29,7 +29,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(TopicRepository.SearchByBody(query));
+                return Ok(topicRepository.SearchByBody(query));
             }
             catch (Exception e)
             {
@@ -43,7 +43,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(TopicRepository.ListByCategoryId(id));
+                return Ok(topicRepository.ListByCategoryId(id));
             }
             catch (Exception e)
             {
@@ -60,7 +60,7 @@ namespace WebApi.Controllers
 
             try
            {
-                return Ok(TopicRepository.GetByIdWithNav(id));
+                return Ok(topicRepository.GetByIdWithNav(id));
             }
             catch (Exception e)
             {
@@ -75,7 +75,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(TopicRepository.SearchByName(query));
+                return Ok(topicRepository.SearchByName(query));
             }
             catch (Exception e)
             {
@@ -88,7 +88,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(TopicRepository.SearchByProfileId(id));
+                return Ok(topicRepository.SearchByProfileId(id));
             }
             catch (Exception e)
             {
@@ -104,8 +104,8 @@ namespace WebApi.Controllers
         [HttpPost]
         public IActionResult AddTopic([FromBody] Topic p_topic)
         {
-            TopicRepository.Create(p_topic);
-            TopicRepository.Save();
+            topicRepository.Create(p_topic);
+            topicRepository.Save();
             return Created("Topic/Add", p_topic);
         }
 
@@ -114,7 +114,7 @@ namespace WebApi.Controllers
         public IActionResult Put(int id, [FromBody] Topic p_topic)
         {
 
-            var topic = TopicRepository.GetByPrimaryKey(id);
+            var topic = topicRepository.GetByPrimaryKey(id);
             try
             {
                 topic.TopicBody = p_topic.TopicBody;
@@ -124,8 +124,8 @@ namespace WebApi.Controllers
                 topic.ProfileId = p_topic.ProfileId;
                 topic.CategoryId = p_topic.CategoryId;
 
-                TopicRepository.Update(topic);
-                TopicRepository.Save();
+                topicRepository.Update(topic);
+                topicRepository.Save();
 
                 return Ok();
 
@@ -144,9 +144,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var topic = TopicRepository.GetByPrimaryKey(id);
-                TopicRepository.Delete(topic);
-                TopicRepository.Save();
+                var topic = topicRepository.GetByPrimaryKey(id);
+                topicRepository.Delete(topic);
+                topicRepository.Save();
                 return Ok();
             }
             catch (Exception e)

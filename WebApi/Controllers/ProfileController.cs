@@ -15,11 +15,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class ProfileController : ControllerBase
     {
-        private readonly IProfileBL ProfileRepository;
+        private readonly IProfileBL profileRepository;
 
         public ProfileController(IProfileBL context)
         {
-            ProfileRepository = context;
+            profileRepository = context;
 
         }
 
@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(ProfileRepository.SearchByEmail(query));
+                return Ok(profileRepository.SearchByEmail(query));
             }
             catch (Exception e)
             {
@@ -42,7 +42,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(ProfileRepository.SearchByPhoneNumber(query));
+                return Ok(profileRepository.SearchByPhoneNumber(query));
             }
             catch (Exception e)
             {
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(ProfileRepository.SearchByProfileName(query));
+                return Ok(profileRepository.SearchByProfileName(query));
             }
             catch (Exception e)
             {
@@ -71,7 +71,7 @@ namespace WebApi.Controllers
 
             try
             {
-                return Ok(ProfileRepository.GetByIdWithNav(id));
+                return Ok(profileRepository.GetByIdWithNav(id));
             }
             catch (Exception e)
             {
@@ -85,8 +85,8 @@ namespace WebApi.Controllers
         [HttpPost("Add")]
         public IActionResult AddProfile([FromBody] Profile p_profile)
         {
-            ProfileRepository.Create(p_profile);
-            ProfileRepository.Save();
+            profileRepository.Create(p_profile);
+            profileRepository.Save();
             return Created("Profile/Add", p_profile);
         }
 
@@ -94,7 +94,7 @@ namespace WebApi.Controllers
         [HttpPut("EditProfile/{id}")]
         public IActionResult Put(int id, [FromBody] Profile p_profile)
         {
-            var pro = ProfileRepository.GetByPrimaryKey(id);
+            var pro = profileRepository.GetByPrimaryKey(id);
             if (pro != null)
 
             {
@@ -128,8 +128,8 @@ namespace WebApi.Controllers
                 pro.ProfileNocaredog = p_profile.ProfileNocaredog;
 
 
-                ProfileRepository.Update(pro);
-                ProfileRepository.Save();
+                profileRepository.Update(pro);
+                profileRepository.Save();
             }
             else
             {
@@ -144,9 +144,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                var profile = ProfileRepository.GetByPrimaryKey(id);
-                ProfileRepository.Delete(profile);
-                ProfileRepository.Save();
+                var profile = profileRepository.GetByPrimaryKey(id);
+                profileRepository.Delete(profile);
+                profileRepository.Save();
                 return Ok();
             }
             catch (Exception e)
