@@ -9,6 +9,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TopicPageComponent } from './topic-page/topic-page.component';
+import { ReplyPageComponent } from './reply-page/reply-page.component';
+import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,16 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    UserProfileComponent
+    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
+      { path: 'favorites-page', component: FavoritesPageComponent},
+      { path: 'topic-page', component: TopicPageComponent},
+      { path: 'reply-page', component: ReplyPageComponent},
       { path: '**', component:FrontPageComponent}
     ]),
     AuthModule.forRoot({

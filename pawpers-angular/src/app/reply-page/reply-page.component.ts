@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css']
+  selector: 'app-reply-page',
+  templateUrl: './reply-page.component.html',
+  styleUrls: ['./reply-page.component.css']
 })
-export class ProfilePageComponent implements OnInit {
+export class ReplyPageComponent implements OnInit {
 
   constructor(private router:Router) { }
 
