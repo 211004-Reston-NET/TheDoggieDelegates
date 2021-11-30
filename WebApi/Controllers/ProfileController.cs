@@ -23,6 +23,29 @@ namespace WebApi.Controllers
 
         }
 
+
+        [HttpGet("GetAllProfile")]
+        public IActionResult GetAllProfile()
+        {
+            return Ok(profileRepository.GetAll());
+        }
+
+        [HttpGet("GetPrimaryKey/Id")]
+        public IActionResult GetPrimaryKey(int id)
+        {
+            try
+            {
+                return Ok(profileRepository.GetByPrimaryKey(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
+
+
         [HttpGet("SearchByEmail/{query}")]
         public IActionResult SearchByEmail(string query)
         {

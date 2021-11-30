@@ -22,7 +22,28 @@ namespace WebApi.Controllers
             topicRepository = context;
         }
         // GET: <TopicController>
-      
+
+
+        [HttpGet("GetAllTopic")]
+        public IActionResult GetAllTopics()
+        {
+            return Ok(topicRepository.GetAll());
+        }
+
+        [HttpGet("GetPrimaryKey/Id")]
+        public IActionResult GetPrimaryKey(int id)
+        {
+            try
+            {
+                return Ok(topicRepository.GetByPrimaryKey(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
 
         [HttpGet("SearchByBody/{query}")]
         public IActionResult SearchByBody(string query)
