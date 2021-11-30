@@ -24,13 +24,13 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("GetAllProfile")]
+        [HttpGet("GetAll")]
         public IActionResult GetAllProfile()
         {
             return Ok(profileRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/Id")]
+        [HttpGet("GetPrimaryKey/{id}")]
         public IActionResult GetPrimaryKey(int id)
         {
             try

@@ -37,13 +37,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("GetAllFavorite")]
+        [HttpGet("GetAll")]
         public IActionResult GetAllFavorites()
         {
             return Ok(favoriteRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/Id")]
+        [HttpGet("GetPrimaryKey/{id}")]
         public IActionResult GetPrimaryKey(int id)
         {
             try

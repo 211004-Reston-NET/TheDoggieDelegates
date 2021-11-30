@@ -30,7 +30,7 @@ namespace WebApi.Controllers
             return Ok(topicRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/Id")]
+        [HttpGet("GetPrimaryKey/{id}")]
         public IActionResult GetPrimaryKey(int id)
         {
             try

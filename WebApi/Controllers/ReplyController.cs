@@ -36,13 +36,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("GetAllReplies")]
+        [HttpGet("GetAll")]
         public IActionResult GetAllReplies()
         {
             return Ok(ReplyRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/Id")]
+        [HttpGet("GetPrimaryKey/{id}")]
         public IActionResult GetPrimaryKey(int id)
         {
             try
