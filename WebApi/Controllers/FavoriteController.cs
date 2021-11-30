@@ -22,29 +22,14 @@ namespace WebApi.Controllers
 
         }
 
-
-        [HttpGet("SearchByDog/{id}")]
-        public IActionResult SearchByDogId(int id)
-        {
-            try
-            {
-                return Ok(favoriteRepository.SearchByDogId(id));
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return BadRequest("Not a valid ID");
-            }
-        }
-
         [HttpGet("GetAll")]
         public IActionResult GetAllFavorites()
         {
             return Ok(favoriteRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/{id}")]
-        public IActionResult GetPrimaryKey(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
@@ -57,8 +42,22 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("SearchByProfileId/{id}")]
-        public IActionResult SearchByProfileId(int id)
+        [HttpGet("SearchByDog/{id}")]
+        public IActionResult SearchByDog(int id)
+        {
+            try
+            {
+                return Ok(favoriteRepository.SearchByDogId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
+        [HttpGet("SearchByProfile/{id}")]
+        public IActionResult SearchByProfile(int id)
         {
 
             try
@@ -83,7 +82,7 @@ namespace WebApi.Controllers
         }
 
         // PUT <FavoriteController>/5
-        [HttpPut("EditFavorite/{id}")]
+        [HttpPut("Edit/{id}")]
         public IActionResult Put(int id, [FromBody] Favorite p_favorite)
         {
             var fav = favoriteRepository.GetByPrimaryKey(id);
@@ -105,7 +104,7 @@ namespace WebApi.Controllers
         }
 
         // DELETE <FavoriteController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

@@ -24,14 +24,14 @@ namespace WebApi.Controllers
         // GET: <TopicController>
 
 
-        [HttpGet("GetAllTopic")]
-        public IActionResult GetAllTopics()
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
         {
             return Ok(topicRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/{id}")]
-        public IActionResult GetPrimaryKey(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult GetByPrimaryKey(int id)
         {
             try
             {
@@ -44,20 +44,20 @@ namespace WebApi.Controllers
             }
         }
 
-
-        [HttpGet("SearchByBody/{query}")]
-        public IActionResult SearchByBody(string query)
+        [HttpGet("GetWithNav/{id}")]
+        public IActionResult GetByIdWithNav(int id)
         {
             try
             {
-                return Ok(topicRepository.SearchByBody(query));
+                return Ok(topicRepository.GetByIdWithNav(id));
             }
             catch (Exception e)
             {
                 Log.Error(e.Message);
-                return BadRequest("Not a valid search field");
+                return BadRequest("Not a valid Id");
             }
-         }
+
+        }
 
         [HttpGet("ListByCategory/{id}")]
         public IActionResult ListByCategoryId(int id)
@@ -71,24 +71,6 @@ namespace WebApi.Controllers
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
             }
-
-         }
-
-
-         [HttpGet("SearchByIdWithNav/{id}")]
-        public IActionResult SearchByIdWithNav(int id)
-        {
-
-            try
-           {
-                return Ok(topicRepository.GetByIdWithNav(id));
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return BadRequest("Not a valid Id");
-            }
-            
         }
 
         [HttpGet("SearchByName/{query}")]
@@ -104,7 +86,22 @@ namespace WebApi.Controllers
                 return BadRequest("Not a valid search field");
             }
         }
-        [HttpGet("SearchByProfileId/{id}")]
+
+        [HttpGet("SearchByBody/{query}")]
+        public IActionResult SearchByBody(string query)
+        {
+            try
+            {
+                return Ok(topicRepository.SearchByBody(query));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid search field");
+            }
+         }
+
+        [HttpGet("SearchByProfile/{id}")]
         public IActionResult SearchByProfileId(int id)
         {
             try
@@ -118,11 +115,8 @@ namespace WebApi.Controllers
             }
         }
 
-
-        
-
         // POST <TopicController>
-        [HttpPost]
+        [HttpPost("Add")]
         public IActionResult AddTopic([FromBody] Topic p_topic)
         {
             topicRepository.Create(p_topic);
@@ -131,7 +125,7 @@ namespace WebApi.Controllers
         }
 
         // PUT <TopicController>/5
-        [HttpPut("{id}")]
+        [HttpPut("Edit/{id}")]
         public IActionResult Put(int id, [FromBody] Topic p_topic)
         {
 
@@ -160,7 +154,7 @@ namespace WebApi.Controllers
         }
 
         // DELETE <TopicController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

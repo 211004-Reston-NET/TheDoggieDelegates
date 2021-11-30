@@ -30,8 +30,8 @@ namespace WebApi.Controllers
             return Ok(profileRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/{id}")]
-        public IActionResult GetPrimaryKey(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
@@ -42,6 +42,22 @@ namespace WebApi.Controllers
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
             }
+        }
+
+        [HttpGet("GetWithNav/{id}")]
+        public IActionResult GetWithNav(int id)
+        {
+
+            try
+            {
+                return Ok(profileRepository.GetByIdWithNav(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid Id");
+            }
+
         }
 
 
@@ -60,8 +76,8 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("SearchByPhoneNumber/{query}")]
-        public IActionResult SearchByPhoneNumber(string query)
+        [HttpGet("SearchByPhone/{query}")]
+        public IActionResult SearchByPhone(string query)
         {
             try
             {
@@ -74,8 +90,8 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("SearchByProfileName/{query}")]
-        public IActionResult SearchByProfileName(string query)
+        [HttpGet("SearchByName/{query}")]
+        public IActionResult SearchByName(string query)
         {
             try
             {
@@ -88,22 +104,6 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("SearchByIdWithNav/{id}")]
-        public IActionResult SearchByIdWithNav(int id)
-        {
-
-            try
-            {
-                return Ok(profileRepository.GetByIdWithNav(id));
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return BadRequest("Not a valid Id");
-            }
-
-        }
-
         // POST <ProfileController>
         [HttpPost("Add")]
         public IActionResult AddProfile([FromBody] Profile p_profile)
@@ -114,7 +114,7 @@ namespace WebApi.Controllers
         }
 
         // PUT <ProfileController>/5
-        [HttpPut("EditProfile/{id}")]
+        [HttpPut("Edit/{id}")]
         public IActionResult Put(int id, [FromBody] Profile p_profile)
         {
             var pro = profileRepository.GetByPrimaryKey(id);
@@ -162,7 +162,7 @@ namespace WebApi.Controllers
         }
 
         // DELETE <ProfileController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             try

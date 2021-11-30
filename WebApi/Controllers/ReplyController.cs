@@ -22,28 +22,14 @@ namespace WebApi.Controllers
             ReplyRepository = context;
         }
 
-        [HttpGet("SearchByProfileId/{query}")]
-        public IActionResult SearchByProfileId(int query)
-        {
-            try
-            {
-                return Ok(ReplyRepository.SearchByProfileId(query));
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return BadRequest("Not a valid ID");
-            }
-        }
-
         [HttpGet("GetAll")]
         public IActionResult GetAllReplies()
         {
             return Ok(ReplyRepository.GetAll());
         }
 
-        [HttpGet("GetPrimaryKey/{id}")]
-        public IActionResult GetPrimaryKey(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
         {
             try
             {
@@ -56,6 +42,21 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpGet("SearchByProfile/{id}")]
+        public IActionResult SearchByProfileId(int id)
+        {
+            try
+            {
+                return Ok(ReplyRepository.SearchByProfileId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
+
         // POST <ReplyController>
         [HttpPost("Add")]
         public IActionResult AddReply([FromBody] Reply p_reply)
@@ -66,7 +67,7 @@ namespace WebApi.Controllers
         }
 
         // PUT <ReplyController>/5
-        [HttpPut("EditReply/{id}")]
+        [HttpPut("Edit/{id}")]
         public IActionResult Put(int id, [FromBody] Reply p_reply)
         {
             var rep = ReplyRepository.GetByPrimaryKey(id);
@@ -90,7 +91,7 @@ namespace WebApi.Controllers
         }
 
         // DELETE <ReplyController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             try
