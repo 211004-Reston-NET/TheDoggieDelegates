@@ -59,7 +59,7 @@ namespace UnitTest
             using (var context = new PawpersDbContext(_options))
             {
                 IProfileRepository repository = new ProfileRepository(context);
-                var profile = repository.SearchByPhoneNumber("123-456-7890");
+                var profile = repository.SearchByPhoneNumber("1234567890");
 
                 Assert.NotEmpty(profile);
             }
@@ -124,8 +124,8 @@ namespace UnitTest
                         ProfileStateid = 1,
                         ProfileZipcode = "00000",
                         ProfileAge = 11,
-                        ProfileHomephone = "111-456-7890",
-                        ProfilePersonalphone = "111-234-1234",
+                        ProfileHomephone = "1234567890",
+                        ProfilePersonalphone = "1234567890",
                         ProfileEmail = "aaa@aaa.com",
                         ProfileOccupation = "jhlkjhf",
                         ProfileChildren = 3,
@@ -147,8 +147,8 @@ namespace UnitTest
                         ProfileStateid = 1,
                         ProfileZipcode = "00000",
                         ProfileAge = 11,
-                        ProfileHomephone = "123-456-7890",
-                        ProfilePersonalphone = "111-234-1234",
+                        ProfileHomephone = "1234567890",
+                        ProfilePersonalphone = "1234567890",
                         ProfileEmail = "test@test.com",
                         ProfileOccupation = "jhlkjhf",
                         ProfileChildren = 3,

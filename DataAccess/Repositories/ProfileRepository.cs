@@ -57,7 +57,7 @@ namespace DataAccess
         /// <returns>query which will be ProfileHomephone</returns>
         public IEnumerable<Profile> SearchByPhoneNumber(string query)
         {
-            var profiles = base.GetAll().Where(p => p.ProfileHomephone.Contains(query));
+            var profiles = base.GetAll().Where(p => p.ProfilePersonalphone.Contains(query));
             if (!profiles.Any())
             {
                 throw new KeyNotFoundException("not found");

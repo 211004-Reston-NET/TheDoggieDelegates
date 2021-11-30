@@ -10,29 +10,6 @@ namespace UnitTest
 {
     public class FavoriteMoq
     {
-        [Fact]
-        public void GetByIdWithNavShouldReturnEntity()
-        {
-            // arrange
-            var favoriteRepo = new Mock<IFavoriteRepository>();
-            var favorite = new Favorite
-            {
-                FavId = 1,
-                DogId = 1,
-                IsAvailable = 1,
-                ProfileId = 1
-            };
-
-            favoriteRepo.Setup(t => t.GetByIdWithNav(1))
-                .Returns(favorite);
-
-            // act
-            var favoriteBL = new FavoriteBL(favoriteRepo.Object);
-            var result = favoriteBL.GetByIdWithNav(1);
-
-            // assert
-            Assert.Equal(result, favorite);
-        }
 
         [Fact]
         public void SearchByDogIdShouldReturnEntity()

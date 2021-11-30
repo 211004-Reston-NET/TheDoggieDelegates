@@ -18,11 +18,6 @@ namespace BusinessLogic
             this.favoriteRepository = favoriteRepository;
         }
 
-        public Favorite GetByIdWithNav(int query)
-        {
-            return favoriteRepository.GetByIdWithNav(query);
-        }
-
         public IEnumerable<Favorite> SearchByDogId(int query)
         {
             return favoriteRepository.SearchByDogId(query);

@@ -19,18 +19,6 @@ namespace UnitTest
         }
 
         [Fact]
-        public void GetByIdWithNavShouldPopulateNavProps()
-        {
-            using (var context = new PawpersDbContext(_options))
-            {
-                IFavoriteRepository repository = new FavoriteRepository(context);
-                var favorite = repository.GetByIdWithNav(1);
-
-                Assert.NotNull(favorite.Profile);
-            }
-        }
-
-        [Fact]
         public void SearchByDogIdShouldReturnResults()
         {
             using (var context = new PawpersDbContext(_options))
@@ -93,8 +81,8 @@ namespace UnitTest
                         ProfileStateid = 1,
                         ProfileZipcode = "00000",
                         ProfileAge = 11,
-                        ProfileHomephone = "111-456-7890",
-                        ProfilePersonalphone = "111-234-1234",
+                        ProfileHomephone = "1114567890",
+                        ProfilePersonalphone = "1112341234",
                         ProfileEmail = "aaa@aaa.com",
                         ProfileOccupation = "jhlkjhf",
                         ProfileChildren = 3,

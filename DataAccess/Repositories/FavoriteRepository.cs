@@ -13,20 +13,6 @@ namespace DataAccess
         {
             repository = context;
         }
-
-        /// <summary>
-        /// Queries DB to find single item based on the primary key 
-        /// loads nav properties of the entity
-        /// </summary>
-        /// <param name="query">int </param>
-        /// <returns>query which will be favorite ID</returns>
-        public Favorite GetByIdWithNav(int query)
-        {
-            var Fav = repository.Favorites
-                .Include(f => f.Profile)
-                .FirstOrDefault(f => f.FavId.Equals(query));
-            return Fav;
-        }
         
         /// <summary>
         /// Queries DB to find list of favorite dogs based on favorite model's DogId field 

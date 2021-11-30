@@ -35,12 +35,6 @@ namespace WebApi.Controllers
                 Log.Error(e.Message);
                 return BadRequest("Not a valid ID");
             }
-                 
-
-            
-            
-         
-            
         }
 
         [HttpGet("SearchByProfileId/{id}")]
@@ -57,26 +51,7 @@ namespace WebApi.Controllers
                 return BadRequest("Not a valid Id");
                 
             }
-            
         }
-
-        [HttpGet("SearchByIdWithNav/{id}")]
-        public IActionResult SearchByIdWithNav(int id)
-        {
-
-           // try
-           // {
-                return Ok(FavoriteRepository.GetByIdWithNav(id));
-           // }
-           // catch (Exception e)
-           // {
-           //     Log.Error(e.Message);
-           //     return BadRequest("Not a valid Id");
-           // }
-            
-        }
-
-      
 
         // POST <FavoriteController>
         [HttpPost("Add")]
