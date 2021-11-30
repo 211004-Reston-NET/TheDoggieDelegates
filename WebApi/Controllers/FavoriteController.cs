@@ -11,7 +11,7 @@ using Models;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class FavoriteController : ControllerBase
     {
