@@ -99,7 +99,7 @@ namespace WebApi.Controllers
                 Log.Error(e.Message);
                 return BadRequest("Not a valid search field");
             }
-         }
+        }
 
         [HttpGet("SearchByProfile/{id}")]
         public IActionResult SearchByProfileId(int id)
@@ -116,8 +116,8 @@ namespace WebApi.Controllers
         }
 
         // POST <TopicController>
-        [HttpPost("Add")]
-        public IActionResult AddTopic([FromBody] Topic p_topic)
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody] Topic p_topic)
         {
             topicRepository.Create(p_topic);
             topicRepository.Save();
@@ -125,8 +125,8 @@ namespace WebApi.Controllers
         }
 
         // PUT <TopicController>/5
-        [HttpPut("Edit/{id}")]
-        public IActionResult Put(int id, [FromBody] Topic p_topic)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Topic p_topic)
         {
 
             var topic = topicRepository.GetByPrimaryKey(id);

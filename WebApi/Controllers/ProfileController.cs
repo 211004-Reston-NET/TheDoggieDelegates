@@ -105,8 +105,8 @@ namespace WebApi.Controllers
         }
 
         // POST <ProfileController>
-        [HttpPost("Add")]
-        public IActionResult AddProfile([FromBody] Profile p_profile)
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody] Profile p_profile)
         {
             profileRepository.Create(p_profile);
             profileRepository.Save();
@@ -114,8 +114,8 @@ namespace WebApi.Controllers
         }
 
         // PUT <ProfileController>/5
-        [HttpPut("Edit/{id}")]
-        public IActionResult Put(int id, [FromBody] Profile p_profile)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Profile p_profile)
         {
             var pro = profileRepository.GetByPrimaryKey(id);
             if (pro != null)

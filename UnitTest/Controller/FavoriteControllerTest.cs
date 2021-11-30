@@ -19,7 +19,7 @@ namespace UnitTest
             var favoriteBL = new FavoriteBL(repository.Object);
             var controller = new FavoriteController(favoriteBL);
 
-            var result = controller.SearchByDogId(1);
+            var result = controller.SearchByDog(1);
             var okResponse = (IStatusCodeActionResult)result;
             Assert.Equal(200, okResponse.StatusCode);
         }
@@ -31,13 +31,13 @@ namespace UnitTest
             var favoriteBL = new FavoriteBL(repository.Object);
             var controller = new FavoriteController(favoriteBL);
 
-            var result = controller.SearchByProfileId(1);
+            var result = controller.SearchByProfile(1);
             var okResponse = (IStatusCodeActionResult)result;
             Assert.Equal(200, okResponse.StatusCode);
         }
 
         [Fact]
-        public void AddReturnsOk()
+        public void CreateReturnsOk()
         {
             var repository = new Mock<IFavoriteRepository>();
             var favoriteBL = new FavoriteBL(repository.Object);
@@ -51,7 +51,7 @@ namespace UnitTest
                 IsAvailable = 1
             };
 
-            var result = controller.AddFavorite(favorite);
+            var result = controller.Create(favorite);
             var okResponse = (IStatusCodeActionResult)result;
             Assert.Equal(201, okResponse.StatusCode);
         }

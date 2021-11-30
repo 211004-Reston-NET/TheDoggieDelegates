@@ -73,8 +73,8 @@ namespace WebApi.Controllers
         }
 
         // POST <FavoriteController>
-        [HttpPost("Add")]
-        public IActionResult AddFavorite([FromBody] Favorite p_favorite)
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody] Favorite p_favorite)
         {
             favoriteRepository.Create(p_favorite);
             favoriteRepository.Save();
@@ -82,8 +82,8 @@ namespace WebApi.Controllers
         }
 
         // PUT <FavoriteController>/5
-        [HttpPut("Edit/{id}")]
-        public IActionResult Put(int id, [FromBody] Favorite p_favorite)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Favorite p_favorite)
         {
             var fav = favoriteRepository.GetByPrimaryKey(id);
             if (fav != null)

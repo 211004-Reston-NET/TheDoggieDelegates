@@ -58,8 +58,8 @@ namespace WebApi.Controllers
 
 
         // POST <ReplyController>
-        [HttpPost("Add")]
-        public IActionResult AddReply([FromBody] Reply p_reply)
+        [HttpPost("Create")]
+        public IActionResult Create([FromBody] Reply p_reply)
         {
             ReplyRepository.Create(p_reply);
             ReplyRepository.Save();
@@ -67,8 +67,8 @@ namespace WebApi.Controllers
         }
 
         // PUT <ReplyController>/5
-        [HttpPut("Edit/{id}")]
-        public IActionResult Put(int id, [FromBody] Reply p_reply)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Reply p_reply)
         {
             var rep = ReplyRepository.GetByPrimaryKey(id);
             if (rep != null)
