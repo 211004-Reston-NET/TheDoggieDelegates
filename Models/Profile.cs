@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -140,10 +141,19 @@ namespace Models
         [RegularExpression(@"^[a-zA-Z -]+$", ErrorMessage = "Invalid Input")]
         public string ProfileNocaredog { get; set; }
 
+        
         public virtual Dwelling ProfileDwelling { get; set; }
+
+        
         public virtual State ProfileState { get; set; }
+
+        
         public virtual ICollection<Favorite> Favorites { get; set; }
+
+        
         public virtual ICollection<Reply> Replies { get; set; }
+
+        
         public virtual ICollection<Topic> Topics { get; set; }
     }
 }

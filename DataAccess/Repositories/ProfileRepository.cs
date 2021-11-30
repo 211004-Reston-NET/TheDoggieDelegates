@@ -20,14 +20,13 @@ namespace DataAccess
         /// </summary>
         /// <param name="query">int </param>
         /// <returns>query which will be profile ID</returns>
-
         public Profile GetByIdWithNav(int query)
         {
             var profile = repository.Profiles
                 .Include(p => p.ProfileDwelling)
                 .Include(p => p.Favorites)
-                .Include(p => p.Replies)
                 .Include(p => p.Topics)
+                .Include(p => p.Replies)
                 .Single(p => p.ProfileId.Equals(query));
 
             return profile;

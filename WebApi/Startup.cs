@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using BusinessLogic;
+using System.Text.Json.Serialization;
 
 namespace WebApi
 {
@@ -39,7 +40,10 @@ namespace WebApi
             services.AddScoped<IReplyRepository, ReplyRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(o => o.JsonSerializerOptions
+                .ReferenceHandler = ReferenceHandler.Preserve);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });

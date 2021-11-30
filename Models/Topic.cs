@@ -34,7 +34,9 @@ namespace Models
         public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
         public virtual Profile Profile { get; set; }
+
         public virtual ICollection<Reply> Replies { get; set; }
     }
 }
