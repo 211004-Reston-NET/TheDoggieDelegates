@@ -1,7 +1,19 @@
 <p>topic-page works!</p>
 
-<div class="indent">
-    <a  [title]="'view replies'" [routerLink]="['/reply-page']">Replies</a>
-    <br>
-    <br>
-</div>
+<table class="table table hover">
+    <thead>
+        <th>Topic</th>
+        <th>Content</th>
+        <th>Does nothing so far</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let topic of listOfTopic">
+            <td>{{topic.topicName}}</td>
+            <td>{{topic.topicBody}}</td>
+
+            <button class="btn btn-primary">Replies</button>
+        </tr>
+    </tbody>
+</table>
+

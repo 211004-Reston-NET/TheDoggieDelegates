@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TopicPageComponent } from './topic-page/topic-page.component';
 import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,14 @@ import { FavoritesPageComponent } from './favorites-page/favorites-page.componen
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent
+    UserProfileComponent, 
+    TopicPageComponent, 
+    ReplyPageComponent, 
+    FavoritesPageComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
