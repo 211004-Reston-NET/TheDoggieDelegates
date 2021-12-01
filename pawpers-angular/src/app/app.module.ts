@@ -2,17 +2,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { FrontPageComponent } from './front-page/front-page.component';
-import { ProfilePageComponent } from './profile-page/profile-page.component';
 
-// Import the module from the SDK
+// Auth0
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
+
+// HttpClient - external api
+
+
+// Components
+import { FrontPageComponent } from './front-page/front-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TopicPageComponent } from './topic-page/topic-page.component';
 import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
+import { DogSearchComponent } from './dog-search/dog-search.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
+    angularModels,
     UserProfileComponent, 
     TopicPageComponent, 
     ReplyPageComponent, 
-    FavoritesPageComponent
+    FavoritesPageComponent,
+    DogSearchComponent, 
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'favorites-page', component: FavoritesPageComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
-      { path: '**', component:FrontPageComponent}
+      { path: 'dogsearch-page', component: DogSearchComponent},
+      { path: '**', component:FrontPageComponent},
     ]),
     AuthModule.forRoot({
       domain: 'dev-tc6s9x9t.us.auth0.com',
