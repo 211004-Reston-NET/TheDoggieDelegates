@@ -21,13 +21,19 @@ export class TopicPageComponent implements OnInit {
     this.topicApi.getAllTopic().subscribe((response) => {
       this.mainObject = response;
       this.listOfTopic = this.mainObject.$values;
-      console.log(this.mainObject.$values[0]);
-      console.log(this.listOfTopic);
+      // console.log(this.mainObject.$values[0]);
+      // console.log(this.listOfTopic);
     });
   }
   
   ngOnInit(): void {
     
+  }
+
+  showReplies(p_id:number)
+  {
+    this.router.navigate(['/reply-page']);
+    this.listOfTopic.findIndex(top => top.topicId==p_id);
   }
   
 }

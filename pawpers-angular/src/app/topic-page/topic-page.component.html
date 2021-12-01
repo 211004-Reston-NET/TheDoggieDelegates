@@ -12,7 +12,7 @@
             <td>{{topic.topicName}}</td>
             <td>{{topic.topicBody}}</td>
 
-            <button class="btn btn-primary">Replies</button>
+            <button class="btn btn-primary" routerLink="/reply-page" (click)="showReplies(topic.topicId)">Replies</button>
         </tr>
     </tbody>
 </table>
