@@ -18,6 +18,7 @@ import { TopicPageComponent } from './topic-page/topic-page.component';
 import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -27,7 +28,7 @@ import { DogSearchComponent } from './dog-search/dog-search.component';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent, DogSearchComponent
+    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent, DogSearchComponent, NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -45,12 +45,9 @@ pawpers-angular/typings
 pawpers-angular/.DS_Store
 pawpers-angular/Thumbs.db
 
-UnitTest
-WebApi
-Models
-DataAccess
-BusinessLogic
 .vscode
 .vs
 bin
 obj
+appsettings.json
+Logs
