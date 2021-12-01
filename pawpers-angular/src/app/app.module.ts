@@ -29,7 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    angularModels,
     UserProfileComponent, 
     TopicPageComponent, 
     ReplyPageComponent, 
