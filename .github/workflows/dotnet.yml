@@ -62,6 +62,12 @@ jobs:
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"211004-Reston-NET_TheDoggieDelegates" /o:"211004-reston-net" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.exclusions="**Web/wwwroot/lib/**" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.vs.vstest.reportsPaths="**/TestResult/*trx"
         dotnet build --configuration Release --no-restore
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        
+    - name: Upload sonarscanner report
+      uses: actions/upload-artifact@v2
+      with:
+        name: P2WebApi
+        path: ./publish
     
   deploy:
     needs: build
