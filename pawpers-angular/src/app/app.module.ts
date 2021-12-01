@@ -20,6 +20,7 @@ import { FavoritesPageComponent } from './favorites-page/favorites-page.componen
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,10 +29,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent, DogSearchComponent, NavbarComponent
+    angularModels,
+    UserProfileComponent, 
+    TopicPageComponent, 
+    ReplyPageComponent, 
+    FavoritesPageComponent,
+    DogSearchComponent, 
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
