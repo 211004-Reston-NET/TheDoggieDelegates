@@ -49,3 +49,5 @@ pawpers-angular/Thumbs.db
 .vs
 bin
 obj
+appsettings.json
+Logs
