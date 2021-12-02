@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Profile, Main } from '../AngularModels/profile';
+import { ProfileApiService } from '../services/profile-api.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -8,9 +10,22 @@ import { Router } from '@angular/router';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  mainObject:Main = {
+    $id:"",
+    $values: []
+  };
+  listOfProfile:any[] = [];
+
+  constructor(private profileApi:ProfileApiService ,private router:Router) { 
+    
+  }
 
   ngOnInit(): void {
+  }
+
+  redirectToAddProfile()
+  {
+    this.router.navigateByUrl('add-profile');
   }
 
 }

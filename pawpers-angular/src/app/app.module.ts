@@ -20,6 +20,7 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
+import { AddProfileComponent } from './add-profile/add-profile.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     ReplyPageComponent, 
     FavoritesPageComponent,
     DogSearchComponent, 
-    NavbarComponent,
+    NavbarComponent, 
+    AddProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
+      { path: 'add-profile', component: AddProfileComponent},
       { path: 'favorites-page', component: FavoritesPageComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},

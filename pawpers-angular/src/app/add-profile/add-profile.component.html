@@ -1,0 +1,121 @@
+<p>add-profile works!</p>
+
+<h1 > Add a Profile </h1>
+<br>
+
+<form *ngIf="auth.user$ | async as user">
+    <h2>Name</h2>
+    <input type="text" formControlName = "profileName">
+    <h2>Street address</h2>
+    <input type="text" formControlName = "profileStreetaddress">
+    <h2>City</h2>
+    <input type="text" formControlName = "profileCity">
+    <h2>State</h2> <span>Might be problematic</span>
+    <select formControlName = "profileStateid">
+        <option value="1">Alabama</option>
+        <option value="2">Alaska</option>
+        <option value="3">Arizona</option>
+        <option value="4">Arkansas</option>
+        <option value="5">California</option>
+        <option value="6">Colorado</option>
+        <option value="7">Connecticut</option>
+        <option value="8">Delaware</option>
+        <option value="9">District Of Columbia</option>
+        <option value="10">Florida</option>
+        <option value="11">Georgia</option>
+        <option value="12">Hawaii</option>
+        <option value="13">Idaho</option>
+        <option value="14">Illinois</option>
+        <option value="15">Indiana</option>
+        <option value="16">Iowa</option>
+        <option value="17">Kansas</option>
+        <option value="18">Kentucky</option>
+        <option value="19">Louisiana</option>
+        <option value="20">Maine</option>
+        <option value="21">Maryland</option>
+        <option value="22">Massachusetts</option>
+        <option value="23">Michigan</option>
+        <option value="24">Minnesota</option>
+        <option value="25">Mississippi</option>
+        <option value="26">Missouri</option>
+        <option value="27">Montana</option>
+        <option value="28">Nebraska</option>
+        <option value="29">Nevada</option>
+        <option value="30">New Hampshire</option>
+        <option value="31">New Jersey</option>
+        <option value="32">New Mexico</option>
+        <option value="33">New York</option>
+        <option value="34">North Carolina</option>
+        <option value="35">North Dakota</option>
+        <option value="36">Ohio</option>
+        <option value="37">Oklahoma</option>
+        <option value="38">Oregon</option>
+        <option value="39">Pennsylvania</option>
+        <option value="40">Pennsylvania</option>
+        <option value="41">Rhode Island</option>
+        <option value="42">South Carolina</option>
+        <option value="43">South Dakota</option>
+        <option value="44">Tennessee</option>
+        <option value="45">Texas</option>
+        <option value="46">Utah</option>
+        <option value="47">Vermont</option>
+        <option value="48">Virginia</option>
+        <option value="49">Washington</option>
+        <option value="50">West Virginia</option>
+        <option value="51">Wisconsin</option>
+        <option value="52">Wyoming</option>
+    </select>
+    <h2>Zip code</h2>
+    <input type="text" formControlName = "profileZipcode">
+    <h2>Age</h2>
+    <input type="number" formControlName = "profileAge">
+    <h2>Home phone</h2>
+    <input type="text" formControlName = "profileHomephone">
+    <h2>Personal phone</h2>
+    <input type="text" formControlName = "profilePersonalphone">
+    <h2>Email</h2>
+    <input type="text" formControlName = "profileEmail" value="{{user.email}}" readonly>
+    <h2>Occupation</h2>
+    <input type="text" formControlName = "profileOccupation">
+    <h2>Spouse name</h2>
+    <input type="text" formControlName = "profileSpousename">
+    <h2>Do you have any Children? (1 = Yes, 2 = No)</h2>
+    <input type="number" formControlName = "profileChildren">
+    <h2>Dwelling:</h2> <span>Might be problematic</span>
+    <select formControlName = "profileDwellingid">
+        <option value="1">House</option>
+        <option value="2">Apartment</option>
+        <option value="3">Condo</option>
+        <option value="4">Other</option>
+    </select>
+    <h2>Do you have a yard? (1 = Yes, 2 = No)</h2>
+    <input type="number" formControlName = "profileHasyard">
+    <h2>Land lord name</h2>
+    <input type="text" formControlName = "profileLandlordname">
+    <h2>Land lord phone number</h2>
+    <input type="text" formControlName = "profileLandlordphone">
+    <h2>Other pet name</h2>
+    <input type="text" formControlName = "profileOtherpetname">
+    <h2>Other pet breed</h2>
+    <input type="text" formControlName = "profileOtherpetbreed">
+    <h2>Other pet sex</h2>
+    <input type="text" formControlName = "profileOtherpetsex">
+    <h2>Other pet age</h2>
+    <input type="number" formControlName = "profileOtherpetage">
+    <h2>Family allergies? (1 = Yes, 2 = No)</h2>
+    <input type="number" formControlName = "profileFamilyallergies">
+    <h2>Who will be responsible for the dog?</h2>
+    <input type="text" formControlName = "profileResponsiblefordog">
+    <h2>Reason for adoption?</h2>
+    <input type="text" formControlName = "profileAdoptionreason">
+    <h2>Where will the dog be sleeping?</h2>
+    <input type="text" formControlName = "profileDogsleepat">
+    <h2>What would you do if the dog were to become aggressive towards others?</h2>
+    <input type="text" formControlName = "profileDogaggresive">
+    <h2>If the dog needed medical treatment, are you financially prepared to provide medical care?</h2>
+    <input type="text" formControlName = "profileMedfordog">
+    <h2>What would you do if you could no longer care for the dog?</h2>
+    <input type="text" formControlName = "profileNocaredog">
+    <br>
+    <button class="btn btn-primary">Submit</button>
+</form>
