@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DogSearchService } from '../services/dog-search.service';
 import { Animal, dogViewRoot } from './dog-view-model';
 
@@ -11,8 +11,13 @@ import { Animal, dogViewRoot } from './dog-view-model';
 export class DogViewComponent implements OnInit {
   searchResult: dogViewRoot = {} as dogViewRoot
 
-  constructor(private dogSearchService: DogSearchService, private router:Router) { 
-    this.dogSearchService.viewDog(53749744).then(
+  constructor(private dogSearchService: DogSearchService, private router:Router, private route: ActivatedRoute) { 
+    let id = Number(this.route.snapshot.paramMap.get("id"))
+    this.viewDog(id)
+  }
+
+  viewDog(dogId: number) {
+    this.dogSearchService.viewDog(dogId).then(
       resp => {
         this.searchResult.animal = resp.data.animal
       }
