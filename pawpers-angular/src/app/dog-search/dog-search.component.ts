@@ -1,7 +1,8 @@
 import { PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GeolocationService } from '@ng-web-apis/geolocation';
+import { take } from 'rxjs';
 import { DogSearchService } from '../services/dog-search.service';
 import { Animal, dogSearchRoot, Photo } from './dog-search-model';
 
@@ -15,13 +16,44 @@ export class DogSearchComponent implements OnInit {
     animals: [],
   };
 
-  constructor(private dogSearchService: DogSearchService, private router:Router) {
-    this.dogSearchService.dogSearch(87123).then(
+  geoLocation = {
+    latitude: 0,
+    longitude: 0
+  }
+
+  show: boolean = false;
+  dogShow: boolean = false;
+
+  constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router:Router) {
+    geolocation$.pipe(take(1)).subscribe(
+      resp => {
+        this.geoLocation.latitude = resp.coords.latitude
+        this.geoLocation.longitude = resp.coords.longitude
+      }
+    );
+  }
+
+  onClickSubmit(data: any) {
+    if (this.show) {
+      this.searchResults = {
+        animals: []
+      }
+    }
+
+    this.dogSearchService.dogSearch(data.zipCode).then(
       resp => {
         resp.data.animals.forEach((animal: Animal) => {
           this.searchResults.animals.push(animal)
         });
       }
+    )
+
+    this.show = true
+  }
+
+  showDogInfo(dogId: number) {
+    let index: number = this.searchResults.animals.findIndex(
+      animal => animal.id==dogId
     )
   }
 
