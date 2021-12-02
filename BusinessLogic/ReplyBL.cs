@@ -22,5 +22,10 @@ namespace BusinessLogic
         {
             return replyRepository.SearchByProfileId(query);
         }
+        
+        public IEnumerable<Reply> SearchByTopicId(int query)
+        {
+            return replyRepository.SearchByTopicId(query);
+        }
     }
 }

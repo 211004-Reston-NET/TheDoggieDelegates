@@ -15,6 +15,6 @@ export interface Topic {
     category:      null;
     profile:       null;
     replies:       Main;
-    show?:         boolean;
+    show:         boolean;
 }
 

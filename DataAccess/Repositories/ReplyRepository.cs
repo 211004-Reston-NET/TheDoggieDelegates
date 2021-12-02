@@ -29,5 +29,17 @@ namespace DataAccess
 
             return result;
         }
+
+        public IEnumerable<Reply> SearchByTopicId(int query)
+        {
+            var result = base.GetAll()
+                        .Where(i => i.TopicId.Equals(query));
+            if (!result.Any())
+            {
+                throw new KeyNotFoundException("No result found");
+            }
+
+            return result;
+        }
     }
 }
