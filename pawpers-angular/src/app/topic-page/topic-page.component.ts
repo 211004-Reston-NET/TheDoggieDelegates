@@ -15,26 +15,31 @@ export class TopicPageComponent implements OnInit {
     $id:"",
     $values: []
   };
-  listOfTopic:any[] = [];
+  show:boolean | null = true;
+  listOfTopic:Topic[] = [];
   
   constructor(private topicApi:TopicsAPIService, private router:Router, public auth0:AuthService) { 
     
     this.topicApi.getAllTopic().subscribe((response) => {
-      this.mainObject = response;
-      this.listOfTopic = this.mainObject.$values;
-      // console.log(this.mainObject.$values[0]);
+        this.mainObject = response;
+        this.listOfTopic = this.mainObject.$values;
+      
+        this.listOfTopic.forEach((ele) => ele.show = false);
+        // console.log(this.mainObject.$values[0]);
       // console.log(this.listOfTopic);
     });
+
   }
   
   ngOnInit(): void {
     
   }
 
-  showReplies(p_id:number)
+  showReplies(p_id:number | undefined)
   {
-    this.router.navigate(['/reply-page']);
-    this.listOfTopic.findIndex(top => top.topicId==p_id);
+    let index:number = this.listOfTopic.findIndex(top => top.topicId==p_id);
+    
+    this.listOfTopic[index].show = !this.listOfTopic[index].show;
   }
   
   addTopic()

@@ -1,1 +1,16 @@
-<p>reply-page works!</p>
+
+
+<table *ngIf= "show" class="table table hover">
+    <thead>
+        <th>ReplyMessage</th>
+        <th>ReplyTimeStamp</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let reply of listOfReplies">
+            <td>{{reply.replyMessage}}</td>
+            <td>{{reply.replyTimestamp}}</td>
+        </tr>
+    </tbody>
+</table>
+
