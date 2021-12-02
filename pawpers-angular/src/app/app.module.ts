@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // Auth0
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 
 // HttpClient - external api
@@ -24,6 +24,12 @@ import { FavoritesPageComponent } from './favorites-page/favorites-page.componen
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
 import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
+import { AddProfileComponent } from './add-profile/add-profile.component';
+import { AddtopicComponent } from './addtopic/addtopic.component';
+
+import {ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,19 +44,26 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
     ReplyPageComponent, 
     FavoritesPageComponent,
     DogSearchComponent, 
-    NavbarComponent, ShelterSearchComponent,
+    ShelterSearchComponent,
+    NavbarComponent, 
+    AddProfileComponent,
+    AddtopicComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
+      { path: 'add-profile', component: AddProfileComponent},
       { path: 'favorites-page', component: FavoritesPageComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
+      { path: 'dogview-page', component: DogViewComponent},
+      { path: 'addtopic', component: AddtopicComponent},
       { path: 'dogview-page/:id', component: DogViewComponent},
       { path: '**', component:FrontPageComponent},
     ]),

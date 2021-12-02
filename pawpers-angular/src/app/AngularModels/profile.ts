@@ -4,8 +4,8 @@ export interface Main {
 }
 
 export interface Profile {
-    $id:                      string;
-    profileId:                number;
+    $id?:                     string;
+    profileId?:               number;
     profileName:              string;
     profileStreetaddress:     string;
     profileCity:              string;
@@ -33,11 +33,11 @@ export interface Profile {
     profileDogaggresive:      string;
     profileMedfordog:         string;
     profileNocaredog:         string;
-    profileDwelling:          null;
-    profileState:             null;
-    favorites:                Main;
-    replies:                  Main;
-    topics:                   Main;
+    profileDwelling?:         null;
+    profileState?:            null;
+    favorites?:               Main;
+    replies?:                 Main;
+    topics?:                  Main;
 }
 
 

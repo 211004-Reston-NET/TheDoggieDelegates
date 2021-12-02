@@ -16,8 +16,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"  [routerLink]="['/topic-page']">Discussion</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="auth0.isAuthenticated$ | async" class="nav-item">
             <a class="nav-link active" aria-current="page" [routerLink]="['/profile-page']">Profile Page</a>
+          </li>
+          <li *ngIf="auth0.isAuthenticated$ | async" class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/favorites-page']">Favorites</a>
           </li>
           
         </ul>

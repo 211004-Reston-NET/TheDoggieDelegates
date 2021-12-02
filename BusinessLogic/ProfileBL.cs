@@ -23,9 +23,9 @@ namespace BusinessLogic
             return profileRepository.GetByIdWithNav(query);
         }
 
-        public IEnumerable<Profile> SearchByEmail(string query)
+        public Profile GetEmail(string query)
         {
-            return profileRepository.SearchByEmail(query);
+            return profileRepository.GetEmail(query);
         }
 
         public IEnumerable<Profile> SearchByPhoneNumber(string query)

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Auth0ClientService, AuthService } from '@auth0/auth0-angular';
+import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -18,10 +18,5 @@ import { DOCUMENT } from '@angular/common';
   styles: [],
 })
 export class AuthButtonComponent {
-  profileToken: string = ""
-  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
 }
