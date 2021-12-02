@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // Auth0
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 
 // HttpClient - external api
@@ -41,8 +41,8 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
-      { path: 'profile-page', component: ProfilePageComponent},
-      { path: 'favorites-page', component: FavoritesPageComponent},
+      { path: 'profile-page', component: ProfilePageComponent, canActivate:[AuthGuard]},
+      { path: 'favorites-page', component: FavoritesPageComponent, canActivate:[AuthGuard]},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
