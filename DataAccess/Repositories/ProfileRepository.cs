@@ -38,10 +38,12 @@ namespace DataAccess
         /// </summary>
         /// <param name="query">string </param>
         /// <returns>query which will be ProfileEmail</returns>
-        public IEnumerable<Profile> SearchByEmail(string query)
+        public Profile GetEmail(string query)
         {
-            var profiles = base.GetAll().Where(p => p.ProfileEmail.ToLower().Contains(query.ToLower()));
-            if (!profiles.Any())
+            var profiles = repository.Profiles
+                    
+                    .Single(p => p.ProfileId.Equals(query.ToLower()));
+            if (profiles == null)
             {
                 throw new KeyNotFoundException("None found");
             }
