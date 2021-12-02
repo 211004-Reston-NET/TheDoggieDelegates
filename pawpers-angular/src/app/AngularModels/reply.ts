@@ -12,4 +12,5 @@ export interface Reply {
     topicId:        number;
     profile:        null;
     topic:          null;
+    show?:          boolean;
 }

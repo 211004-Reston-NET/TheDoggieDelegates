@@ -24,6 +24,10 @@ import { FavoritesPageComponent } from './favorites-page/favorites-page.componen
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
 
+import {ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent, canActivate:[AuthGuard]},
