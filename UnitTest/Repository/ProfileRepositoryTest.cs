@@ -30,28 +30,28 @@ namespace UnitTest
             }
         }
 
-        [Fact]
-        public void SearchByEmailShouldReturnResults()
-        {
-            using (var context = new PawpersDbContext(_options))
-            {
-                IProfileRepository repository = new ProfileRepository(context);
-                var profile = repository.SearchByEmail("test@test.com");
+        // [Fact]
+        // public void SearchByEmailShouldReturnResults()
+        // {
+        //     using (var context = new PawpersDbContext(_options))
+        //     {
+        //         IProfileRepository repository = new ProfileRepository(context);
+        //         var profile = repository.SearchByEmail("test@test.com");
 
-                Assert.NotNull(profile);
-            }
-        }
+        //         Assert.NotNull(profile);
+        //     }
+        // }
 
-        [Fact]
-        public void SearchByEmailShouldThrowNullExceptionOnNoResults()
-        {
-            using (var context = new PawpersDbContext(_options))
-            {
-                IProfileRepository repository = new ProfileRepository(context);
+        // [Fact]
+        // public void SearchByEmailShouldThrowNullExceptionOnNoResults()
+        // {
+        //     using (var context = new PawpersDbContext(_options))
+        //     {
+        //         IProfileRepository repository = new ProfileRepository(context);
 
-                Assert.Throws<KeyNotFoundException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
-            }
-        }
+        //         Assert.Throws<KeyNotFoundException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
+        //     }
+        // }
 
         [Fact]
         public void SearchByPhoneShouldReturnResults()
@@ -72,7 +72,7 @@ namespace UnitTest
             {
                 IProfileRepository repository = new ProfileRepository(context);
 
-                Assert.Throws<KeyNotFoundException>(() => repository.SearchByEmail("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
+                Assert.Throws<KeyNotFoundException>(() => repository.SearchByPhoneNumber("lajkdfhlajksfhlajksfhalskjfhlakfjh"));
             }
         }
 

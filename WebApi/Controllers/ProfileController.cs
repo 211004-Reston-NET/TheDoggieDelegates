@@ -62,17 +62,17 @@ namespace WebApi.Controllers
 
 
 
-        [HttpGet("SearchByEmail/{query}")]
-        public IActionResult SearchByEmail(string query)
+        [HttpGet("GetEmail/{query}")]
+        public IActionResult GetEmail(string query)
         {
             try
             {
-                return Ok(profileRepository.SearchByEmail(query));
+                return Ok(profileRepository.GetEmail(query));
             }
             catch (Exception e)
             {
                 Log.Error(e.Message);
-                return BadRequest("Not a valid ID");
+                return BadRequest("Not a valid Email");
             }
         }
 
