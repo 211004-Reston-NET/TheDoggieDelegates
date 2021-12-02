@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    DogViewComponent
+    DogViewComponent,
     UserProfileComponent, 
     TopicPageComponent, 
     ReplyPageComponent, 
