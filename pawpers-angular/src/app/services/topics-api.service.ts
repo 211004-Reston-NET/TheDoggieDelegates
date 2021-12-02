@@ -20,5 +20,10 @@ export class TopicsAPIService {
     return this.http.get<Main>(this.endpoint + "/Topic/GetAll");
   }
 
+  addTopic(topic:Topic)
+  {
+    return this.http.post(this.endpoint + "/Topic/Create", topic);
+  }
+
 
 }

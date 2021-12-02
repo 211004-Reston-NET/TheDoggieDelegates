@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Topic, Main } from '../AngularModels/topic';
 import { TopicsAPIService } from '../services/topics-api.service';
 
@@ -16,7 +17,7 @@ export class TopicPageComponent implements OnInit {
   };
   listOfTopic:any[] = [];
   
-  constructor(private topicApi:TopicsAPIService, private router:Router) { 
+  constructor(private topicApi:TopicsAPIService, private router:Router, public auth0:AuthService) { 
     
     this.topicApi.getAllTopic().subscribe((response) => {
       this.mainObject = response;
@@ -36,4 +37,9 @@ export class TopicPageComponent implements OnInit {
     this.listOfTopic.findIndex(top => top.topicId==p_id);
   }
   
+  addTopic()
+  {
+    this.router.navigateByUrl('addtopic');
+  }
+
 }
