@@ -1,16 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 
 // Auth0
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 
 // HttpClient - external api
-
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -18,10 +19,7 @@ import { TopicPageComponent } from './topic-page/topic-page.component';
 import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
-
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    DogViewComponent
+    DogViewComponent,
     UserProfileComponent, 
     TopicPageComponent, 
     ReplyPageComponent, 
@@ -48,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
+      { path: 'dogview-page', component: DogViewComponent},
       { path: '**', component:FrontPageComponent},
     ]),
     AuthModule.forRoot({

@@ -1,6 +1,5 @@
 import { PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DogSearchService } from '../services/dog-search.service';
 import { Animal, dogSearchRoot, Photo } from './dog-search-model';
