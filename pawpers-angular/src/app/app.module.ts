@@ -19,6 +19,7 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},

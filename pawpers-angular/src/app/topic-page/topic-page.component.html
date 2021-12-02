@@ -4,15 +4,15 @@
     <thead>
         <th>Topic</th>
         <th>Content</th>
-        <th>Does nothing so far</th>
+        <th>Replies</th>
     </thead>
 
     <tbody>
         <tr *ngFor="let topic of listOfTopic">
             <td>{{topic.topicName}}</td>
             <td>{{topic.topicBody}}</td>
-
-            <button class="btn btn-primary" routerLink="/reply-page" (click)="showReplies(topic.topicId)">Replies</button>
+            <button class="btn btn-primary" (click)="showReplies(topic.topicId)">Replies</button>
+            <app-reply-page [show]="topic.show" [topicId]= "topic.topicId"></app-reply-page>
         </tr>
     </tbody>
 </table>

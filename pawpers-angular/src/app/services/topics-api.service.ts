@@ -20,5 +20,8 @@ export class TopicsAPIService {
     return this.http.get<Main>(this.endpoint + "/Topic/GetAll");
   }
 
-
+  getAllRepliesByTopicId(TopicId:number | undefined) : Observable<any>
+  {
+      return this.http.get<any>(this.endpoint + "/Topic/GetWithNav" + TopicId);
+  }
 }
