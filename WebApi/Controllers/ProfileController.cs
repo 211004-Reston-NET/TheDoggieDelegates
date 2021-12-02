@@ -67,7 +67,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(profileRepository.GetEmail(query));
+                return Ok(profileRepository.GetByEmail(query));
             }
             catch (Exception e)
             {

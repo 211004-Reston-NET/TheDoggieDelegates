@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Topic, Main } from '../AngularModels/topic';
@@ -15,9 +15,12 @@ export class TopicPageComponent implements OnInit {
     $id:"",
     $values: []
   };
-  show:boolean | null = true;
+
   listOfTopic:Topic[] = [];
-  
+
+  show:boolean | null = true;
+
+
   constructor(private topicApi:TopicsAPIService, private router:Router, public auth0:AuthService) { 
     
     this.topicApi.getAllTopic().subscribe((response) => {
@@ -25,8 +28,6 @@ export class TopicPageComponent implements OnInit {
         this.listOfTopic = this.mainObject.$values;
       
         this.listOfTopic.forEach((ele) => ele.show = false);
-        // console.log(this.mainObject.$values[0]);
-      // console.log(this.listOfTopic);
     });
 
   }

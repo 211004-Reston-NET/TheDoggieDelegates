@@ -23,13 +23,12 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
-import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
 import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
+import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
 
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({

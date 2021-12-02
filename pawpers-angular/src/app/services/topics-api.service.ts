@@ -28,6 +28,6 @@ export class TopicsAPIService {
 
   getAllRepliesByTopicId(TopicId:number | undefined) : Observable<any>
   {
-      return this.http.get<any>(this.endpoint + "/Topic/GetWithNav" + TopicId);
+      return this.http.get<any>(this.endpoint + "/Reply/Get/" + TopicId);
   }
 }

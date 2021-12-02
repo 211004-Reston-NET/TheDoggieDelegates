@@ -10,38 +10,21 @@ import { Reply, Main } from '../AngularModels/reply';
 })
 export class ReplyPageComponent implements OnInit, OnChanges {
 
-    @Input()
-    topicId:number | undefined = 0;
+  @Input()
+  topicId: number = 0;
 
-    @Input()
-    show:boolean | undefined = true;
+  @Input()
+  show: boolean = true;
 
-    mainObject:Main = {
-      $id:"",
-      $values: []
-
-    };
-    listOfReplies:Reply[] = [];
-  constructor(private topicApi:TopicsAPIService, private router:Router) {
-
-
-    //this.topicApi.getAllRepliesByTopicId(this.mainObject.$values).subscribe((response) => {
-    //        this.listOfReplies = this.mainObject.$values;
-    //        this.mainObject = response;
-    
-    //});
-
-   }
+  listOfReplies: Reply[] = [];
+  constructor(private topicApi: TopicsAPIService, private router: Router) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.topicApi.getAllRepliesByTopicId(this.topicId).subscribe((response) => {
-              this.listOfReplies = response.profile.replies.$values;
-              
-
-      });
-  }
-  
-   ngOnInit(): void {
+      this.listOfReplies = response.replies.$values
+    });
   }
 
+  ngOnInit(): void {
+  }
 }

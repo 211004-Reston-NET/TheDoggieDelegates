@@ -43,11 +43,25 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("SearchByProfile/{id}")]
-        public IActionResult SearchByProfileId(int id)
+        public IActionResult SearchByProfile(int id)
         {
             try
             {
                 return Ok(ReplyRepository.SearchByProfileId(id));
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return BadRequest("Not a valid ID");
+            }
+        }
+
+        [HttpGet("SearchByTopic/{id}")]
+        public IActionResult SearchByTopic(int id)
+        {
+            try
+            {
+                return Ok(ReplyRepository.SearchByTopicId(id));
             }
             catch (Exception e)
             {
