@@ -9,6 +9,9 @@ import { AuthButtonComponent } from './auth-button/auth-button.component';
 // HttpClient - external api
 import { HttpClientModule } from '@angular/common/http';
 
+// Forms
+import { FormsModule }   from '@angular/forms';
+
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -38,6 +41,7 @@ import { DogViewComponent } from './dog-view/dog-view.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
@@ -46,7 +50,7 @@ import { DogViewComponent } from './dog-view/dog-view.component';
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
-      { path: 'dogview-page', component: DogViewComponent},
+      { path: 'dogview-page/:id', component: DogViewComponent},
       { path: '**', component:FrontPageComponent},
     ]),
     AuthModule.forRoot({
