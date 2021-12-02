@@ -12,12 +12,22 @@ export class DogSearchService {
 
   constructor() { }
 
+  randomDogs() {
+    return client.animal.search({
+      type: "Dog",
+      page: 1,
+      limit: 100,
+    })
+  }
+
   dogSearch(zipCode: number) {
     return client.animal.search({
       type: "Dog",
       page: 1,
       limit: 100,
-      location: zipCode
+      location: zipCode,
+      distance: 100,
+      sort: "distance"
     })
   }
 

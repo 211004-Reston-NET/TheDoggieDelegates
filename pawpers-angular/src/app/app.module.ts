@@ -23,6 +23,7 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
+import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     ReplyPageComponent, 
     FavoritesPageComponent,
     DogSearchComponent, 
-    NavbarComponent,
+    NavbarComponent, ShelterSearchComponent,
   ],
   imports: [
     BrowserModule,
