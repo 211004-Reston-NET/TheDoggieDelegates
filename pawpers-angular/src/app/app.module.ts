@@ -19,6 +19,7 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DogViewComponent } from './dog-view/dog-view.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
+    DogViewComponent
     UserProfileComponent, 
     TopicPageComponent, 
     ReplyPageComponent, 

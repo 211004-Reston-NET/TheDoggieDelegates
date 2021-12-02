@@ -13,12 +13,15 @@ export class DogSearchService {
   constructor() { }
 
   dogSearch(zipCode: number) {
-
     return client.animal.search({
       type: "Dog",
       page: 1,
       limit: 100,
       location: zipCode
     })
+  }
+
+  viewDog(dogId: number) {
+    return client.animal.show(dogId)
   }
 }
