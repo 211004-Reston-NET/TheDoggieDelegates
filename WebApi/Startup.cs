@@ -15,6 +15,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using BusinessLogic;
 using System.Text.Json.Serialization;
+using Models;
 
 namespace WebApi
 {
@@ -39,6 +40,10 @@ namespace WebApi
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<IReplyRepository, ReplyRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped(typeof(IBaseBL<>), typeof(BaseBL<>));
+
 
             services.AddControllers()
                 .AddJsonOptions(o => o.JsonSerializerOptions
