@@ -23,6 +23,7 @@ import { ReplyPageComponent } from './reply-page/reply-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
+import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
@@ -42,7 +43,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReplyPageComponent, 
     FavoritesPageComponent,
     DogSearchComponent, 
-    NavbarComponent, AddtopicComponent,
+    NavbarComponent, 
+    AddProfileComponent,
+    AddtopicComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
-      { path: 'profile-page', component: ProfilePageComponent, canActivate:[AuthGuard]},
-      { path: 'favorites-page', component: FavoritesPageComponent, canActivate:[AuthGuard]},
+      { path: 'profile-page', component: ProfilePageComponent},
+      { path: 'add-profile', component: AddProfileComponent},
+      { path: 'favorites-page', component: FavoritesPageComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},

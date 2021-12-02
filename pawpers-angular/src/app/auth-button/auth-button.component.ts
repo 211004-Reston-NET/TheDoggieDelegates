@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth-button',
@@ -18,5 +19,21 @@ import { DOCUMENT } from '@angular/common';
   styles: [],
 })
 export class AuthButtonComponent {
-  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+  
+  static userEmail: string | undefined = "";
+  userInfo:any[] = [];
+
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {
+    
+    this.auth.user$.subscribe((response) => {
+      AuthButtonComponent.userEmail = response?.email;
+      
+      //console.log(AuthButtonComponent.userEmail)
+    })
+    // console.log(AuthButtonComponent.userEmail)
+  }
+
+  ngOnInit(): void {
+    
+  }
 }
