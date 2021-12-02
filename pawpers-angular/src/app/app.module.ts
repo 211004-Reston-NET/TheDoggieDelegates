@@ -21,6 +21,7 @@ import { DogSearchComponent } from './dog-search/dog-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,10 +30,17 @@ import { DogViewComponent } from './dog-view/dog-view.component';
     FrontPageComponent,
     ProfilePageComponent,
     AuthButtonComponent, 
-    UserProfileComponent, TopicPageComponent, ReplyPageComponent, FavoritesPageComponent, DogSearchComponent, NavbarComponent, DogViewComponent
+    DogViewComponent
+    UserProfileComponent, 
+    TopicPageComponent, 
+    ReplyPageComponent, 
+    FavoritesPageComponent,
+    DogSearchComponent, 
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},

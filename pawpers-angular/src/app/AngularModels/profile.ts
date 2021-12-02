@@ -1,5 +1,11 @@
+export interface Main {
+    $id:     string;
+    $values: Profile[];
+}
+
 export interface Profile {
-    id:                       number;
+    $id:                      string;
+    profileId:                number;
     profileName:              string;
     profileStreetaddress:     string;
     profileCity:              string;
@@ -27,4 +33,11 @@ export interface Profile {
     profileDogaggresive:      string;
     profileMedfordog:         string;
     profileNocaredog:         string;
+    profileDwelling:          null;
+    profileState:             null;
+    favorites:                Main;
+    replies:                  Main;
+    topics:                   Main;
 }
+
+
