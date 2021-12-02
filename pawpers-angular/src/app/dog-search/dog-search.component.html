@@ -5,11 +5,12 @@
 
 <table *ngIf="show" class="table table-responsive table-hover">
     <thead>
-        <th scope="col">photo</th>
-        <th scope="col">id</th>
-        <th scope="col">name</th>
-        <th scope="col">age</th>
-        <th scope="col">status</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Breed</th>
+        <th scope="col">Status</th>
+        <th scope="col">Location</th>
     </thead>
     <tbody>
         <tr *ngFor="let animal of searchResults.animals">
@@ -19,10 +20,11 @@
                     <img height="100px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
                 </ng-template>
             </td>
-            <td>{{animal.id}}</td>
             <td>{{animal.name}}</td>
             <td>{{animal.age}}</td>
+            <td>{{animal.breeds.primary}}</td>
             <td>{{animal.status}}</td>
+            <td>{{animal.contact.address.city}}, {{animal.contact.address.postcode}}</td>
 
             <button class="btn btn-primary" [routerLink]="['../dogview-page/' + animal.id]">View</button>
         </tr>

@@ -25,12 +25,23 @@ export class DogSearchComponent implements OnInit {
   dogShow: boolean = false;
 
   constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router:Router) {
-    geolocation$.pipe(take(1)).subscribe(
+    // geolocation$.pipe(take(1)).subscribe(
+    //   resp => {
+    //     this.geoLocation.latitude = resp.coords.latitude
+    //     this.geoLocation.longitude = resp.coords.longitude
+    //   }
+    // );
+
+    this.show = true
+    this.dogSearchService.randomDogs().then(
       resp => {
-        this.geoLocation.latitude = resp.coords.latitude
-        this.geoLocation.longitude = resp.coords.longitude
+        resp.data.animals.forEach((animal: Animal) => {
+          if (animal.photos[0] != null  && animal.status == "adoptable") {
+            this.searchResults.animals.push(animal)
+          }
+        });
       }
-    );
+    )
   }
 
   onClickSubmit(data: any) {
@@ -43,7 +54,9 @@ export class DogSearchComponent implements OnInit {
     this.dogSearchService.dogSearch(data.zipCode).then(
       resp => {
         resp.data.animals.forEach((animal: Animal) => {
-          this.searchResults.animals.push(animal)
+          if (animal.photos[0] != null  && animal.status == "adoptable") {
+            this.searchResults.animals.push(animal)
+          }
         });
       }
     )
