@@ -1,3 +1,7 @@
+import { Favorite } from "./favorite";
+import { Reply } from "./reply";
+import { Topic } from "./topic";
+
 export interface Main {
     $id:     string;
     $values: Profile[];
@@ -35,9 +39,9 @@ export interface Profile {
     profileNocaredog:         string;
     profileDwelling?:         null;
     profileState?:            null;
-    favorites?:               Main;
-    replies?:                 Main;
-    topics?:                  Main;
+    favorites?:               Favorite[];
+    replies?:                 Reply[];
+    topics?:                  Topic[];
 }
 
 
