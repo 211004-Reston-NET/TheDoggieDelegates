@@ -25,10 +25,12 @@ import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
 import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
+import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
+import { ShelterviewPageComponent } from './shelterview-page/shelterview-page.component';
+import { AddReplyComponent } from './add-reply/add-reply.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
-import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
-import { AddReplyComponent } from './add-reply/add-reply.component';
+
 
 
 
@@ -48,6 +50,7 @@ import { AddReplyComponent } from './add-reply/add-reply.component';
     NavbarComponent, 
     AddProfileComponent,
     AddtopicComponent,
+    ShelterviewPageComponent,
     AddReplyComponent,
   ],
   imports: [
@@ -67,6 +70,8 @@ import { AddReplyComponent } from './add-reply/add-reply.component';
       { path: 'addtopic', component: AddtopicComponent, canActivate:[AuthGuard]},
       { path: 'dogview-page/:id', component: DogViewComponent},
       { path: 'reply-page/:id', component: ReplyPageComponent},
+      { path: 'sheltersearch-page', component: ShelterSearchComponent},
+      { path: 'shelterview-page/:id', component: ShelterviewPageComponent},
       { path: 'add-reply', component:AddReplyComponent,canActivate:[AuthGuard]},
       { path: '**', component:FrontPageComponent},
     ]),

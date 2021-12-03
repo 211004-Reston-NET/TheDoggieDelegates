@@ -34,4 +34,24 @@ export class DogSearchService {
   viewDog(dogId: number) {
     return client.animal.show(dogId)
   }
+
+  shelterSearch(zipCode:number) {
+    return client.organization.search({
+      limit: 100,
+      location: zipCode,
+      distance: 100,
+      sort: "distance"
+    })
+  }
+
+  shelterSingle(shelterId: string) {
+    return client.organization.show(shelterId)
+  }
+
+  shelterView(shelterId: string) {
+    return client.animal.search({
+      organization: shelterId,
+      type: "Dog"
+    })
+  }
 }
