@@ -1,4 +1,3 @@
-<p>topic-page works!</p>
 <button class="btn btn-primary" (click)="addTopic()">Add Topic</button>
 <table class="table table hover">
 
@@ -10,11 +9,10 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let topic of listOfTopic">
+        <tr *ngFor="let topic of topics">
             <td>{{topic.topicName}}</td>
             <td>{{topic.topicBody}}</td>
-            <button class="btn btn-primary" (click)="showReplies(topic.topicId)">Replies</button>
-            <app-reply-page [show]="topic.show" [topicId]= "topic.topicId"></app-reply-page>
+            <button class="btn btn-primary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
         </tr>
     </tbody>
 </table>

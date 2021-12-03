@@ -31,6 +31,16 @@ namespace DataAccess
             return topic;
         }
 
+        public IEnumerable<Topic> GetAllWithNav()
+        {
+            var topics = repository.Topics
+                .Include(t => t.Category)
+                .Include(t => t.Profile)
+                .Include(t => t.Replies);
+                
+            return topics;
+        }
+
         /// <summary>
         /// Queries DB to find list of topics based on topic model's TopicBody field 
         /// retrieves search results of topics with matching TopicBody
@@ -48,9 +58,6 @@ namespace DataAccess
             {
                 return topics;
             }
-
-            
-                
         }
 
         /// <summary>

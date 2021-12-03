@@ -23,6 +23,11 @@ namespace BusinessLogic
             return topicRepository.GetByIdWithNav(query);
         }
 
+        public IEnumerable<Topic> GetAllWithNav()
+        {
+            return topicRepository.GetAllWithNav();
+        }
+
         public IEnumerable<Topic> ListByCategoryId(int query)
         {
             return topicRepository.ListByCategoryId(query);
