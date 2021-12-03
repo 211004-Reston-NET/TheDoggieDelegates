@@ -30,6 +30,12 @@ namespace WebApi.Controllers
             return Ok(topicRepository.GetAll());
         }
 
+        [HttpGet("GetAllWithNav")]
+        public IActionResult GetAllWithNav()
+        {
+            return Ok(topicRepository.GetAllWithNav());
+        }
+
         [HttpGet("Get/{id}")]
         public IActionResult GetByPrimaryKey(int id)
         {

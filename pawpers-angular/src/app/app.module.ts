@@ -64,6 +64,7 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
       { path: 'dogview-page', component: DogViewComponent},
       { path: 'addtopic', component: AddtopicComponent},
       { path: 'dogview-page/:id', component: DogViewComponent},
+      { path: 'reply-page/:id', component: ReplyPageComponent},
       { path: '**', component:FrontPageComponent},
     ]),
     AuthModule.forRoot({

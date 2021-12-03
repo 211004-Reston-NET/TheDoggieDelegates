@@ -1,28 +1,26 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TopicsAPIService } from '../services/topics-api.service';
 import { Reply, Main } from '../AngularModels/reply';
+import { Topic } from '../AngularModels/topic';
 
 @Component({
   selector: 'app-reply-page',
   templateUrl: './reply-page.component.html',
   styleUrls: ['./reply-page.component.css']
 })
-export class ReplyPageComponent implements OnInit, OnChanges {
+export class ReplyPageComponent implements OnInit {
 
-  @Input()
-  topicId: number = 0;
+  topic: Topic = {} as Topic
+  constructor(private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
+    let topicId = Number(this.route.snapshot.paramMap.get("id"))
+    this.getTopicWithReplies(topicId)
+  }
 
-  @Input()
-  show: boolean = true;
-
-  listOfReplies: Reply[] = [];
-  constructor(private topicApi: TopicsAPIService, private router: Router) { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.topicApi.getAllRepliesByTopicId(this.topicId).subscribe((response) => {
-      this.listOfReplies = response.replies.$values
-    });
+  getTopicWithReplies(topicId: number) {
+    this.topicApi.getAllRepliesByTopicId(topicId).subscribe(response => {
+      this.topic = response
+    })
   }
 
   ngOnInit(): void {
