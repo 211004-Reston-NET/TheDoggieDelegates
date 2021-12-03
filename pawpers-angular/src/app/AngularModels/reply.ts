@@ -1,16 +1,20 @@
+import { Profile } from "./profile";
+import { Topic } from "./topic";
+
 export interface Main {
     $id:     string;
     $values: Reply[];
 }
 
 export interface Reply {
+    element: any;
     $id:            string;
     replyId:        number;
     replyMessage:   string;
-    replyTimestamp: null;
+    replyTimestamp: Date;
     profileId:      number;
     topicId:        number;
-    profile:        null;
-    topic:          null;
+    profile:        Profile;
+    topic:          Topic;
     show?:          boolean;
 }

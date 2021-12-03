@@ -13,20 +13,21 @@ export class TopicsAPIService {
   constructor(private http:HttpClient) { }
 
   //This should list out all the Topics
-  getAllTopics()
-  {
+  getAllTopics() {
     //httpclient get() method will do a get request
-    return this.http.get<any>(this.endpoint + "/Topic/GetAllWithNav");
+    return this.http.get<any>(this.endpoint + "/Topic/GetAllWithNav")
   }
 
-  getTopicById(topicId: number)
-  {
+  getTopicById(topicId: number) {
       return this.http.get<any>(this.endpoint + "/Topic/GetWithNav/" + topicId);
   }
 
-  getRepliesByTopicId(topicId: number)
-  {
+  getRepliesByTopicId(topicId: number) {
     return this.http.get<any>(this.endpoint + "/Reply/SearchByTopic/" + topicId)
+  }
+
+  getProfileById(profileId: number) {
+    return this.http.get<any>(this.endpoint + "/Profile/Get/" + profileId )
   }
 
   // addTopic(topic:Topic)
