@@ -3,14 +3,14 @@
 <h1 > Add a Profile </h1>
 <br>
 
-<form *ngIf="auth.user$ | async as user">
+<form *ngIf="auth.user$ | async as user" class="indent" [formGroup] = "profileGroup" >
     <h2>Name</h2>
     <input type="text" formControlName = "profileName">
     <h2>Street address</h2>
     <input type="text" formControlName = "profileStreetaddress">
     <h2>City</h2>
     <input type="text" formControlName = "profileCity">
-    <h2>State</h2> <span>Might be problematic</span>
+    <h2>State</h2> 
     <select formControlName = "profileStateid">
         <option value="1">Alabama</option>
         <option value="2">Alaska</option>
@@ -74,22 +74,28 @@
     <h2>Personal phone</h2>
     <input type="text" formControlName = "profilePersonalphone">
     <h2>Email</h2>
-    <input type="text" formControlName = "profileEmail" value="{{user.email}}" readonly>
+    <input type="text" formControlName = "profileEmail"  placeholder="{{user.email}}" readonly>
     <h2>Occupation</h2>
     <input type="text" formControlName = "profileOccupation">
     <h2>Spouse name</h2>
     <input type="text" formControlName = "profileSpousename">
-    <h2>Do you have any Children? (1 = Yes, 2 = No)</h2>
-    <input type="number" formControlName = "profileChildren">
-    <h2>Dwelling:</h2> <span>Might be problematic</span>
+    <h2>Do you have any Children?</h2>
+    <input type="radio" id="Yes" formControlName = "profileChildren" value="1">
+    <label for="Yes">Yes</label><br>
+    <input type="radio" id="No" formControlName = "profileChildren" value="2">
+    <label for="No">No</label><br>
+    <h2>Dwelling:</h2>
     <select formControlName = "profileDwellingid">
         <option value="1">House</option>
         <option value="2">Apartment</option>
         <option value="3">Condo</option>
         <option value="4">Other</option>
     </select>
-    <h2>Do you have a yard? (1 = Yes, 2 = No)</h2>
-    <input type="number" formControlName = "profileHasyard">
+    <h2>Do you have a yard?</h2>
+    <input type="radio" id="Yes" formControlName = "profileHasyard" value="1">
+    <label for="Yes">Yes</label><br>
+    <input type="radio" id="No" formControlName = "profileHasyard" value="2">
+    <label for="No">No</label><br>
     <h2>Land lord name</h2>
     <input type="text" formControlName = "profileLandlordname">
     <h2>Land lord phone number</h2>
@@ -98,12 +104,15 @@
     <input type="text" formControlName = "profileOtherpetname">
     <h2>Other pet breed</h2>
     <input type="text" formControlName = "profileOtherpetbreed">
-    <h2>Other pet sex</h2>
+    <h2>Other pet sex (m or f)</h2>
     <input type="text" formControlName = "profileOtherpetsex">
     <h2>Other pet age</h2>
     <input type="number" formControlName = "profileOtherpetage">
-    <h2>Family allergies? (1 = Yes, 2 = No)</h2>
-    <input type="number" formControlName = "profileFamilyallergies">
+    <h2>Has anyone in your family experienced animal-related allergies?</h2>
+    <input type="radio" id="Yes" formControlName = "profileFamilyallergies" value="1">
+    <label for="Yes">Yes</label><br>
+    <input type="radio" id="No" formControlName = "profileFamilyallergies" value="2">
+    <label for="No">No</label><br>
     <h2>Who will be responsible for the dog?</h2>
     <input type="text" formControlName = "profileResponsiblefordog">
     <h2>Reason for adoption?</h2>
@@ -117,5 +126,6 @@
     <h2>What would you do if you could no longer care for the dog?</h2>
     <input type="text" formControlName = "profileNocaredog">
     <br>
-    <button class="btn btn-primary">Submit</button>
+    <br>
+    <button class="btn btn-primary" (click)="createProfile(profileGroup)">Submit</button>
 </form>
