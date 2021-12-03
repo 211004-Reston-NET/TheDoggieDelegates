@@ -7,14 +7,14 @@ export interface Main {
 }
 
 export interface Reply {
-    element: any;
-    $id:            string;
-    replyId:        number;
+    element?: any;
+    $id?:            string;
+    replyId?:        number;
     replyMessage:   string;
-    replyTimestamp: Date;
-    profileId:      number;
-    topicId:        number;
-    profile:        Profile;
-    topic:          Topic;
+    replyTimestamp?: Date;
+    profileId?:      number;
+    topicId?:        number;
+    profile?:        Profile;
+    topic?:          Topic;
     show?:          boolean;
 }

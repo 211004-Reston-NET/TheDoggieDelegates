@@ -4,7 +4,7 @@ import { GeolocationService } from '@ng-web-apis/geolocation';
 import { Client } from '@petfinder/petfinder-js';
 import { DogSearchService } from '../services/dog-search.service';
 
-const client = new Client({apiKey: "JfKma1OQsJw2IJLGLGSCOBh7thEcY0et3ajRAWxthCL2qWqCqd", secret: "tOkMyd3qr3Ui7V4c2HWMBZN6cDQPtLaD7prWHKSM"})
+const client = new Client({ apiKey: "JfKma1OQsJw2IJLGLGSCOBh7thEcY0et3ajRAWxthCL2qWqCqd", secret: "tOkMyd3qr3Ui7V4c2HWMBZN6cDQPtLaD7prWHKSM" })
 
 
 @Component({
@@ -14,18 +14,26 @@ const client = new Client({apiKey: "JfKma1OQsJw2IJLGLGSCOBh7thEcY0et3ajRAWxthCL2
 })
 export class ShelterSearchComponent implements OnInit {
 
-  constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router:Router) { }
+  searchResults: any = []
+  show: boolean = false;
 
-  shelterSearch(zipCode: number) {
-    return client.organization.search({
-      limit: 100,
-      location: zipCode,
-      distance: 100,
-      sort: "distance"
-    })
+  constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router: Router) { }
+
+  onClickSubmit(data: any) {
+    if (this.show) {
+      this.searchResults = []
+    }
+
+    this.dogSearchService.shelterSearch(data.zipCode).then(
+      resp => {
+        resp.data.organizations.forEach((element: any) => {
+          this.searchResults.push(element)
+        });
+      })
+
+    this.show = true
   }
 
-  ngOnInit(): void {
-  }
-
+ngOnInit(): void {
+}
 }

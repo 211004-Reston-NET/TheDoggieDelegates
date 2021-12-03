@@ -25,9 +25,12 @@ import { DogSearchComponent } from './dog-search/dog-search.component';
 import { DogViewComponent } from './dog-view/dog-view.component';
 import { AddProfileComponent } from './add-profile/add-profile.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
+import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
+import { ShelterviewPageComponent } from './shelterview-page/shelterview-page.component';
+import { AddReplyComponent } from './add-reply/add-reply.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
-import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
+
 
 
 
@@ -47,6 +50,8 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
     NavbarComponent, 
     AddProfileComponent,
     AddtopicComponent,
+    ShelterviewPageComponent,
+    AddReplyComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: FrontPageComponent},
-      { path: 'profile-page', component: ProfilePageComponent},
+      { path: 'profile-page', component: ProfilePageComponent, canActivate:[AuthGuard]},
       { path: 'add-profile', component: AddProfileComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
@@ -64,7 +69,10 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
       { path: 'addtopic', component: AddtopicComponent},
       { path: 'dogview-page/:id', component: DogViewComponent},
       { path: 'reply-page/:id', component: ReplyPageComponent},
-      { path: 'favorites-page/:id', component: FavoritesPageComponent},
+      { path: 'favorites-page/:id', component: FavoritesPageComponent, canActivate:[AuthGuard]},
+      { path: 'sheltersearch-page', component: ShelterSearchComponent},
+      { path: 'shelterview-page/:id', component: ShelterviewPageComponent},
+      { path: 'add-reply', component:AddReplyComponent,canActivate:[AuthGuard]},
       { path: '**', component:FrontPageComponent},
     ]),
     AuthModule.forRoot({

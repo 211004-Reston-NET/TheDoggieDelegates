@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Reply } from '../AngularModels/reply';
+import { Topic } from '../AngularModels/topic';
 
 
 @Injectable({
@@ -30,8 +32,15 @@ export class TopicsAPIService {
     return this.http.get<any>(this.endpoint + "/Profile/Get/" + profileId )
   }
 
-  // addTopic(topic:Topic)
-  // {
-  //   return this.http.post(this.endpoint + "/Topic/Create", topic);
-  // }
+  addTopic(topic:any)
+  {
+    return this.http.post(this.endpoint + "/Topic/Create", topic);
+  }
+
+
+  createReply(reply:Reply)
+  {
+    return this.http.post<Topic>(this.endpoint + "/Reply/Create", reply);
+  }
+
 }

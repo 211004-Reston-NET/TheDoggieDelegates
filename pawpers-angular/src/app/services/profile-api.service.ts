@@ -15,7 +15,7 @@ export class ProfileApiService {
 
   createProfile(profile:Profile)
   {
-    return this.http.post<Main['$values']>(this.endpoint + "/Profile/Add", profile);
+    return this.http.post<Main['$values']>(this.endpoint + "/Profile/Create", profile);
   }
 
   viewProfileFavoritesByProfileId(profileId: number)
