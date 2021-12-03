@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Main } from '../AngularModels/reply';
 import { TopicsAPIService } from '../services/topics-api.service';
-import { Reply, Main } from '../AngularModels/reply';
-import { Topic } from '../AngularModels/topic';
+import { Topic } from '../topic-page/topic';
 
 @Component({
   selector: 'app-reply-page',
@@ -12,17 +12,30 @@ import { Topic } from '../AngularModels/topic';
 export class ReplyPageComponent implements OnInit {
 
   topic: Topic = {} as Topic
+  replies: Main = {
+    $id: "",
+    $values: []
+  }
+
   constructor(private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
     let topicId = Number(this.route.snapshot.paramMap.get("id"))
     this.getTopicWithReplies(topicId)
+    this.getRepliesByTopicId(topicId)
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   getTopicWithReplies(topicId: number) {
-    this.topicApi.getAllRepliesByTopicId(topicId).subscribe(response => {
+    this.topicApi.getTopicById(topicId).subscribe(response => {
       this.topic = response
     })
   }
 
-  ngOnInit(): void {
+  getRepliesByTopicId(topicId:number) {
+    this.topicApi.getRepliesByTopicId(topicId).subscribe(response => {
+      this.replies = response
+    })
   }
 }
+

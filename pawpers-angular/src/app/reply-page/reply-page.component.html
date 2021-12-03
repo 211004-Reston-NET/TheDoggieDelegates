@@ -1,12 +1,14 @@
-
-
-<div *ngIf="topic">
+<div>
+    <div class="card">
     <h2>{{topic.topicName}}</h2>
-    <div>{{topic.topicBody}}</div>
-    <div *ngFor="let reply of topic.replies.$values">
+    <p>{{topic.profile.profileName}}</p>
+    <p>{{topic.postTimestamp}}</p>
+    <p>{{topic.topicBody}}</p>
+    </div>
+    <div class="card" *ngFor="let reply of replies.$values">
         <div>
-            <h3>{{reply.$ref}}</h3>
+            <p>{{reply.replyMessage}}</p>
+            <p>{{reply.replyTimestamp}}</p>
         </div>
     </div>
 </div>
-

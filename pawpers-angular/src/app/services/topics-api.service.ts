@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Topic } from '../AngularModels/topic';
 
 
 @Injectable({
@@ -14,20 +13,24 @@ export class TopicsAPIService {
   constructor(private http:HttpClient) { }
 
   //This should list out all the Topics
-  getAllTopic()
+  getAllTopics()
   {
     //httpclient get() method will do a get request
-    return this.http.get<Topic>(this.endpoint + "/Topic/GetAllWithNav");
+    return this.http.get<any>(this.endpoint + "/Topic/GetAllWithNav");
   }
 
-  addTopic(topic:Topic)
+  getTopicById(topicId: number)
   {
-    return this.http.post(this.endpoint + "/Topic/Create", topic);
+      return this.http.get<any>(this.endpoint + "/Topic/GetWithNav/" + topicId);
   }
 
-
-  getAllRepliesByTopicId(TopicId: number)
+  getRepliesByTopicId(topicId: number)
   {
-      return this.http.get<any>(this.endpoint + "/Topic/GetWithNav/" + TopicId);
+    return this.http.get<any>(this.endpoint + "/Reply/SearchByTopic/" + topicId)
   }
+
+  // addTopic(topic:Topic)
+  // {
+  //   return this.http.post(this.endpoint + "/Topic/Create", topic);
+  // }
 }
