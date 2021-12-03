@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileApiService } from '../services/profile-api.service';
-import {Profile} from '../AngularModels/profile';
-import {Main, Favorite} from '../AngularModels/favorite';
+import { Profile } from '../AngularModels/profile';
+import { Main, Favorite } from '../AngularModels/favorite';
+import { DogSearchService } from '../services/dog-search.service';
+import { Animal } from '../dog-search/dog-search-model';
 
 @Component({
   selector: 'app-favorites-page',
@@ -11,22 +13,29 @@ import {Main, Favorite} from '../AngularModels/favorite';
 })
 export class FavoritesPageComponent implements OnInit {
 
-    profile: any = [];
-  constructor(private profileApi: ProfileApiService, private router:Router, private route: ActivatedRoute) { 
+  favorites: any= []
+  dog: any = {}
+
+  constructor(private dogSearchService: DogSearchService, private profileApi: ProfileApiService, private router: Router, private route: ActivatedRoute) {
     let profileId = Number(this.route.snapshot.paramMap.get("id"))
-    this.getProfileWithFavorites(profileId)
+    this.getProfileWithFavorites(profileId) 
   }
 
   ngOnInit(): void {
+    console.log(this.favorites)
   }
 
-  getProfileWithFavorites(profileId: number)
-  {
+  getProfileWithFavorites(profileId: number) {
     this.profileApi.viewProfileFavoritesByProfileId(profileId).subscribe(response => {
-      this.profile = response
+      response.$values.forEach((element: any) => {
+        this.getDogById(element.dogId)
+      })
+  })
+}
 
-
+  getDogById(dogId: number) {
+    this.dogSearchService.viewDog(dogId).then(doggo => {
+      this.favorites.push(doggo.data.animal)
     })
   }
-
 }

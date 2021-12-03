@@ -57,7 +57,6 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
       { path: '', component: FrontPageComponent},
       { path: 'profile-page', component: ProfilePageComponent},
       { path: 'add-profile', component: AddProfileComponent},
-      { path: 'favorites-page', component: FavoritesPageComponent},
       { path: 'topic-page', component: TopicPageComponent},
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},

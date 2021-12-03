@@ -20,9 +20,7 @@ export class ProfileApiService {
 
   viewProfileFavoritesByProfileId(profileId: number)
   {
-    return this.http.post<Main['$values']>(this.endpoint + "/Favorite/SearchByProfile", profileId)
+    return this.http.get<any>(this.endpoint + "/Favorite/SearchByProfile/" + profileId)
   }
   //Create view favorites method
-
-
 }
