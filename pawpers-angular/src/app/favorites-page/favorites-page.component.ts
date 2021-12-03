@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProfileApiService } from '../services/profile-api.service';
+import { Profile } from '../AngularModels/profile';
+import { Main, Favorite } from '../AngularModels/favorite';
+import { DogSearchService } from '../services/dog-search.service';
+import { Animal } from '../dog-search/dog-search-model';
 
 @Component({
   selector: 'app-favorites-page',
@@ -8,9 +13,29 @@ import { Router } from '@angular/router';
 })
 export class FavoritesPageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  favorites: any= []
+  dog: any = {}
 
-  ngOnInit(): void {
+  constructor(private dogSearchService: DogSearchService, private profileApi: ProfileApiService, private router: Router, private route: ActivatedRoute) {
+    let profileId = Number(this.route.snapshot.paramMap.get("id"))
+    this.getProfileWithFavorites(profileId) 
   }
 
+  ngOnInit(): void {
+    console.log(this.favorites)
+  }
+
+  getProfileWithFavorites(profileId: number) {
+    this.profileApi.viewProfileFavoritesByProfileId(profileId).subscribe(response => {
+      response.$values.forEach((element: any) => {
+        this.getDogById(element.dogId)
+      })
+  })
+}
+
+  getDogById(dogId: number) {
+    this.dogSearchService.viewDog(dogId).then(doggo => {
+      this.favorites.push(doggo.data.animal)
+    })
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile, Main } from '../AngularModels/profile';
+import { Main } from '../AngularModels/profile';
+import { AuthService } from '@auth0/auth0-angular';
 import { ProfileApiService } from '../services/profile-api.service';
 
 @Component({
@@ -10,14 +11,11 @@ import { ProfileApiService } from '../services/profile-api.service';
 })
 export class ProfilePageComponent implements OnInit {
 
-  mainObject:Main = {
-    $id:"",
-    $values: []
-  };
-  listOfProfile:any[] = [];
+  profile:any = {};
+  //listOfProfile:any[] = [];
+  //listOfFavorite:any[] =[];
 
-  constructor(private profileApi:ProfileApiService ,private router:Router) { 
-    
+  constructor(private profileApi:ProfileApiService ,private router:Router, public auth0:AuthService) {     
   }
 
   ngOnInit(): void {
