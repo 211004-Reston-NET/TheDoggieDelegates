@@ -64,7 +64,7 @@ import { AddReplyComponent } from './add-reply/add-reply.component';
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
       { path: 'dogview-page', component: DogViewComponent},
-      { path: 'addtopic', component: AddtopicComponent },
+      { path: 'addtopic', component: AddtopicComponent, canActivate:[AuthGuard]},
       { path: 'dogview-page/:id', component: DogViewComponent},
       { path: 'reply-page/:id', component: ReplyPageComponent},
       { path: 'add-reply', component:AddReplyComponent,canActivate:[AuthGuard]},
