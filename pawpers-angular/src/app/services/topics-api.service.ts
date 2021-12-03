@@ -30,8 +30,8 @@ export class TopicsAPIService {
     return this.http.get<any>(this.endpoint + "/Profile/Get/" + profileId )
   }
 
-  // addTopic(topic:Topic)
-  // {
-  //   return this.http.post(this.endpoint + "/Topic/Create", topic);
-  // }
+  addTopic(topic:any)
+  {
+    return this.http.post(this.endpoint + "/Topic/Create", topic);
+  }
 }

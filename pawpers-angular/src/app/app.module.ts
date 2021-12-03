@@ -67,7 +67,7 @@ import {ReactiveFormsModule } from '@angular/forms';
       { path: 'reply-page', component: ReplyPageComponent},
       { path: 'dogsearch-page', component: DogSearchComponent},
       { path: 'dogview-page', component: DogViewComponent},
-      { path: 'addtopic', component: AddtopicComponent, canActivate:[AuthGuard]},
+      { path: 'addtopic', component: AddtopicComponent},
       { path: 'dogview-page/:id', component: DogViewComponent},
       { path: 'reply-page/:id', component: ReplyPageComponent},
       { path: 'sheltersearch-page', component: ShelterSearchComponent},
