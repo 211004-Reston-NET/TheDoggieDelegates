@@ -5,8 +5,8 @@
     <p>{{topic.postTimestamp}}</p>
     <p>{{topic.topicBody}}</p>
     </div>
-    <div *ngFor="let reply of topic.replies.$values">
-        <p>{{reply.profile.profileName}} | {{reply.postTimestamp}}</p>
+    <div class="card" *ngFor="let reply of topic.replies.$values">
+        <p>{{reply.profile.profileName}} | {{reply.replyTimestamp}}</p>
         <p>{{reply.replyMessage}}</p>
     </div>
 </div>
