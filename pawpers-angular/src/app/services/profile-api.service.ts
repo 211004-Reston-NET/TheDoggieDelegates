@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile, Main } from '../AngularModels/profile';
+import { Favorite, } from '../AngularModels/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +17,12 @@ export class ProfileApiService {
   {
     return this.http.post<Main['$values']>(this.endpoint + "/Profile/Add", profile);
   }
+
+  viewProfileFavoritesByProfileId(profileId: number)
+  {
+    return this.http.post<Main['$values']>(this.endpoint + "/Favorite/SearchByProfile", profileId)
+  }
+  //Create view favorites method
+
+
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
+import { ProfileApiService } from '../services/profile-api.service';
+import {Profile} from '../AngularModels/profile';
+import {Main, Favorite} from '../AngularModels/favorite';
 
 @Component({
   selector: 'app-favorites-page',
@@ -8,9 +11,22 @@ import { Router } from '@angular/router';
 })
 export class FavoritesPageComponent implements OnInit {
 
-  constructor(private router:Router) { }
+    profile: any = [];
+  constructor(private profileApi: ProfileApiService, private router:Router, private route: ActivatedRoute) { 
+    let profileId = Number(this.route.snapshot.paramMap.get("id"))
+    this.getProfileWithFavorites(profileId)
+  }
 
   ngOnInit(): void {
+  }
+
+  getProfileWithFavorites(profileId: number)
+  {
+    this.profileApi.viewProfileFavoritesByProfileId(profileId).subscribe(response => {
+      this.profile = response
+
+
+    })
   }
 
 }

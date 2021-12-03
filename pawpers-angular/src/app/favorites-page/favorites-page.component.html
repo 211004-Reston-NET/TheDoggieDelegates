@@ -1,1 +1,11 @@
-<p>favorites-page works!</p>
+<div>
+    <div class="card" *ngFor="let favorite of profile.favorites">
+    <h2>{{profile.profileName}}</h2>
+    <p>{{favorite.dogId}}</p>
+    <p>{{favorite.isAvailable}}</p>
+    </div>
+    <!-- <div class="card" *ngFor="let reply of topic.replies.$values">
+        <p>{{reply.profile.profileName}} | {{reply.replyTimestamp}}</p>
+        <p>{{reply.replyMessage}}</p>
+    </div> -->
+</div>
