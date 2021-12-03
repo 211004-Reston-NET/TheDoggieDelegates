@@ -15,7 +15,7 @@ export interface Topic {
   profileId: number
   postTimestamp: any
   categoryId: number
-  //category: Category
-  //profile: Profile
+  category: Category
+  profile: Profile
   replies: Reply[]
 }

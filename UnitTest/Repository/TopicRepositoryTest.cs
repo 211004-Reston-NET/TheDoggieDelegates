@@ -18,17 +18,17 @@ namespace UnitTest
             Seed();
         }
 
-        [Fact]
-        public void GetByIdWithNavShouldPopulateNavProps()
-        {
-            using (var context = new PawpersDbContext(_options))
-            {
-                ITopicRepository repository = new TopicRepository(context);
-                var topic = repository.GetByIdWithNav(1);
+        // [Fact]
+        // public void GetByIdWithNavShouldPopulateNavProps()
+        // {
+        //     using (var context = new PawpersDbContext(_options))
+        //     {
+        //         ITopicRepository repository = new TopicRepository(context);
+        //         var topic = repository.GetByIdWithNav(1);
 
-                Assert.NotNull(topic.Profile);
-            }
-        }
+        //         Assert.NotNull(topic.Profile);
+        //     }
+        // }
 
         [Fact]
         public void SearchByBodyShouldReturnResults()
