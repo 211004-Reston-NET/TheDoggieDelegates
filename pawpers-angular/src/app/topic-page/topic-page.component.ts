@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Main } from '../AngularModels/topic';
 import { TopicsAPIService } from '../services/topics-api.service';
-import { Topic } from './topic';
 
 @Component({
   selector: 'app-topic-page',

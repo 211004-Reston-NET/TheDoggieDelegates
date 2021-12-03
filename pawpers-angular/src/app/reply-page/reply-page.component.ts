@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Main } from '../AngularModels/reply';
+import { Topic } from '../AngularModels/topic';
 import { TopicsAPIService } from '../services/topics-api.service';
-import { Topic } from '../topic-page/topic';
 
 @Component({
   selector: 'app-reply-page',

@@ -1,4 +1,7 @@
-import { Category, Profile, Reply } from "../topic-page/topic";
+import { Category } from "./Category";
+import { Profile } from "./profile";
+import { Reply } from "./reply";
+
 
 export interface Main {
   $id:     string;
@@ -12,7 +15,7 @@ export interface Topic {
   profileId: number
   postTimestamp: any
   categoryId: number
-  category: Category
-  profile: Profile
+  //category: Category
+  //profile: Profile
   replies: Reply[]
 }

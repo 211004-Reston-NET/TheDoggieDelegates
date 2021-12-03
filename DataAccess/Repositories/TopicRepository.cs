@@ -23,8 +23,6 @@ namespace DataAccess
         public Topic GetByIdWithNav(int query)
         {
             var topic = repository.Topics
-                .Include(t => t.Category)
-                .Include(t => t.Profile)
                 .Include(t => t.Replies)
                 .Single(t => t.TopicId.Equals(query));
 
@@ -34,10 +32,8 @@ namespace DataAccess
         public IEnumerable<Topic> GetAllWithNav()
         {
             var topics = repository.Topics
-                .Include(t => t.Category)
-                .Include(t => t.Profile)
                 .Include(t => t.Replies);
-                
+
             return topics;
         }
 
@@ -50,7 +46,7 @@ namespace DataAccess
         public IEnumerable<Topic> SearchByBody(string query)
         {
             var topics = GetAll().Where(b => b.TopicBody.Contains(query));
-            if(!topics.Any())
+            if (!topics.Any())
             {
                 throw new KeyNotFoundException("Topic not found.");
             }
@@ -69,7 +65,7 @@ namespace DataAccess
         public IEnumerable<Topic> ListByCategoryId(int query)
         {
             var topics = GetAll().Where(b => b.CategoryId.Equals(query));
-            if(!topics.Any())
+            if (!topics.Any())
             {
                 throw new KeyNotFoundException("Topic not found.");
             }
@@ -88,7 +84,7 @@ namespace DataAccess
         public IEnumerable<Topic> SearchByName(string query)
         {
             var topics = GetAll().Where(b => b.TopicName.Equals(query));
-            if(!topics.Any())
+            if (!topics.Any())
             {
                 throw new KeyNotFoundException("Topic not found.");
             }
@@ -107,7 +103,7 @@ namespace DataAccess
         public IEnumerable<Topic> SearchByProfileId(int query)
         {
             var topics = GetAll().Where(b => b.ProfileId.Equals(query));
-            if(!topics.Any())
+            if (!topics.Any())
             {
                 throw new KeyNotFoundException("Topic not found.");
             }
