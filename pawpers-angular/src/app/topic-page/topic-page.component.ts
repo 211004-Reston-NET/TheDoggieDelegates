@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Topic } from '../AngularModels/topic';
+import { Main } from '../AngularModels/topic';
 import { TopicsAPIService } from '../services/topics-api.service';
+import { Topic } from './topic';
 
 @Component({
   selector: 'app-topic-page',
@@ -11,17 +12,17 @@ import { TopicsAPIService } from '../services/topics-api.service';
 })
 export class TopicPageComponent implements OnInit {
   
-  topics: Topic[] = []
-
-  show:boolean | null = true;
-
+  topics: Main = {
+    $id: "",
+    $values: []
+  }
 
   constructor(private topicApi:TopicsAPIService, private router:Router, public auth0:AuthService) { 
-    
-    this.topicApi.getAllTopic().subscribe(
+    this.topicApi.getAllTopics().subscribe(
       response => {
-        this.topics.push(response)
-      })
+        this.topics = response
+      }
+    )
   }
   
   ngOnInit(): void {

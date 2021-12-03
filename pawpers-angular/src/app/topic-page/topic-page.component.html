@@ -4,15 +4,12 @@
     
     <thead>
         <th>Topic</th>
-        <th>Content</th>
-        <th>Replies</th>
     </thead>
 
-    <tbody>
-        <tr *ngFor="let topic of topics">
-            <td>{{topic.topicName}}</td>
-            <td>{{topic.topicBody}}</td>
+    <tbody *ngFor="let topic of topics.$values">
+        <tr>
+            <td>{{topic.topicName}} | {{topic.profile.profileName}} | {{topic.postTimestamp}}</td>
             <button class="btn btn-primary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
-        </tr>
+            </tr>
     </tbody>
 </table>
