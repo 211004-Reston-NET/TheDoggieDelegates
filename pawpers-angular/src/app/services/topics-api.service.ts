@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Reply } from '../AngularModels/reply';
+import { Topic } from '../AngularModels/topic';
 
 
 @Injectable({
@@ -34,4 +36,11 @@ export class TopicsAPIService {
   {
     return this.http.post(this.endpoint + "/Topic/Create", topic);
   }
+
+
+  createReply(reply:Reply)
+  {
+    return this.http.post<Topic>(this.endpoint + "/Reply/Create", reply);
+  }
+
 }

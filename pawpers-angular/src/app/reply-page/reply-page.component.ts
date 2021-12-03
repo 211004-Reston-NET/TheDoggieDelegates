@@ -37,4 +37,10 @@ export class ReplyPageComponent implements OnInit {
       });
     })
   }
+
+  redirectToAddReply()
+  {
+    this.router.navigateByUrl('add-reply');
+  }
+  
 }

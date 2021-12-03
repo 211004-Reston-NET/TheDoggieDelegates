@@ -97,7 +97,7 @@ namespace Models
         [RegularExpression(@"^[a-zA-Z -]+$", ErrorMessage = "Invalid name")]
         public string ProfileOtherpetbreed { get; set; }
 
-        [Display(Name = "Age of Pet")]
+        [Display(Name = "Gender of Pet")]
         //1 for male 2 for female when asked on the form for the sex of the pet
         [RegularExpression(@"^[mf]+$", ErrorMessage = "m or f")]
         public string ProfileOtherpetsex { get; set; }
