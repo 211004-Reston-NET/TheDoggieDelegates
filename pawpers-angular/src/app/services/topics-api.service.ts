@@ -32,6 +32,10 @@ export class TopicsAPIService {
     return this.http.get<any>(this.endpoint + "/Profile/Get/" + profileId )
   }
 
+  getProfileByEmail(email: string) {
+    return this.http.get<any>(this.endpoint + "/Profile/GetEmail/" + email)
+  }
+
   addTopic(topic:any)
   {
     return this.http.post(this.endpoint + "/Topic/Create", topic);

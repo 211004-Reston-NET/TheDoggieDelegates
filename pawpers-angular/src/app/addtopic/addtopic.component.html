@@ -1,17 +1,21 @@
 <h1> Add a topic</h1>
 
 <form [formGroup] = topicGroup>
-    <h2>Category</h2>
-    <select formControlName ="categoryId">
+    <label for="category">Category</label>
+    <select name="category" formControlName ="categoryId">
         <option value="1">General</option>
     </select>
+    <br/>
 
-
-    <h2>Topic Name </h2>
-    <input type="text" fromControlName="topicName">
+    <label for="topicName">Topic Name</label>
+    <input name="topicName" formControlName = "topicName">
     <br>
-    <h2>Topic Body</h2>
-    <input type="text" formControlName="topicBody">
+    <label for="topicBody">Topic Message</label>
+    <textarea name="topicBody" formControlName = "topicBody"
+              style="overflow:auto;resize:none" 
+              rows="13" cols="200"
+              placeholder="Enter text here...">
+    </textarea>
     <br>
-    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" (click)="addTopic(topicGroup)">Submit</button>
 </form>

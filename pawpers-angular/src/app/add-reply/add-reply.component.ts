@@ -11,12 +11,12 @@ import { TopicsAPIService } from '../services/topics-api.service';
 })
 export class AddReplyComponent implements OnInit {
 
-  topicID: any =  6;
+  topicID: any =  0;
   profileID: any = 4;
 
   constructor(private replyService:TopicsAPIService, private router:Router, private route:ActivatedRoute) {
     //I need to writ a function to change profileID to the correct value
-    //this.topicID = Number(this.route.snapshot.paramMap.get("id"))
+    this.topicID = Number(this.route.snapshot.paramMap.get("id"))
    }
 
   replyGroup:FormGroup = new FormGroup ({
@@ -40,7 +40,8 @@ export class AddReplyComponent implements OnInit {
 
       this.replyService.createReply(reply).subscribe(
         (response) => {
-          this.router.navigateByUrl('/topic-page')
+            window.location.reload();
+           
         }
       )
 

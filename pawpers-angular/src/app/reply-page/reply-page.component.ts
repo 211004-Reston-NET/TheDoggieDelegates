@@ -15,6 +15,8 @@ export class ReplyPageComponent implements OnInit {
 
   topic: any = {}
 
+  show: boolean = false
+
   constructor(private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
     let topicId = Number(this.route.snapshot.paramMap.get("id"))
     this.getTopicWithReplies(topicId)
@@ -36,6 +38,10 @@ export class ReplyPageComponent implements OnInit {
         })
       });
     })
+  }
+
+  showOnClick() {
+    this.show = !this.show
   }
 
   redirectToAddReply()

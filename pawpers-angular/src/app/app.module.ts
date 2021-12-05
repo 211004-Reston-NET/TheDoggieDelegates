@@ -74,7 +74,8 @@ import {ReactiveFormsModule } from '@angular/forms';
       { path: 'shelterview-page/:id', component: ShelterviewPageComponent},
       { path: 'add-reply', component:AddReplyComponent,canActivate:[AuthGuard]},
       { path: '**', component:FrontPageComponent},
-    ]),
+    ],
+    { onSameUrlNavigation: 'reload' }),
     AuthModule.forRoot({
       domain: 'dev-tc6s9x9t.us.auth0.com',
       clientId: 'xRoxK7dHIK8DecyAzJsMlTfUEcLH9mdC'
