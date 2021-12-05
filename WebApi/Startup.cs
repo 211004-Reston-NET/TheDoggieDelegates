@@ -58,7 +58,7 @@ namespace WebApi
             services.AddCors(
                 (builder) => {
                     builder.AddDefaultPolicy((policy) => {
-                        policy.WithOrigins("http://localhost:4200")
+                        policy.WithOrigins("http://pawpers-angular.azurewebsites.net", "https://pawpers-angular.azurewebsites.net")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });
