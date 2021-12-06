@@ -31,6 +31,7 @@ import { AddReplyComponent } from './add-reply/add-reply.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
 import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -54,6 +55,7 @@ import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-but
     ShelterviewPageComponent,
     AddReplyComponent,
     AddfavoriteButtonComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-but
       { path: 'sheltersearch-page', component: ShelterSearchComponent},
       { path: 'shelterview-page/:id', component: ShelterviewPageComponent},
       { path: 'add-reply', component:AddReplyComponent,canActivate:[AuthGuard]},
-      { path: '**', component:FrontPageComponent},
+      { path: '**', component:PageNotFoundComponent},
     ],
     { onSameUrlNavigation: 'reload' }),
     AuthModule.forRoot({
