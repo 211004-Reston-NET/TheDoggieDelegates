@@ -4,7 +4,6 @@ import { ProfileApiService } from '../services/profile-api.service';
 import { Profile } from '../AngularModels/profile';
 import { Main, Favorite } from '../AngularModels/favorite';
 import { DogSearchService } from '../services/dog-search.service';
-import { Animal } from '../dog-search/dog-search-model';
 
 @Component({
   selector: 'app-favorites-page',
@@ -29,7 +28,11 @@ export class FavoritesPageComponent implements OnInit {
   getProfileWithFavorites(profileId: number) {
     this.profileApi.viewProfileFavoritesByProfileId(profileId).subscribe(response => {
       response.$values.forEach((element: any) => {
-        this.getDogById(element.dogId)
+        if (response.status == 404) {
+          return
+        } else {
+          this.getDogById(element.dogId)
+        }
       })
   })
 }

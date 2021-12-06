@@ -32,8 +32,10 @@ export class ProfileApiService {
   }
 
   addDogToFavorite(favorite: Favorite) {
-    console.log("called")
-    console.log(favorite)
     return this.http.post<any>(this.endpoint + "/Favorite/Create", favorite)
+  }
+
+  removeFavorite(favoriteId: number) {
+    return this.http.delete<any>(this.endpoint + "/Favorite/Delete/" + favoriteId)
   }
 }

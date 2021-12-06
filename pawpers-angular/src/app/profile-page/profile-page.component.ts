@@ -77,8 +77,10 @@ export class ProfilePageComponent implements OnInit {
   }
 
   getRecommended(zipCode: number) {
+    let count = 0
     this.dogSearchService.dogSearch(zipCode).then(response => {
       response.data.animals.forEach((element: any) => {
+        if (count < 5) {
         if (this.profile.profileChildren == 1 && element.environment.children == true) {
           this.recommended.push(element)
         }
@@ -86,6 +88,13 @@ export class ProfilePageComponent implements OnInit {
         if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
           this.recommended.push(element)
         }
+
+        if (this.profile.profileChildren == 2 && this.profile.profileOtherpetname == null) {
+          this.recommended.push(element)
+        }
+      }
+
+      count ++
       })
     })
 
