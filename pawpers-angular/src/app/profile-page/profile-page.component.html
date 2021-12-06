@@ -14,7 +14,7 @@
     <dt>Name</dt>
     <dd>{{profile.profileName}}</dd>
     <dt>Address</dt>
-    <dd>{{profile.profileStreetaddress}}<br/> {{profile.profileCity}}, {{state}} {{profile.profileZipcode}}
+    <dd>{{profile.profileStreetaddress}}<br /> {{profile.profileCity}}, {{state}} {{profile.profileZipcode}}
     </dd>
     <dt>Age</dt>
     <dd>{{profile.profileAge}}</dd>
@@ -58,4 +58,17 @@
     <dd>{{profile.profileMedfordog}}</dd>
     <dt>What will you do if you are unable to care for the dog?</dt>
     <dd>{{profile.profileNocaredog}}</dd>
+</div>
+
+<div *ngFor="let rec of recommended">
+    <div class="card card-responsive">
+        <h4>
+            {{rec.name}}
+            <button class="btn btn-primary" [routerLink]="['../dogview-page/' + rec.id]">View</button>
+        </h4>
+        <img *ngIf="rec.photos[0]; else altImg" height="150px" width="150px" src={{rec.photos[0].small}} alt="doggo photo">
+        <ng-template #altImg>
+            <img height="100px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
+        </ng-template>
+    </div>
 </div>
