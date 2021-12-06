@@ -1,13 +1,16 @@
 <div>
     <h3>{{searchResult.animal.name}}</h3>
 
+    <app-addfavorite-button [dogId]="searchResult.animal.id"></app-addfavorite-button>
+    <br/>
+
     <picture>
         <img *ngIf="searchResult.animal.photos[0].large; else imgAlt" src={{searchResult.animal.photos[0].large}} alt="large doggo photo">
         <ng-template #imgAlt>
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="image not provided">
         </ng-template>
     </picture>
-    
+
     <dt>Age</dt>
     <dd *ngIf="searchResult.animal.age; else ageAlt">{{searchResult.animal.age}}</dd>
     <ng-template #ageAlt>
@@ -25,7 +28,7 @@
     <ng-template #breedAlt>
         <dd>Not provided</dd>
     </ng-template>
-    
+
     <dt>Colors</dt>
     <dd *ngIf="searchResult.animal.colors.primary; else colorAlt">{{searchResult.animal.colors.primary}} {{searchResult.animal.colors.secondary}}</dd>
     <ng-template #colorAlt>
@@ -80,8 +83,7 @@
         <h4>Shelter Info</h4>
         <ul>
             <li *ngIf="searchResult.animal.contact.address">
-                {{searchResult.animal.contact.address.address1}} {{searchResult.animal.contact.address.address2}} <br />
-                {{searchResult.animal.contact.address.city}}, {{searchResult.animal.contact.address.state}} {{searchResult.animal.contact.address.postcode}}
+                {{searchResult.animal.contact.address.address1}} {{searchResult.animal.contact.address.address2}} <br /> {{searchResult.animal.contact.address.city}}, {{searchResult.animal.contact.address.state}} {{searchResult.animal.contact.address.postcode}}
             </li>
             <li *ngIf="searchResult.animal.contact.email">{{searchResult.animal.contact.email}}</li>
             <li *ngIf="searchResult.animal.contact.phone">{{searchResult.animal.contact.phone}}</li>

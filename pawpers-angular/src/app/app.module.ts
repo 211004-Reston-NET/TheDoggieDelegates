@@ -30,6 +30,7 @@ import { ShelterviewPageComponent } from './shelterview-page/shelterview-page.co
 import { AddReplyComponent } from './add-reply/add-reply.component';
 
 import {ReactiveFormsModule } from '@angular/forms';
+import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
 
 
 
@@ -52,6 +53,7 @@ import {ReactiveFormsModule } from '@angular/forms';
     AddtopicComponent,
     ShelterviewPageComponent,
     AddReplyComponent,
+    AddfavoriteButtonComponent,
   ],
   imports: [
     BrowserModule,

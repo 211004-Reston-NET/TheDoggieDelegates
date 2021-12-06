@@ -34,10 +34,10 @@ namespace WebApi.Controllers
         }
 
         // GET api/<StateController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("Get/{id}")]
+        public IActionResult Get(int id)
         {
-            return "value";
+            return Ok(stateRepository.GetByPrimaryKey(id));
         }
 
         // POST api/<StateController>
