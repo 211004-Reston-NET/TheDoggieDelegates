@@ -12,7 +12,7 @@ Pawpers is a pre-adoption service that matches propspective dog owners with loca
 ## User Stories
 - [x] Adopter should be able to register for a new account
 - [x] Adopter should be able to fill out a pre-screen profile
-- Adopter should be able to print a copy of their profile to bring into the shelter with them
+- [x] Adopter should be able to print a copy of their profile to bring into the shelter with them
 - [x] Adopter should be able to view a list of available potential matches based on their profile (children and other pets)
 - [x] Adopter should be able to see the nearest shelters, based on a mile radius and geolocation data
 - [x] Adopter should be able to "favorite" certain dogs and reference them at a later date
