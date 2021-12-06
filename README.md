@@ -32,5 +32,3 @@ Pawpers is a pre-adoption service that matches propspective dog owners with loca
 - Xunit/Moq
 - Serilog
 - Petfinder API
-- RescureGroups API
-- The Dog API
