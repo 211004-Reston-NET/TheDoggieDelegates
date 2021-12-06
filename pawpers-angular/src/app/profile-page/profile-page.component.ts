@@ -24,7 +24,7 @@ export class ProfilePageComponent implements OnInit {
 
   recommended: any = []
 
-  constructor(private profileApi:ProfileApiService, private router:Router, public auth:AuthService, private dogSearchService: DogSearchService) {     
+  constructor(private profileApi: ProfileApiService, private router: Router, public auth: AuthService, private dogSearchService: DogSearchService) {
     this.auth.user$.subscribe((result) => {
       this.userEmail = result?.email;
 
@@ -54,26 +54,22 @@ export class ProfilePageComponent implements OnInit {
   }
 
   yesOrNo(num: number) {
-    if (num == 1)
-    {
+    if (num == 1) {
       return "Yes"
     }
     return "No"
   }
 
   getDwellingType(num: number) {
-    if (num == 1)
-        {
-          this.dwellingType = "House"
-        } else if (num == 2)
-        {
-          this.dwellingType = "Apartment"
-        } else if (num == 3)
-        {
-          this.dwellingType = "Condo"
-        } else {
-          this.dwellingType = "Other"
-        }
+    if (num == 1) {
+      this.dwellingType = "House"
+    } else if (num == 2) {
+      this.dwellingType = "Apartment"
+    } else if (num == 3) {
+      this.dwellingType = "Condo"
+    } else {
+      this.dwellingType = "Other"
+    }
   }
 
   getRecommended(zipCode: number) {
@@ -81,20 +77,20 @@ export class ProfilePageComponent implements OnInit {
     this.dogSearchService.dogSearch(zipCode).then(response => {
       response.data.animals.forEach((element: any) => {
         if (count < 5) {
-        if (this.profile.profileChildren == 1 && element.environment.children == true) {
-          this.recommended.push(element)
+          if (this.profile.profileChildren == 1 && element.environment.children == true) {
+            this.recommended.push(element)
+          }
+
+          if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
+            this.recommended.push(element)
+          }
+
+          if (this.profile.profileChildren == 2 && this.profile.profileOtherpetname == null) {
+            this.recommended.push(element)
+          }
         }
 
-        if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
-          this.recommended.push(element)
-        }
-
-        if (this.profile.profileChildren == 2 && this.profile.profileOtherpetname == null) {
-          this.recommended.push(element)
-        }
-      }
-
-      count ++
+        count++
       })
     })
 
@@ -104,8 +100,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  redirectToAddProfile()
-  {
+  redirectToAddProfile() {
     this.router.navigateByUrl('add-profile');
   }
 }
