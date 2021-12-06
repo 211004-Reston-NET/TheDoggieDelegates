@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileApiService } from '../services/profile-api.service';
 import { Profile } from '../AngularModels/profile';
@@ -13,16 +13,17 @@ import { Animal } from '../dog-search/dog-search-model';
 })
 export class FavoritesPageComponent implements OnInit {
 
+  @Input() profileId: number = 0
+
   favorites: any= []
   dog: any = {}
 
   constructor(private dogSearchService: DogSearchService, private profileApi: ProfileApiService, private router: Router, private route: ActivatedRoute) {
-    let profileId = Number(this.route.snapshot.paramMap.get("id"))
-    this.getProfileWithFavorites(profileId) 
+    // let profileId = Number(this.route.snapshot.paramMap.get("id")) 
   }
 
   ngOnInit(): void {
-    console.log(this.favorites)
+    this.getProfileWithFavorites(this.profileId)
   }
 
   getProfileWithFavorites(profileId: number) {
@@ -36,6 +37,10 @@ export class FavoritesPageComponent implements OnInit {
   getDogById(dogId: number) {
     this.dogSearchService.viewDog(dogId).then(doggo => {
       this.favorites.push(doggo.data.animal)
-    })
-  }
+  })
+  .catch(err => {
+    console.log(err.request, err.response);
+    // See invalid parameters `err.invalidParams`
+  });
+}
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile, Main } from '../AngularModels/profile';
-import { Favorite, } from '../AngularModels/favorite';
+import { Favorite } from '../AngularModels/favorite';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,18 @@ export class ProfileApiService {
   {
     return this.http.get<any>(this.endpoint + "/Favorite/SearchByProfile/" + profileId)
   }
-  //Create view favorites method
+
+  getProfileByEmail(email: string) {
+    return this.http.get<any>(this.endpoint + "/Profile/GetEmail/" + email)
+  }
+
+  getState(stateId: number) {
+    return this.http.get<any>(this.endpoint + "/State/Get/" + stateId)
+  }
+
+  addDogToFavorite(favorite: Favorite) {
+    console.log("called")
+    console.log(favorite)
+    return this.http.post<any>(this.endpoint + "/Favorite/Create", favorite)
+  }
 }
