@@ -10,7 +10,10 @@
     <app-favorites-page [profileId]="profileId"></app-favorites-page>
 </div>
 
-<div class="card card-responsive" *ngIf="profileExists">
+<div>
+    <button onClick="window.print()">Print Profile</button>
+</div>
+<div class="card card-responsive printDiv" *ngIf="profileExists">
     <dt>Name</dt>
     <dd>{{profile.profileName}}</dd>
     <dt>Address</dt>
