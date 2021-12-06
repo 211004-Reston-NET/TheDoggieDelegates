@@ -1,4 +1,4 @@
-import { PathLocationStrategy } from '@angular/common';
+import { LowerCasePipe, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeolocationService } from '@ng-web-apis/geolocation';
@@ -42,6 +42,25 @@ export class DogSearchComponent implements OnInit {
         });
       }
     )
+  }
+
+  breedSearchOnClick(data: any) {
+    if (this.show) {
+      this.searchResults = {
+        animals: []
+      }
+    }
+    this.dogSearchService.randomDogs().then(
+      resp => {
+        resp.data.animals.forEach((animal: Animal) => {
+          if (animal.photos[0] != null  && animal.status == "adoptable"  && animal.breeds.primary.toLowerCase().includes(data.breedSearch.toLowerCase())) {
+            this.searchResults.animals.push(animal)
+          }
+        });
+      }
+    )
+
+    this.show = true
   }
 
   onClickSubmit(data: any) {

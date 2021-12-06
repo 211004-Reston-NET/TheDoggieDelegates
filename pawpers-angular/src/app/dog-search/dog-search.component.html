@@ -1,6 +1,11 @@
 <form #zipSearch="ngForm" (ngSubmit)="onClickSubmit(zipSearch.value)">
     <input type="text" name="zipCode" placeholder="zip code" ngModel>
-    <button type="submit">Search</button> 
+    <button type="submit">Search</button>
+</form>
+
+<form #breedSearch="ngForm" (ngSubmit)="breedSearchOnClick(breedSearch.value)">
+    <input type="text" name="breedSearch" placeholder="Search By Breed" ngModel>
+    <button type="submit">Search</button>
 </form>
 
 <table *ngIf="show" class="table table-responsive table-hover">
