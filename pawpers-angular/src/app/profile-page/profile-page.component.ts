@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Main } from '../AngularModels/profile';
 import { AuthService } from '@auth0/auth0-angular';
 import { ProfileApiService } from '../services/profile-api.service';
+import { DogSearchService } from '../services/dog-search.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,7 +22,9 @@ export class ProfilePageComponent implements OnInit {
   hasYard: string = ''
   familyAllergies: string = ''
 
-  constructor(private profileApi:ProfileApiService, private router:Router, public auth:AuthService) {     
+  recommended: any = []
+
+  constructor(private profileApi:ProfileApiService, private router:Router, public auth:AuthService, private dogSearchService: DogSearchService) {     
     this.auth.user$.subscribe((result) => {
       this.userEmail = result?.email;
 
@@ -37,6 +40,8 @@ export class ProfilePageComponent implements OnInit {
         this.getDwellingType(this.profile.profileDwellingid)
         this.hasYard = this.yesOrNo(this.profile.profileHasyard)
         this.familyAllergies = this.yesOrNo(this.profile.profileFamilyalergies)
+
+        this.getRecommended(this.profile.profileZipcode)
       })
 
     })
@@ -69,6 +74,22 @@ export class ProfilePageComponent implements OnInit {
         } else {
           this.dwellingType = "Other"
         }
+  }
+
+  getRecommended(zipCode: number) {
+    this.dogSearchService.dogSearch(zipCode).then(response => {
+      response.data.animals.forEach((element: any) => {
+        if (this.profile.profileChildren == 1 && element.environment.children == true) {
+          this.recommended.push(element)
+        }
+
+        if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
+          this.recommended.push(element)
+        }
+      })
+    })
+
+    console.log(this.recommended)
   }
 
   ngOnInit(): void {
