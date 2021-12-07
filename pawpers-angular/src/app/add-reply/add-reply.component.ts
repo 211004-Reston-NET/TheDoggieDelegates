@@ -12,10 +12,11 @@ import { TopicsAPIService } from '../services/topics-api.service';
 export class AddReplyComponent implements OnInit {
 
   topicID: any =  0;
-  profileID: any = 4;
+  profileID: any = 4; // This is wrong it needs to route to the correct profile
+  displayMessage:string = "";
 
   constructor(private replyService:TopicsAPIService, private router:Router, private route:ActivatedRoute) {
-    //I need to writ a function to change profileID to the correct value
+    //I need to write a function to change profileID to the correct value
     this.topicID = Number(this.route.snapshot.paramMap.get("id"))
    }
 
@@ -24,6 +25,9 @@ export class AddReplyComponent implements OnInit {
     topicId:      new FormControl(""),
     profileId:    new FormControl(""),
   });
+
+  //gets for Form Validation
+  get message() {return this.replyGroup.get("replyMessage");}
 
   ngOnInit(): void {
   }
@@ -35,7 +39,7 @@ export class AddReplyComponent implements OnInit {
       let reply:Reply = {
         replyMessage: this.replyGroup.get("replyMessage")?.value,
         topicId:      this.topicID,
-        profileId:    this.profileID,
+        profileId:    this.profileID, 
       }
 
       this.replyService.createReply(reply).subscribe(
@@ -45,7 +49,11 @@ export class AddReplyComponent implements OnInit {
         }
       )
 
-    };
+    }
+    else
+    {
+      this.displayMessage = "Reply must not be empty!";
+    }
 
   }
 
