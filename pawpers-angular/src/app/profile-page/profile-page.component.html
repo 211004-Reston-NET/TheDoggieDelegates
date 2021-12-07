@@ -1,17 +1,15 @@
 <div class="container">
     <div *ngIf="!profileExists" id="create-profile">
-        <h5>Create a Profile</h5>
         <button class="btn btn-outline-secondary" (click)="redirectToAddProfile()">Add Profile</button>
         <br>
         <br>
     </div>
 
-    <div class="card card-responsive" *ngIf="profileExists" id="favorites">
-        <h3>Favorites</h3>
+    <div class="" *ngIf="profileExists" id="favorites">
         <app-favorites-page [profileId]="profileId"></app-favorites-page>
     </div>
 
-    <div class="mt-4 card card-responsive" *ngIf="profileExists" id="profile">
+    <div class="mt-4 p-4 card card-responsive" *ngIf="profileExists" id="profile">
         <div class="d-flex mt-4 mb-4 justify-content-right" id="">
             <a onClick="window.print()">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Farm-Fresh_printer.png" alt="print this page">
@@ -71,7 +69,7 @@
         </dl>
     </div>
 
-
+    <!--
     <div *ngFor="let rec of recommended" id="recommended">
         <div class="mt-4 card card-responsive">
             <h4>
@@ -85,3 +83,30 @@
         </div>
     </div>
 </div>
+-->
+
+    <div class="album py-5 bg-light" *ngFor="let rec of recommended">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img *ngIf="rec.photos[0]; else altImg" height="150px" width="150px" src={{rec.photos[0].small}} alt="doggo photo">
+                        <ng-template #altImg>
+                            <img height="100px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
+                        </ng-template>
+
+                        <div class="card-body">
+                            {{rec.name}}
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary" [routerLink]="['../dogview-page/' + rec.id]">View</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

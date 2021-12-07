@@ -5,7 +5,6 @@ import { GeolocationService } from '@ng-web-apis/geolocation';
 import { Client } from '@petfinder/petfinder-js';
 import { DogSearchService } from '../services/dog-search.service';
 
-const client = new Client({ apiKey: "JfKma1OQsJw2IJLGLGSCOBh7thEcY0et3ajRAWxthCL2qWqCqd", secret: "tOkMyd3qr3Ui7V4c2HWMBZN6cDQPtLaD7prWHKSM" })
 
 
 @Component({
