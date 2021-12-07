@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Reply } from '../AngularModels/reply';
 import { TopicsAPIService } from '../services/topics-api.service';
 
@@ -10,14 +11,21 @@ import { TopicsAPIService } from '../services/topics-api.service';
   styleUrls: ['./add-reply.component.css']
 })
 export class AddReplyComponent implements OnInit {
-
-  topicID: any =  0;
-  profileID: any = 4; // This is wrong it needs to route to the correct profile
+  userEmail: any
+  topicID: any
+  profileID: any
   displayMessage:string = "";
 
-  constructor(private replyService:TopicsAPIService, private router:Router, private route:ActivatedRoute) {
-    //I need to write a function to change profileID to the correct value
+  constructor(public auth:AuthService, private replyService:TopicsAPIService, private router:Router, private route:ActivatedRoute) {
     this.topicID = Number(this.route.snapshot.paramMap.get("id"))
+
+    this.auth.user$.subscribe((result) => {
+      this.userEmail = result?.email;
+
+      this.replyService.getProfileByEmail(this.userEmail).subscribe(response => {
+        this.profileID = response.profileId
+      })
+    })
    }
 
   replyGroup:FormGroup = new FormGroup ({
@@ -30,6 +38,7 @@ export class AddReplyComponent implements OnInit {
   get message() {return this.replyGroup.get("replyMessage");}
 
   ngOnInit(): void {
+    console.log(this.userEmail)
   }
 
   createReply(replyGroup: FormGroup)
@@ -44,8 +53,7 @@ export class AddReplyComponent implements OnInit {
 
       this.replyService.createReply(reply).subscribe(
         (response) => {
-            window.location.reload();
-           
+            window.location.reload();           
         }
       )
 
@@ -54,7 +62,7 @@ export class AddReplyComponent implements OnInit {
     {
       this.displayMessage = "Reply must not be empty!";
     }
-
+      })
+    };
   }
-
 }

@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-evenly">
         <form #zipSearch="ngForm" (ngSubmit)="onClickSubmit(zipSearch.value)">
             <div class="input-group mb-2">
-                <input type="text" class="form-control" name="zipCode" placeholder="zip code" ngModel aria-label="Zip Code Search" aria-describedby="basic-addon2">
+                <input required type="text" class="form-control" name="zipCode" placeholder="zip code" ngModel aria-label="Zip Code Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary">Search</button>
                 </div>
@@ -13,7 +13,7 @@
 
         <form #breedSearch="ngForm" (ngSubmit)="breedSearchOnClick(breedSearch.value)">
             <div class="input-group mb-2">
-                <input type="text" class="form-control" name="breedSearch" placeholder="Search By Breed" ngModel aria-label="Breed Search" aria-describedby="basic-addon2">
+                <input required type="text" class="form-control" name="breedSearch" placeholder="Search By Breed" ngModel aria-label="Breed Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary">Search</button>
                 </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="container justify-content-evenly">
-        <table class="" *ngIf="show" class="table table-hover">
+        <table class="" *ngIf="show" class="table table-striped table-hover">
             <thead>
                 <th scope="col">Photo</th>
                 <th scope="col">Name</th>

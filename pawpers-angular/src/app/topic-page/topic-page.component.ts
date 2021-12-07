@@ -16,16 +16,31 @@ export class TopicPageComponent implements OnInit {
     $values: []
   }
 
+  profile: any = {
+    profileId: 0,
+    profileName: ""
+  }
+
+  profiles: any = []
+
   constructor(private topicApi:TopicsAPIService, private router:Router, public auth0:AuthService) { 
     this.topicApi.getAllTopics().subscribe(
       response => {
         this.topics = response
+        this.getProfileName()
       }
     )
   }
   
   ngOnInit(): void {
-    
+  }
+
+  getProfileName() {
+    this.topics.$values.forEach(element => {
+      this.topicApi.getProfileById(element.profileId).subscribe(resp => {
+        element.profile = resp
+      })
+    });
   }
   
   addTopic()

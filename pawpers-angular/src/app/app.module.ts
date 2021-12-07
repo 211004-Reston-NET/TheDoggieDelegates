@@ -32,7 +32,6 @@ import { ProfileEmailComponent } from './profile-email/profile-email.component';
 import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

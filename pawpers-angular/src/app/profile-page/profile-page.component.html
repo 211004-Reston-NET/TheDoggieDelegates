@@ -1,74 +1,79 @@
 <div class="container">
-    <div *ngIf="!profileExists">
+    <div *ngIf="!profileExists" id="create-profile">
         <h5>Create a Profile</h5>
-        <button class="btn btn-primary" (click)="redirectToAddProfile()">Add Profile</button>
+        <button class="btn btn-outline-secondary" (click)="redirectToAddProfile()">Add Profile</button>
         <br>
         <br>
     </div>
 
-    <div class="card card-responsive" *ngIf="profileExists">
+    <div class="card card-responsive" *ngIf="profileExists" id="favorites">
         <h3>Favorites</h3>
         <app-favorites-page [profileId]="profileId"></app-favorites-page>
     </div>
 
-    <div>
-        <button onClick="window.print()">Print Profile</button>
-    </div>
-    <div>
-        <app-profile-email [profile]="profile" [hasChildren]="hasChildren" [hasYard]="hasYard" [dwellingType]="dwellingType" [familyAllergies]="familyAllergies"></app-profile-email>
-    </div>
-    <div class="card card-responsive printDiv" *ngIf="profileExists">
-        <dt>Name</dt>
-        <dd>{{profile.profileName}}</dd>
-        <dt>Address</dt>
-        <dd>{{profile.profileStreetaddress}}<br /> {{profile.profileCity}}, {{state}} {{profile.profileZipcode}}
-        </dd>
-        <dt>Age</dt>
-        <dd>{{profile.profileAge}}</dd>
-        <dt>Home Phone</dt>
-        <dd>{{profile.profileHomephone}}</dd>
-        <dt>Personal Phone</dt>
-        <dd>{{profile.profilePersonalphone}}</dd>
-        <dt>Email</dt>
-        <dd>{{profile.profileEmail}}</dd>
-        <dt>Occupation</dt>
-        <dd>{{profile.profileOccupation}}</dd>
-        <dt>Spouse</dt>
-        <dd>{{profile.profileSpousename}}</dd>
-        <dt>Children</dt>
-        <dd>{{hasChildren}}</dd>
-        <dt>Dwelling Type</dt>
-        <dd>{{dwellingType}}</dd>
-        <dt>Yard</dt>
-        <dd>{{hasYard}}</dd>
-        <dt *ngIf="profile.profileLandlordname != null">Landlord Name</dt>
-        <dd *ngIf="profile.profileLandlordname != null">{{profile.profileLandlordname}}</dd>
-        <dt *ngIf="profile.profileLandlordphone != null">Landlord Phone</dt>
-        <dd *ngIf="profile.profileLandlordphone != null">{{profile.profileLandlordphone}}</dd>
-        <dt *ngIf="profile.profileOtherpetname != null">Other Pet Name</dt>
-        <dd *ngIf="profile.profileOtherpetname != null">{{profile.profileOtherpetname}}</dd>
-        <dt *ngIf="profile.profileOtherpetbreed != null">Other pet breed</dt>
-        <dd *ngIf="profile.profileOtherpetbreed != null">{{profile.profileOtherpetbreed}}</dd>
-        <dt *ngIf="profile.profileOtherpetsex != null">Other Pet Gender</dt>
-        <dd *ngIf="profile.profileOtherpetsex != null">{{profile.profileOtherpetsex}}</dd>
-        <dt>Known Family Animal Allergies</dt>
-        <dd>{{familyAllergies}}</dd>
-        <dt>Primary Caregiver</dt>
-        <dd>{{profile.profileResponsiblefordog}}</dd>
-        <dt>Adoption Reason</dt>
-        <dd>{{profile.profileAdoptionreason}}</dd>
-        <dt>Where Will The Dog Sleep</dt>
-        <dd>{{profile.profileDogsleepat}}</dd>
-        <dt>What will you do if the dog is aggressive towards humans or other animals</dt>
-        <dd>{{profile.profileDogaggresive}}</dd>
-        <dt>What will you do if the dog gets sick and needs medication?</dt>
-        <dd>{{profile.profileMedfordog}}</dd>
-        <dt>What will you do if you are unable to care for the dog?</dt>
-        <dd>{{profile.profileNocaredog}}</dd>
+    <div class="mt-4 card card-responsive" *ngIf="profileExists" id="profile">
+        <div class="d-flex mt-4 mb-4 justify-content-right" id="">
+            <a onClick="window.print()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Farm-Fresh_printer.png" alt="print this page">
+            </a>
+            <div>
+                <app-profile-email [profile]="profile" [hasChildren]="hasChildren" [hasYard]="hasYard" [dwellingType]="dwellingType" [familyAllergies]="familyAllergies"></app-profile-email>
+            </div>
+        </div>
+        <dl class="row">
+            <dt class="col-md-2">Name</dt>
+            <dd class="col-md-9">{{profile.profileName}}</dd>
+            <dt class="col-md-2">Address</dt>
+            <dd class="col-md-9">{{profile.profileStreetaddress}}<br /> {{profile.profileCity}}, {{state}} {{profile.profileZipcode}}
+            </dd>
+            <dt class="col-md-2">Age</dt>
+            <dd class="col-md-9">{{profile.profileAge}}</dd>
+            <dt class="col-md-2">Home Phone</dt>
+            <dd class="col-md-9">{{profile.profileHomephone}}</dd>
+            <dt class="col-md-2">Personal Phone</dt>
+            <dd class="col-md-9">{{profile.profilePersonalphone}}</dd>
+            <dt class="col-md-2">Email</dt>
+            <dd class="col-md-9">{{profile.profileEmail}}</dd>
+            <dt class="col-md-2">Occupation</dt>
+            <dd class="col-md-9">{{profile.profileOccupation}}</dd>
+            <dt class="col-md-2">Spouse</dt>
+            <dd class="col-md-9">{{profile.profileSpousename}}</dd>
+            <dt class="col-md-2">Children</dt>
+            <dd class="col-md-9">{{hasChildren}}</dd>
+            <dt class="col-md-2">Dwelling Type</dt>
+            <dd class="col-md-9">{{dwellingType}}</dd>
+            <dt class="col-md-2">Yard</dt>
+            <dd class="col-md-9">{{hasYard}}</dd>
+            <dt class="col-md-2" *ngIf="profile.profileLandlordname != null">Landlord Name</dt>
+            <dd class="col-md-9" *ngIf="profile.profileLandlordname != null">{{profile.profileLandlordname}}</dd>
+            <dt class="col-md-2" *ngIf="profile.profileLandlordphone != null">Landlord Phone</dt>
+            <dd class="col-md-9" *ngIf="profile.profileLandlordphone != null">{{profile.profileLandlordphone}}</dd>
+            <dt class="col-md-2" *ngIf="profile.profileOtherpetname != null">Other Pet Name</dt>
+            <dd class="col-md-9" *ngIf="profile.profileOtherpetname != null">{{profile.profileOtherpetname}}</dd>
+            <dt class="col-md-2" *ngIf="profile.profileOtherpetbreed != null">Other pet breed</dt>
+            <dd class="col-md-9" *ngIf="profile.profileOtherpetbreed != null">{{profile.profileOtherpetbreed}}</dd>
+            <dt class="col-md-2" *ngIf="profile.profileOtherpetsex != null">Other Pet Gender</dt>
+            <dd class="col-md-9" *ngIf="profile.profileOtherpetsex != null">{{profile.profileOtherpetsex}}</dd>
+            <dt class="col-md-2">Known Family Animal Allergies</dt>
+            <dd class="col-md-9">{{familyAllergies}}</dd>
+            <dt class="col-md-2">Primary Caregiver</dt>
+            <dd class="col-md-9">{{profile.profileResponsiblefordog}}</dd>
+            <dt class="col-md-2">Adoption Reason</dt>
+            <dd class="col-md-9">{{profile.profileAdoptionreason}}</dd>
+            <dt class="col-md-4">Where Will The Dog Sleep</dt>
+            <dd class="col-md-7">{{profile.profileDogsleepat}}</dd>
+            <dt class="col-md-6">What will you do if the dog is aggressive towards humans or other animals</dt>
+            <dd class="col-md-4">{{profile.profileDogaggresive}}</dd>
+            <dt class="col-md-6">What will you do if the dog gets sick and needs medication?</dt>
+            <dd class="col-md-4">{{profile.profileMedfordog}}</dd>
+            <dt class="col-md-6">What will you do if you are unable to care for the dog?</dt>
+            <dd class="col-md-4">{{profile.profileNocaredog}}</dd>
+        </dl>
     </div>
 
-    <div *ngFor="let rec of recommended">
-        <div class="card card-responsive">
+
+    <div *ngFor="let rec of recommended" id="recommended">
+        <div class="mt-4 card card-responsive">
             <h4>
                 {{rec.name}}
                 <button class="btn btn-primary" [routerLink]="['../dogview-page/' + rec.id]">View</button>
