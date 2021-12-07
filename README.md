@@ -3,11 +3,7 @@
 Pawpers is a pre-adoption service that matches propspective dog owners with local animal shelters, utilizing the pre-screen profile and the dog breed information API. We aim to simplify the adoption process by pre-screening new owners before they step into the shelter.
 
 ## Tables
-- Profile, for storing the user's pre-screen profile
-- Favorites, join table for adopter "favorite" pets
-- Forum, for storing dicussion topics
-- Categories, join table for discussion categories
-- Replies, for storing discussion replies
+![Alt text](https://github.com/211004-Reston-NET/TheDoggieDelegates/raw/main/ERD.png?raw=true "ERD")
 
 ## User Stories
 - [x] Adopter should be able to register for a new account
