@@ -35,7 +35,6 @@ import {ReactiveFormsModule } from '@angular/forms';
 import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
