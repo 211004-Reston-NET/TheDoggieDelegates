@@ -1,12 +1,7 @@
-<div>
+<div class="container">
     <div class="card" *ngFor="let favorite of favorites">
-    <!--<h2>{{profile.profileName}}</h2>-->
-    <p>{{favorite.name}}</p>
-    <img height="150px" width="150px" src="{{favorite.photos[0].small}}" alt="doggo image">
-    
+        <!--<h2>{{profile.profileName}}</h2>-->
+        <p>{{favorite.name}}</p>
+        <img height="150px" width="150px" src="{{favorite.photos[0].small}}" alt="doggo image">
     </div>
-    <!-- <div class="card" *ngFor="let reply of topic.replies.$values">
-        <p>{{reply.profile.profileName}} | {{reply.replyTimestamp}}</p>
-        <p>{{reply.replyMessage}}</p>
-    </div> -->
 </div>

@@ -1,57 +1,63 @@
-<div>
+<div class="container">
     <h3>{{searchResult.animal.name}}</h3>
 
     <app-addfavorite-button [dogId]="searchResult.animal.id"></app-addfavorite-button>
     <br/>
 
-    <picture>
-        <img *ngIf="searchResult.animal.photos[0].large; else imgAlt" src={{searchResult.animal.photos[0].large}} alt="large doggo photo">
-        <ng-template #imgAlt>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="image not provided">
-        </ng-template>
-    </picture>
+    <div class="container">
+        <picture>
+            <img *ngIf="searchResult.animal.photos[0].large; else imgAlt" src={{searchResult.animal.photos[0].large}} alt="large doggo photo">
+            <ng-template #imgAlt>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="image not provided">
+            </ng-template>
+        </picture>
+    </div>
 
-    <dt>Age</dt>
-    <dd *ngIf="searchResult.animal.age; else ageAlt">{{searchResult.animal.age}}</dd>
-    <ng-template #ageAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+    <div class="container-fluid">
+        <dl class="">
+            <dt class="col-sm-2">Age</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.age; else ageAlt">{{searchResult.animal.age}}</dd>
+            <ng-template #ageAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Gender</dt>
-    <dd *ngIf="searchResult.animal.gender; else genderAlt">{{searchResult.animal.gender}}</dd>
-    <ng-template #genderAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Gender</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.gender; else genderAlt">{{searchResult.animal.gender}}</dd>
+            <ng-template #genderAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Breeds</dt>
-    <dd *ngIf="searchResult.animal.breeds.primary; else breedAlt">{{searchResult.animal.breeds.primary}} {{searchResult.animal.breeds.secondary}}</dd>
-    <ng-template #breedAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Breeds</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.breeds.primary; else breedAlt">{{searchResult.animal.breeds.primary}} {{searchResult.animal.breeds.secondary}}</dd>
+            <ng-template #breedAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Colors</dt>
-    <dd *ngIf="searchResult.animal.colors.primary; else colorAlt">{{searchResult.animal.colors.primary}} {{searchResult.animal.colors.secondary}}</dd>
-    <ng-template #colorAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Colors</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.colors.primary; else colorAlt">{{searchResult.animal.colors.primary}} {{searchResult.animal.colors.secondary}}</dd>
+            <ng-template #colorAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Coat</dt>
-    <dd *ngIf="searchResult.animal.coat; else coatAlt">{{searchResult.animal.coat}}</dd>
-    <ng-template #coatAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Coat</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.coat; else coatAlt">{{searchResult.animal.coat}}</dd>
+            <ng-template #coatAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Size</dt>
-    <dd *ngIf="searchResult.animal.size; else sizeAlt">{{searchResult.animal.size}}</dd>
-    <ng-template #sizeAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Size</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.size; else sizeAlt">{{searchResult.animal.size}}</dd>
+            <ng-template #sizeAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
 
-    <dt>Description</dt>
-    <dd *ngIf="searchResult.animal.description; else descriptionAlt">{{searchResult.animal.description}}</dd>
-    <ng-template #descriptionAlt>
-        <dd>Not provided</dd>
-    </ng-template>
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-8" *ngIf="searchResult.animal.description; else descriptionAlt">{{searchResult.animal.description}}</dd>
+            <ng-template #descriptionAlt>
+                <dd class="col-sm-8">Not provided</dd>
+            </ng-template>
+        </dl>
+    </div>
 
     <div>
         <h4>Attributes</h4>
