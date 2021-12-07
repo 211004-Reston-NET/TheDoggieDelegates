@@ -30,6 +30,8 @@ jobs:
         npm install
         npm run build --prod
       working-directory: ./pawpers-angular
+      env:
+        SENDGRIDAPIKEY: ${{ env.PAWPERS_SENDGRID }}
         
         
     - name: 'Deploy to Azure WebApp'
