@@ -20,7 +20,7 @@ Pawpers is a pre-adoption service that matches propspective dog owners with loca
 - [x] General forum for registered adopters to share pet and shelter information and recommend pets to other users
 
 ## Scope Goals
-- One click email button that sends pre-screen profile to the selected shelter with the adopters preferred animal(s)
+- [x] One click email button that sends pre-screen profile to the selected shelter with the adopters preferred animal(s)
 
 ## Tech Stack
 - C#/Entity Framwork
