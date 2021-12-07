@@ -11,13 +11,12 @@ import { TopicsAPIService } from '../services/topics-api.service';
   styleUrls: ['./add-reply.component.css']
 })
 export class AddReplyComponent implements OnInit {
-
   userEmail: any
   topicID: any
   profileID: any
+  displayMessage:string = "";
 
   constructor(public auth:AuthService, private replyService:TopicsAPIService, private router:Router, private route:ActivatedRoute) {
-    //I need to writ a function to change profileID to the correct value
     this.topicID = Number(this.route.snapshot.paramMap.get("id"))
 
     this.auth.user$.subscribe((result) => {
@@ -35,6 +34,9 @@ export class AddReplyComponent implements OnInit {
     profileId:    new FormControl(""),
   });
 
+  //gets for Form Validation
+  get message() {return this.replyGroup.get("replyMessage");}
+
   ngOnInit(): void {
     console.log(this.userEmail)
   }
@@ -46,13 +48,21 @@ export class AddReplyComponent implements OnInit {
       let reply:Reply = {
         replyMessage: this.replyGroup.get("replyMessage")?.value,
         topicId:      this.topicID,
-        profileId:    this.profileID,
+        profileId:    this.profileID, 
       }
 
       this.replyService.createReply(reply).subscribe(
         (response) => {
-            window.location.reload();
-        })
+            window.location.reload();           
+        }
+      )
+
+    }
+    else
+    {
+      this.displayMessage = "Reply must not be empty!";
+    }
+      })
     };
   }
 }
