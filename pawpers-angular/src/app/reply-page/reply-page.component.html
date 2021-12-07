@@ -1,9 +1,9 @@
-<div>
+<!--<div>
     <div class="card">
-    <h2>{{topic.topicName}}</h2>
-    <p>{{topic.profile.profileName}}</p>
-    <p>{{topic.postTimestamp}}</p>
-    <p>{{topic.topicBody}}</p>
+        <h2>{{topic.topicName}}</h2>
+        <p>{{topic.profile.profileName}}</p>
+        <p>{{topic.postTimestamp}}</p>
+        <p>{{topic.topicBody}}</p>
     </div>
     <div class="card" *ngFor="let reply of topic.replies.$values">
         <p>{{reply.profile.profileName}} | {{reply.replyTimestamp}}</p>
@@ -12,5 +12,46 @@
     <div>
         <button (click)="showOnClick()" class="btn btn-primary">Add Reply</button>
         <app-add-reply *ngIf="show"></app-add-reply>
+    </div>
+</div>
+-->
+<div class="container">
+    <div class="row bootstrap snippets bootdeys">
+        <div class="col-md-8 col-sm-12">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="">
+                        <h2>{{topic.topicName}}</h2>
+                        <p>{{topic.profile.profileName}}</p>
+                        <p>{{topic.postTimestamp}}</p>
+                        <p>{{topic.topicBody}}</p>
+                    </div>
+                    <br>
+                    <div class="panel-body">
+                        <br>
+                        <div>
+                            <button (click)="showOnClick()" class="btn btn-primary">Add Reply</button>
+                            <app-add-reply *ngIf="show"></app-add-reply>
+                        </div>
+                        <br>
+
+                        <hr>
+                        <ul class="media-list" *ngFor="let reply of topic.replies.$values">
+                            <li class="media">
+                                <div class="media-body">
+                                    <strong class="text-success">{{reply.profile.profileName}}</strong>
+                                    <br>
+                                    <span class="text-muted">
+                                        <small class="text-muted">{{reply.replyTimestamp}}</small>
+                                    </span>
+                                    <p>{{reply.replyMessage}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

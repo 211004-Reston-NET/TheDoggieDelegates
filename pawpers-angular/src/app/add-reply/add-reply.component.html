@@ -1,14 +1,8 @@
-<p>add-reply works!</p>
-
-<h1 > Create a Reply </h1>
+<br>
 <br>
 
-<form [formGroup] = "replyGroup">
-    <h4>Reply Message</h4>
-    <textarea formControlName = "replyMessage"
-              style="overflow:auto;resize:none" 
-              rows="13" cols="200"
-              placeholder="Enter text here...">
+<form [formGroup]="replyGroup">
+    <textarea formControlName="replyMessage" style="overflow:auto;resize:none" rows="7" cols="75" placeholder="Enter text here...">
     </textarea>
     <p>250 character limit</p>
     <!-- <input type="submit" value="Submit"> -->
