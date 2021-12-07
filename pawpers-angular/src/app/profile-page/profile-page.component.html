@@ -13,6 +13,9 @@
 <div>
     <button onClick="window.print()">Print Profile</button>
 </div>
+<div>
+    <app-profile-email [profile]="profile" [hasChildren]="hasChildren" [hasYard]="hasYard" [dwellingType]="dwellingType" [familyAllergies]="familyAllergies"></app-profile-email>
+</div>
 <div class="card card-responsive printDiv" *ngIf="profileExists">
     <dt>Name</dt>
     <dd>{{profile.profileName}}</dd>

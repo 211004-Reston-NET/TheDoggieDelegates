@@ -28,11 +28,11 @@ import { AddtopicComponent } from './addtopic/addtopic.component';
 import { ShelterSearchComponent } from './shelter-search/shelter-search.component';
 import { ShelterviewPageComponent } from './shelterview-page/shelterview-page.component';
 import { AddReplyComponent } from './add-reply/add-reply.component';
+import { ProfileEmailComponent } from './profile-email/profile-email.component';
+
 
 import {ReactiveFormsModule } from '@angular/forms';
 import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
-
-
 
 
 @NgModule({
@@ -54,7 +54,8 @@ import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-but
     ShelterviewPageComponent,
     AddReplyComponent,
     AddfavoriteButtonComponent,
-  ],
+    ProfileEmailComponent,
+    ],
   imports: [
     BrowserModule,
     FormsModule,
