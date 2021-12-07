@@ -9,7 +9,7 @@
     <tbody *ngFor="let topic of topics.$values">
         <tr>
             <td>{{topic.topicName}} | {{topic.profileId}} | {{topic.postTimestamp}}</td>
-            <button class="btn btn-primary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
+            <button class="btn btn-secondary"  [routerLink]="['../reply-page/' + topic.topicId]"  >View</button>
             </tr>
     </tbody>
 </table>
