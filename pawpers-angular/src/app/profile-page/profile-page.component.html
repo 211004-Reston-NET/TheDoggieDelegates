@@ -14,10 +14,13 @@
     <div>
         <button onClick="window.print()">Print Profile</button>
     </div>
+    <br>
     <div>
         <app-profile-email [profile]="profile" [hasChildren]="hasChildren" [hasYard]="hasYard" [dwellingType]="dwellingType" [familyAllergies]="familyAllergies"></app-profile-email>
     </div>
-    <div class="card card-responsive printDiv" *ngIf="profileExists">
+    
+    <div class=" card card-responsive printDiv" *ngIf="profileExists">
+        
         <dt>Name</dt>
         <dd>{{profile.profileName}}</dd>
         <dt>Address</dt>
@@ -66,6 +69,7 @@
         <dt>What will you do if you are unable to care for the dog?</dt>
         <dd>{{profile.profileNocaredog}}</dd>
     </div>
+
 
     <div *ngFor="let rec of recommended">
         <div class="card card-responsive">
