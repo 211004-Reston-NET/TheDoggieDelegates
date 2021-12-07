@@ -3,7 +3,7 @@
     <button class="ms-4 btn btn-outline-secondary" (click)="addTopic()">Add Topic</button>
     <br>
     <ul class="mt-3 media-list" *ngFor="let topic of topics.$values">
-        <li class="media">
+        <li class="media border col-md-11">
             <div class="media-body">
                 <strong class="text-success">{{topic.profile.profileName}}</strong>
                 <br>
@@ -12,11 +12,8 @@
                 </span>
                 <br>
                 <span class="text-muted">
-                    {{topic.topicName}}
+                    <a href="../reply-page/{{topic.topicId}}">{{topic.topicName}}</a>
                 </span>
-                <br>
-                <br>
-                <button class="btn btn-outline-secondary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
             </div>
         </li>
     </ul>
