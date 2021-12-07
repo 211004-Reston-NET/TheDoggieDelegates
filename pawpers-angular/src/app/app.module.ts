@@ -10,7 +10,7 @@ import { AuthButtonComponent } from './auth-button/auth-button.component';
 import { HttpClientModule } from '@angular/common/http';
 
 // Forms
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -29,12 +29,8 @@ import { ShelterSearchComponent } from './shelter-search/shelter-search.componen
 import { ShelterviewPageComponent } from './shelterview-page/shelterview-page.component';
 import { AddReplyComponent } from './add-reply/add-reply.component';
 import { ProfileEmailComponent } from './profile-email/profile-email.component';
-
-
-import {ReactiveFormsModule } from '@angular/forms';
 import { AddfavoriteButtonComponent } from './addfavorite-button/addfavorite-button.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
 
 @NgModule({
   declarations: [
