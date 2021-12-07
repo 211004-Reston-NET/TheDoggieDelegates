@@ -1,16 +1,25 @@
-<p>add-profile works!</p>
-
-<h1 > Add a Profile </h1>
+<br>
+<h1 class="center"> Add a Profile </h1>
 <br>
 
+<p class="center">Please fill out all required fields.</p>
 <form *ngIf="auth.user$ | async as user" class="indent" [formGroup] = "profileGroup" >
-    <h2>Name</h2>
-    <input type="text" formControlName = "profileName">
-    <h2>Street address</h2>
-    <input type="text" formControlName = "profileStreetaddress">
-    <h2>City</h2>
-    <input type="text" formControlName = "profileCity">
-    <h2>State</h2> 
+    <h2>Name *</h2>
+    <input type="text" formControlName = "profileName" class="form-control" required>
+    <div *ngIf="name?.dirty">
+        <div class="text-danger" *ngIf="name?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Street address *</h2>
+    <input type="text" formControlName = "profileStreetaddress" class="form-control" required>
+    <div *ngIf="address?.dirty">
+        <div class="text-danger" *ngIf="address?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>City *</h2>
+    <input type="text" formControlName = "profileCity" class="form-control" required>
+    <div *ngIf="city?.dirty">
+        <div class="text-danger" *ngIf="city?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>State *</h2> 
     <select formControlName = "profileStateid">
         <option value="1">Alabama</option>
         <option value="2">Alaska</option>
@@ -65,25 +74,40 @@
         <option value="51">Wisconsin</option>
         <option value="52">Wyoming</option>
     </select>
-    <h2>Zip code</h2>
-    <input type="text" formControlName = "profileZipcode">
-    <h2>Age</h2>
-    <input type="number" formControlName = "profileAge">
+    <h2>Zip code *</h2>
+    <input type="text" formControlName = "profileZipcode" class="form-control" required>
+    <div *ngIf="zipCode?.dirty">
+        <div class="text-danger" *ngIf="zipCode?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Age *</h2>
+    <input type="number" formControlName = "profileAge" class="form-control" required>
+    <div *ngIf="age?.dirty">
+        <div class="text-danger" *ngIf="age?.errors?.['required']">This field is required</div>
+    </div>
     <h2>Home phone</h2>
-    <input type="text" formControlName = "profileHomephone">
-    <h2>Personal phone</h2>
-    <input type="text" formControlName = "profilePersonalphone">
-    <h2>Email</h2>
+    <input type="text" formControlName = "profileHomephone" >
+    <h2>Personal phone *</h2>
+    <input type="text" formControlName = "profilePersonalphone" class="form-control" required>
+    <div *ngIf="phoneNumber?.dirty">
+        <div class="text-danger" *ngIf="phoneNumber?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Email *</h2>
     <input type="text" formControlName = "profileEmail"  placeholder="{{user.email}}" readonly>
-    <h2>Occupation</h2>
-    <input type="text" formControlName = "profileOccupation">
+    <h2>Occupation *</h2>
+    <input type="text" formControlName = "profileOccupation" class="form-control" required>
+    <div *ngIf="occupation?.dirty">
+        <div class="text-danger" *ngIf="occupation?.errors?.['required']">This field is required</div>
+    </div>
     <h2>Spouse name</h2>
     <input type="text" formControlName = "profileSpousename">
-    <h2>Do you have any Children?</h2>
+    <h2>Do you have any Children? *</h2>
     <input type="radio" id="Yes" formControlName = "profileChildren" value="1">
     <label for="Yes">Yes</label><br>
     <input type="radio" id="No" formControlName = "profileChildren" value="2">
     <label for="No">No</label><br>
+    <div *ngIf="children?.dirty">
+        <div class="text-danger" *ngIf="children?.errors?.['required']">This field is required</div>
+    </div>
     <h2>Dwelling:</h2>
     <select formControlName = "profileDwellingid">
         <option value="1">House</option>
@@ -91,11 +115,14 @@
         <option value="3">Condo</option>
         <option value="4">Other</option>
     </select>
-    <h2>Do you have a yard?</h2>
+    <h2>Do you have a yard? *</h2>
     <input type="radio" id="Yes" formControlName = "profileHasyard" value="1">
     <label for="Yes">Yes</label><br>
     <input type="radio" id="No" formControlName = "profileHasyard" value="2">
     <label for="No">No</label><br>
+    <div *ngIf="yard?.dirty">
+        <div class="text-danger" *ngIf="yard?.errors?.['required']">This field is required</div>
+    </div>
     <h2>Land lord name</h2>
     <input type="text" formControlName = "profileLandlordname">
     <h2>Land lord phone number</h2>
@@ -108,24 +135,51 @@
     <input type="text" formControlName = "profileOtherpetsex">
     <h2>Other pet age</h2>
     <input type="number" formControlName = "profileOtherpetage">
-    <h2>Has anyone in your family experienced animal-related allergies?</h2>
+    <h2>Has anyone in your family experienced animal-related allergies? *</h2>
     <input type="radio" id="Yes" formControlName = "profileFamilyallergies" value="1">
     <label for="Yes">Yes</label><br>
     <input type="radio" id="No" formControlName = "profileFamilyallergies" value="2">
     <label for="No">No</label><br>
-    <h2>Who will be responsible for the dog?</h2>
-    <input type="text" formControlName = "profileResponsiblefordog">
-    <h2>Reason for adoption?</h2>
-    <input type="text" formControlName = "profileAdoptionreason">
-    <h2>Where will the dog be sleeping?</h2>
-    <input type="text" formControlName = "profileDogsleepat">
-    <h2>What would you do if the dog were to become aggressive towards others?</h2>
-    <input type="text" formControlName = "profileDogaggresive">
-    <h2>If the dog needed medical treatment, are you financially prepared to provide medical care?</h2>
-    <input type="text" formControlName = "profileMedfordog">
-    <h2>What would you do if you could no longer care for the dog?</h2>
-    <input type="text" formControlName = "profileNocaredog">
+    <div *ngIf="allergies?.dirty">
+        <div class="text-danger" *ngIf="allergies?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Who will be responsible for the dog? *</h2>
+    <input type="text" formControlName = "profileResponsiblefordog" class="form-control" required>
+    <div *ngIf="responsible?.dirty">
+        <div class="text-danger" *ngIf="responsible?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Reason for adoption? *</h2>
+    <input type="text" formControlName = "profileAdoptionreason" class="form-control" required>
+    <div *ngIf="reason?.dirty">
+        <div class="text-danger" *ngIf="reason?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>Where will the dog be sleeping? *</h2>
+    <input type="text" formControlName = "profileDogsleepat" class="form-control" required>
+    <div *ngIf="sleep?.dirty">
+        <div class="text-danger" *ngIf="sleep?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>What would you do if the dog were to become aggressive towards others? *</h2>
+    <input type="text" formControlName = "profileDogaggresive" class="form-control" required>
+    <div *ngIf="aggressive?.dirty">
+        <div class="text-danger" *ngIf="aggressive?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>If the dog needed medical treatment, are you financially prepared to provide medical care? (Yes or No)*</h2>
+    <input type="text" formControlName = "profileMedfordog" class="form-control" required>
+    <div *ngIf="medication?.dirty">
+        <div class="text-danger" *ngIf="medication?.errors?.['required']">This field is required</div>
+    </div>
+    <h2>What would you do if you could no longer care for the dog? *</h2>
+    <input type="text" formControlName = "profileNocaredog" class="form-control" required>
+    <div *ngIf="nocare?.dirty">
+        <div class="text-danger" *ngIf="nocare?.errors?.['required']">This field is required</div>
+    </div>
     <br>
     <br>
+    <p>* - Required</p>
     <button class="btn btn-primary" (click)="createProfile(profileGroup)">Submit</button>
 </form>
+<h4 class="error">{{displayMessage}}</h4>
+<br>
+<br>
+<br>
+
