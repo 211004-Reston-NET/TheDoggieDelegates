@@ -1,15 +1,15 @@
 <button class="btn btn-primary" (click)="addTopic()">Add Topic</button>
 <table class="table table hover">
 
-    
+
     <thead>
         <th>Topic</th>
     </thead>
 
     <tbody *ngFor="let topic of topics.$values">
         <tr>
-            <td>{{topic.topicName}} | {{topic.profileId}} | {{topic.postTimestamp}}</td>
-            <button class="btn btn-primary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
-            </tr>
+            <td>{{topic.topicName}} | {{topic.profile.profileName}} | {{topic.postTimestamp | date}}</td>
+            <button class="btn btn-outline-secondary" [routerLink]="['../reply-page/' + topic.topicId]">View</button>
+        </tr>
     </tbody>
 </table>
