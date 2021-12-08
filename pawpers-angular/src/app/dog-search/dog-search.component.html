@@ -28,7 +28,7 @@
 
 <div class="album p-2 bg-light">
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5" *ngIf="searchResults.animals.length > 0; else notFound">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 row-cols-lg-5 g-5" *ngIf="searchResults.animals.length > 0; else notFound">
             <div class="col" *ngFor="let animal of searchResults.animals">
                 <div class="card shadow-sm bg-secondary">
                     <img *ngIf="animal.photos[0]; else altImg" height="100%" width="100%" src={{animal.photos[0].small}} alt="doggo photo">
