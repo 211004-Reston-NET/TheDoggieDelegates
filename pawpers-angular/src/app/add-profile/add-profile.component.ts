@@ -114,7 +114,7 @@ export class AddProfileComponent implements OnInit {
 
       this.profileSerrvice.createProfile(profile).subscribe(
         (response) => {
-          this.router.navigateByUrl('/profile-page')
+          this.router.navigateByUrl('')
         }
       )
 

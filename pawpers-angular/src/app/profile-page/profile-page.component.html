@@ -1,15 +1,13 @@
 <div class="container">
-    <div *ngIf="!profileExists" id="create-profile">
-        <button class="btn btn-outline-secondary" (click)="redirectToAddProfile()">Add Profile</button>
-        <br>
-        <br>
+    <div class="p-4" *ngIf="!profileExists" id="create-profile">
+        <app-add-profile></app-add-profile>
     </div>
 
     <div class="" *ngIf="profileExists" id="favorites">
         <app-favorites-page [profileId]="profileId"></app-favorites-page>
     </div>
 
-    <div class="mt-4 p-4 card card-responsive" *ngIf="profileExists" id="profile">
+    <div class="mt-4 p-4 card card-responsive bg-dark" *ngIf="profileExists" id="profile">
         <div class="d-flex mt-4 mb-4 justify-content-right" id="">
             <a onClick="window.print()">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Farm-Fresh_printer.png" alt="print this page">
@@ -69,40 +67,29 @@
         </dl>
     </div>
 
-    <!--
-    <div *ngFor="let rec of recommended" id="recommended">
-        <div class="mt-4 card card-responsive">
-            <h4>
-                {{rec.name}}
-                <button class="btn btn-primary" [routerLink]="['../dogview-page/' + rec.id]">View</button>
-            </h4>
-            <img *ngIf="rec.photos[0]; else altImg" height="150px" width="150px" src={{rec.photos[0].small}} alt="doggo photo">
-            <ng-template #altImg>
-                <img height="100px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
-            </ng-template>
-        </div>
-    </div>
-</div>
--->
-
-    <div class="album py-5 bg-light" *ngFor="let rec of recommended">
+    <div class="album p-2 mt-4 bg-light" *ngIf="profileExists">
         <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img *ngIf="rec.photos[0]; else altImg" height="150px" width="150px" src={{rec.photos[0].small}} alt="doggo photo">
+            <h3 class="text-dark">Recommended Dogs Based on Your Profile</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-6">
+                <div class="col" *ngFor="let rec of recommended">
+                    <div class="card shadow-sm bg-secondary">
+                        <img *ngIf="rec.photos[0]; else altImg" src={{rec.photos[0].medium}} alt="doggo photo">
                         <ng-template #altImg>
-                            <img height="100px" width="100px" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Missing_dog_photo.png" alt="missing image">
                         </ng-template>
 
                         <div class="card-body">
-                            {{rec.name}}
+                            <p class="card-text">
+                                {{rec.name}}<br>
+                                <small>
+                                    {{rec.breeds.primary}}, {{rec.age}}<br>
+                                    {{rec.contact.address.city}}, {{rec.contact.address.postcode}}
+                                </small>
+                            </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary" [routerLink]="['../dogview-page/' + rec.id]">View</button>
+                                    <button class="btn btn-sm btn-dark" [routerLink]="['../dogview-page/' + rec.id]">View</button>
                                 </div>
-                                <small class="text-muted">9 mins</small>
                             </div>
                         </div>
                     </div>
@@ -110,3 +97,4 @@
             </div>
         </div>
     </div>
+</div>

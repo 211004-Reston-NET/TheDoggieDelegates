@@ -22,7 +22,7 @@ export class DogSearchComponent implements OnInit {
     longitude: 0
   }
 
-  show: boolean = false;
+  show: boolean = true;
   dogShow: boolean = false;
   displayMessage1:string = "";
   displayMessage2:string = "";
