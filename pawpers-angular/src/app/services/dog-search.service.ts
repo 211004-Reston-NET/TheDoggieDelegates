@@ -44,6 +44,12 @@ export class DogSearchService {
     })
   }
 
+  randomShelters() {
+    return client.organization.search({
+      limit: 100,
+    })
+  }
+
   shelterSingle(shelterId: string) {
     return client.organization.show(shelterId)
   }

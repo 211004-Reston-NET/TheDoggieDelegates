@@ -34,5 +34,16 @@ export class ShelterSearchComponent implements OnInit {
   }
 
 ngOnInit(): void {
+  this.show = true
+  if (this.show) {
+    this.searchResults = []
+  }
+
+  this.dogSearchService.randomShelters().then(
+    resp => {
+      resp.data.organizations.forEach((element: any) => {
+        this.searchResults.push(element)
+      });
+    })
 }
 }

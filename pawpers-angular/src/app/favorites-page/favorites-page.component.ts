@@ -23,6 +23,7 @@ export class FavoritesPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfileWithFavorites(this.profileId)
+    console.log("FAVORITES: ", this.favorites)
   }
 
   getProfileWithFavorites(profileId: number) {

@@ -22,7 +22,7 @@ export class DogSearchComponent implements OnInit {
     longitude: 0
   }
 
-  show: boolean = false;
+  show: boolean = true;
   dogShow: boolean = false;
 
   constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router:Router) {
@@ -60,7 +60,7 @@ export class DogSearchComponent implements OnInit {
         });
       }
     )
-
+    console.log("ANIMALLS", this.searchResults.animals)
     this.show = true
   }
 
