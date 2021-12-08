@@ -6,7 +6,7 @@
             <small>{{topic.postTimestamp | date}}</small>
             <p>{{topic.topicBody}}</p>
         </div>
-        <button (click)="showOnClick()" class="btn btn-primary">Add Reply</button>
+        <button *ngIf="auth0.isAuthenticated$ | async" (click)="showOnClick()" class="btn btn-primary">Add Reply</button>
         <app-add-reply *ngIf="show"></app-add-reply>
     </div>
 

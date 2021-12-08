@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Category } from '../AngularModels/Category';
 import { Profile } from '../AngularModels/profile';
 import { Main, Reply } from '../AngularModels/reply';
@@ -17,7 +18,7 @@ export class ReplyPageComponent implements OnInit {
 
   show: boolean = false
 
-  constructor(private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
+  constructor(public auth0:AuthService, private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
     let topicId = Number(this.route.snapshot.paramMap.get("id"))
     this.getTopicWithReplies(topicId)
   }
