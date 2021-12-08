@@ -24,6 +24,8 @@ export class DogSearchComponent implements OnInit {
 
   show: boolean = true;
   dogShow: boolean = false;
+  displayMessage1:string = "";
+  displayMessage2:string = "";
 
   constructor(private dogSearchService: DogSearchService, readonly geolocation$: GeolocationService, private router:Router) {
     // geolocation$.pipe(take(1)).subscribe(
@@ -51,16 +53,24 @@ export class DogSearchComponent implements OnInit {
         animals: []
       }
     }
-    this.dogSearchService.randomDogs().then(
-      resp => {
-        resp.data.animals.forEach((animal: Animal) => {
-          if (animal.photos[0] != null  && animal.status == "adoptable"  && animal.breeds.primary.toLowerCase().includes(data.breedSearch.toLowerCase())) {
-            this.searchResults.animals.push(animal)
-          }
-        });
-      }
-    )
-    console.log("ANIMALLS", this.searchResults.animals)
+
+    if (data.breedSearch != "") {
+      this.dogSearchService.randomDogs().then(
+        resp => {
+          resp.data.animals.forEach((animal: Animal) => {
+            if (animal.photos[0] != null  && animal.status == "adoptable"  && animal.breeds.primary.toLowerCase().includes(data.breedSearch.toLowerCase())) {
+              this.searchResults.animals.push(animal)
+            }
+          });
+        }
+      )
+    }
+    else
+    {
+      this.displayMessage1 = "Please enter a dog breed!";
+    }
+    
+
     this.show = true
   }
 
@@ -71,15 +81,22 @@ export class DogSearchComponent implements OnInit {
       }
     }
 
-    this.dogSearchService.dogSearch(data.zipCode).then(
-      resp => {
-        resp.data.animals.forEach((animal: Animal) => {
-          if (animal.photos[0] != null  && animal.status == "adoptable") {
-            this.searchResults.animals.push(animal)
-          }
-        });
-      }
-    )
+    if (data.zipCode != "") {
+      this.dogSearchService.dogSearch(data.zipCode).then(
+        resp => {
+          resp.data.animals.forEach((animal: Animal) => {
+            if (animal.photos[0] != null  && animal.status == "adoptable") {
+              this.searchResults.animals.push(animal)
+            }
+          });
+        }
+      )
+    }
+    else
+    {
+      this.displayMessage2 = "Please enter a zip code!";
+    }
+    
 
     this.show = true
   }
