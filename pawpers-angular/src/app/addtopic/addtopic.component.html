@@ -1,15 +1,14 @@
-<h1 class="text-center">Add a topic</h1>
-
-<div class="container">
+<div class="container bg-dark">
+    <h2 class="text-center">Add a topic</h2>
     <form class="form-group" [formGroup]=topicGroup>
         <label for="category">Category</label>
         <select class="form-control" name="category" formControlName="categoryId">
         <option value="1">General</option>
     </select>
-    <div *ngIf="category?.touched">
-        <div class="text-danger" *ngIf="category?.errors?.['required']">This field is required</div>
-    </div>     
-    <br/>
+        <div *ngIf="category?.touched">
+            <div class="text-danger" *ngIf="category?.errors?.['required']">This field is required</div>
+        </div>
+        <br/>
 
         <label for="topicName">Topic Name</label>
         <input class="form-control" name="topicName" formControlName="topicName">
@@ -20,10 +19,10 @@
         <label for="topicBody">Topic Message</label>
         <textarea class="form-control" name="topicBody" formControlName="topicBody" style="overflow:auto;resize:none" rows="13" cols="200" placeholder="Enter text here...">
     </textarea>
-    <div *ngIf="topicBody?.touched">
-        <div class="text-danger" *ngIf="topicBody?.errors?.['required']">This field is required</div>
-    </div>    
-    <br>
+        <div *ngIf="topicBody?.touched">
+            <div class="text-danger" *ngIf="topicBody?.errors?.['required']">This field is required</div>
+        </div>
+        <br>
         <button class="btn btn-primary " (click)="addTopic(topicGroup)">Submit</button>
     </form>
     <h4 class="error">{{displayMessage}}</h4>
