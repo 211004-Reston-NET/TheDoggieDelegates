@@ -32,6 +32,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PawpersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("pawpers")));
+            services.AddDbContext<PawpersDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("pawpers")));
             services.AddScoped<IFavoriteBL, FavoriteBL>();
             services.AddScoped<IProfileBL, ProfileBL>();
             services.AddScoped<IReplyBL, ReplyBL>();
@@ -53,6 +54,9 @@ namespace WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
             });
+
+            services.AddDbContext<PawpersDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("pawpers")));
 
             
             services.AddCors(
