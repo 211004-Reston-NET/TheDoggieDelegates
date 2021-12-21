@@ -16,25 +16,18 @@ export class AddfavoriteButtonComponent implements OnInit {
   userEmail: any = ''
   profileId: number = 0
 
-  favorite: any = {
-    dogId: 0,
-    isAvailable: 0,
-    profileId: 0
-    }
+  favorite: Favorite = {} as Favorite
 
   @Input() dogId: number = 0
 
   show: boolean = true
 
-  constructor(private http: HttpClient, private profileApi: ProfileApiService, private router: Router, public auth:AuthService) {
-    this.getProfileId()
-   }
+  constructor(private http: HttpClient, private profileApi: ProfileApiService, private router: Router, public auth: AuthService) {
+    this.checkIfFavorite()
+  }
 
   ngOnInit(): void {
-    this.checkIfFavorite()
-    this.favorite.dogId = this.dogId
-    this.favorite.isAvailable = 1
-    this.favorite.profileId = this.profileId
+    this.getProfileId()
   }
 
   checkIfFavorite() {
@@ -49,6 +42,9 @@ export class AddfavoriteButtonComponent implements OnInit {
 
   addDogToFavorite() {
     console.log("clicked")
+    this.favorite.dogId = this.dogId
+    this.favorite.isAvailable = 1
+    this.favorite.profileId = this.profileId
     this.profileApi.addDogToFavorite(this.favorite).subscribe(response => {
       this.show = false
     })
@@ -58,7 +54,7 @@ export class AddfavoriteButtonComponent implements OnInit {
     this.auth.user$.subscribe(response => {
       this.userEmail = response?.email
       this.profileApi.getProfileByEmail(this.userEmail).subscribe(element => {
-        this.favorite.profileId = element.profileId
+        this.profileId = element.profileId
         console.log(this.profileId)
       })
     })

@@ -55,7 +55,7 @@ namespace Models
 
         [Required]
         [Display(Name = "Email")]
-        [RegularExpression(@"^[a-zA-Z0-9.+@]+$", ErrorMessage = "Invalid email")]
+        [RegularExpression(@"^[a-zA-Z0-9.+-@]+$", ErrorMessage = "Invalid email")]
         public string ProfileEmail { get; set; }
 
         [Required]
