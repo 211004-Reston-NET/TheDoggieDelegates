@@ -7,7 +7,10 @@
                 <small>Join In!</small>
             </div>
         </div>
-        <button class="ms-4 btn btn-dark align-self-end" (click)="addTopic()">Add Topic</button>
+        <button class="ms-4 btn btn-dark align-self-end" *ngIf="profile.profileName; else CreateProfile" (click)="addTopic()">Add Topic</button>
+        <ng-template #CreateProfile>
+            <button class="ms-4 btn btn-dark align-self-end" [routerLink]="['../profile-page']">Create Profile</button>
+        </ng-template>
     </div>
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">

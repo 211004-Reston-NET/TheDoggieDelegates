@@ -80,21 +80,21 @@ export class ProfilePageComponent implements OnInit {
           if (this.profile.profileChildren == 1 && element.environment.children == true) {
             this.recommended.push(element)
           }
-
-          if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
+          else if (this.profile.profileOtherpetname != null && element.environment.dogs == true) {
             this.recommended.push(element)
           }
-
-          if (this.profile.profileChildren == 2 && this.profile.profileOtherpetname == null) {
+          else if (this.profile.profileChildren == 2 && this.profile.profileOtherpetname == null) {
+            this.recommended.push(element)
+          }
+          else {
             this.recommended.push(element)
           }
         }
 
         count++
       })
+      console.log("RECOMMENDED", this.recommended)
     })
-
-    console.log(this.recommended)
   }
 
   ngOnInit(): void {

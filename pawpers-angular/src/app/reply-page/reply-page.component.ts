@@ -19,10 +19,11 @@ export class ReplyPageComponent implements OnInit {
   show: boolean = false
 
   constructor(public auth0:AuthService, private topicApi: TopicsAPIService, private router: Router, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
     let topicId = Number(this.route.snapshot.paramMap.get("id"))
     this.getTopicWithReplies(topicId)
-  }
-  ngOnInit(): void {
   }
 
   getTopicWithReplies(topicId: number) {
@@ -31,13 +32,13 @@ export class ReplyPageComponent implements OnInit {
 
       this.topicApi.getProfileById(this.topic.profileId).subscribe(response => {
         this.topic.profile = response
-      })
 
-      this.topic.replies.$values.forEach((element: { profileId: number; profile: any; }) => {
-        this.topicApi.getProfileById(element.profileId).subscribe(response => {
-          element.profile = response
-        })
-      });
+        this.topic.replies.$values.forEach((element: { profileId: number; profile: any; }) => {
+          this.topicApi.getProfileById(element.profileId).subscribe(response => {
+            element.profile = response
+          })
+        });
+      })
     })
   }
 
